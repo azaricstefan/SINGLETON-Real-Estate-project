@@ -1,0 +1,85 @@
+<html>
+	<head>
+		<title>Dodavanje Moderatora</title>
+		<SCRIPT LANGUAGE="JavaScript">
+			var brojac = 0;
+			
+			function validate() {
+				var x = "GRESKA"
+				var y = "KORISNIK VEC POSTOJI"
+				var username = "Pera"
+				var uslov = 0;
+				if (document.forma.korisnickoime.value == "") {
+					document.getElementById("kime").innerHTML = x;
+					uslov = 1;
+				}
+				else{
+					document.getElementById("kime").innerHTML = "";
+					brojac++;
+				}
+				if (document.forma.lozinka.value == "") {
+					document.getElementById("klozinka").innerHTML = x;
+					uslov = 1;
+				}
+				else{
+					document.getElementById("klozinka").innerHTML = "";
+					brojac++;
+				}
+				if (document.forma.imeprezime.value == "") {
+					document.getElementById("kprezime").innerHTML = x;
+					uslov = 1;
+				}
+				else{
+					document.getElementById("kprezime").innerHTML = "";
+					brojac++;
+				}
+				if (brojac == 3){
+					if (username == document.forma.korisnickoime.value){
+						document.getElementById("kime").innerHTML = y;
+					}
+					else{
+						alert("Korisnik je uspesno ubacen u bazu");
+						location.reload();
+					}
+					//
+				}
+				if (uslov){
+					document.getElementById("obavezno").innerHTML = "Polja sa zvezdicim su obavezna";
+				}
+				brojac = 0;
+			}
+			
+		</SCRIPT>
+	</head>
+	<body>
+		<form name = "forma" method = "post">
+			<table width = "900" border = "0" cellspacing = "1" color = "blue" align = "center">
+			
+				<tr>
+					<td>Korisnicko ime :</td>
+					<td><input type="text" name="korisnickoime" size="25">*</td>
+					<td><p id="kime"></p></td>
+				</tr>
+				<tr>
+					<td>Lozinka : </td>
+					<td><input type = "password" name = "lozinka" size = "25">*</td>
+					<td><p id="klozinka"></p></td>
+				</tr>
+				<tr>
+					<td>Ime i Prezime : </td>
+					<td><input type = "text" name = "imeprezime" size = "25">*</td>
+					<td><p id="kprezime"></p></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="button" value="POTVRDI" onclick = "validate()">
+						<input type="button" onclick="location.href='GlavnaAdmin.html';" value="ODUSTANI" />
+					</td>
+				</tr>
+				<tr>
+					<td><p id="obavezno"></p></td>
+				</tr>
+			</table>
+		</form>
+	<body>
+</html>

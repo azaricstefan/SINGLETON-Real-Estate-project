@@ -1,0 +1,52 @@
+<html>
+	<head>
+		<title>Index</title>
+		<SCRIPT LANGUAGE="JavaScript">
+			function validate(){
+				var usernamek = "korisnik";
+				var passwordk = "korisnik"
+				var usernamem = "moderator";
+				var passwordm = "moderator";
+				var usernamea = "administrator";
+				var passworda = "administrator";
+				var x = "GRESKA"
+				if ((document.forma.korisnickoime.value == usernamek) && (document.forma.lozinka.value == passwordk)){
+					window.location = "GlavnaKorisnik.html";
+				}
+				else if ((document.forma.korisnickoime.value == usernamem) && (document.forma.lozinka.value == passwordm)){
+					window.location = "GlavnaModerator.html";
+				}
+				else if ((document.forma.korisnickoime.value == usernamea) && (document.forma.lozinka.value == passworda)){
+					window.location = "GlavnaAdmin.html";
+				}
+				else{
+					document.getElementById("kime").innerHTML = x;
+					document.getElementById("klozinka").innerHTML = x;
+				}
+			}
+			function reset(){
+				location.reload();
+			}
+		</SCRIPT>
+	</head>
+	<body>
+		<form name = "forma" method = "post">
+			<tr>
+				<td>Korisnicko ime :</td>
+				<td><input type="text" name="korisnickoime" size="25"></td>
+				<td><p id="kime"><font color = "red"></font></p></td>
+			</tr>
+			<tr>
+				<td>Lozinka : </td>
+				<td><input type = "password" name = "lozinka" size = "25"></td>
+				<td><p id="klozinka"><font color = "red"></font></p></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="button" onclick="validate()" name = "potvrdi" id = "potvrdi"  value="POTVRDI" />
+					<input type="button" onclick="reset()" value="ODUSTANI" />
+				</td>
+			</tr>
+		</form>
+	<body>
+</html>

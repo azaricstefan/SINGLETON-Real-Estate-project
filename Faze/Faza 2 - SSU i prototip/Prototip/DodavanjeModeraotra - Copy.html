@@ -1,0 +1,91 @@
+<html>
+	<head>
+		<title>Dodavanje Moderatora</title>
+		<SCRIPT LANGUAGE="JavaScript">
+			var brojac = 0;
+			function validate() {
+				if (document.forma.korisnickoime.value == "") {
+					document.getElementById('korImeLabel').innerHTML='GRESKA' ;
+				}
+				else brojac++;
+				if (document.forma.lozinka.value == "") {
+					document.getElementById('lozinkaLabel').innerHTML='GRESKA' ;
+				}
+				else brojac++;
+				if (document.forma.imeprezime.value == "") {
+					document.getElementById('imePrezimeLabel').innerHTML='GRESKA' ;
+				}
+				else brojac++;
+				if (brojac == 3){
+					brojac = checkCookie(brojac);
+				}
+				if (brojac == 3) {
+					alert("Korisnik je uspesno ubacen u bazu") ;
+				}
+			}
+			
+			/*
+			*/
+			
+			function setCookie(cname, cvalue, exdays) {
+				var d = new Date();
+				d.setTime(d.getTime() + (exdays*24*60*60*1000));
+				var expires = "expires="+d.toUTCString();
+				document.cookie = cname + "=" + cvalue + "; " + expires;
+			}
+
+			function getCookie(cname) {
+				var name = cname + "=";
+				var ca = document.cookie.split(';');
+				for(var i=0; i<ca.length; i++) {
+					var c = ca[i];
+					while (c.charAt(0)==' ') c = c.substring(1);
+					if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+				}
+				return "";
+			}
+
+			function checkCookie(brojac) {
+				var user = getCookie('username');
+				if (user == document.forma.korisnickoime.value) {
+					alert("***Korisnik je vec unet u bazu***");
+					brojac--;
+				} else {
+					user = document.forma.korisnickoime.value;
+					if (user != "" && user != null) {
+						setCookie("username", user, 365);
+					}
+					
+				}
+				return brojac;
+			}
+			
+			
+			
+		</SCRIPT>
+	</head>
+	<body>
+		<form name = "forma" method = "post">
+			<table width = "900" border = "0" cellspacing = "1" color = "blue" align = "center">
+				<tr>
+					<td>Korisnicko ime :</td>
+					<td><input type="text" name="korisnickoime" size="25">*<label id="korImeLabel"></label></td>
+				</tr>
+				<tr>
+					<td>Lozinka : </td>
+					<td><input type = "text" name = "lozinka" size = "25">*<label id="lozinkaLabel"></label></td>
+				</tr>
+				<tr>
+					<td>Ime i Prezime : </td>
+					<td><input type = "text" name = "imeprezime" size = "25">*<label id="imePrezimeLabel"></label></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="button" value="POTVRDI" onclick = "validate()">
+						<input type="button" onclick="location.href='GlavnaAdmin.html';" value="ODUSTANI" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	<body>
+</html>

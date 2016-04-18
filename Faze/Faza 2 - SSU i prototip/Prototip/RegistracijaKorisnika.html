@@ -1,0 +1,133 @@
+<html>
+	<head>
+		<title>Registracija</title>
+		<SCRIPT LANGUAGE="JavaScript">
+			var brojac = 0;
+			
+			function validate() {
+				var x = "GRESKA"
+				var y = "KORISNIK VEC POSTOJI"
+				var username = "Pera"
+				var uslov = 0;
+				if (document.forma.korisnickoime.value == "") {
+					document.getElementById("kime").innerHTML = x;
+					uslov = 1;
+				}
+				else{
+					document.getElementById("kime").innerHTML = "";
+					brojac++;
+				}
+				if (document.forma.lozinka.value == "") {
+					document.getElementById("klozinka").innerHTML = x;
+					uslov = 1;
+				}
+				else{
+					document.getElementById("klozinka").innerHTML = "";
+					brojac++;
+				}
+				if (document.forma.imeprezime.value == "") {
+					document.getElementById("kprezime").innerHTML = x;
+					uslov = 1;
+				}
+				else{
+					document.getElementById("kprezime").innerHTML = "";
+					brojac++;
+				}
+				if (document.forma.email.value == "") {
+					document.getElementById("kemail").innerHTML = x;
+					uslov = 1;
+				}
+				else{
+					if (proveri()){
+						document.getElementById("kemail").innerHTML = "";
+						brojac++;
+					}
+					else{
+						document.getElementById("kemail").innerHTML = "Pogresan format email adrese";
+					}
+				}
+				if (brojac == 4){
+					if (username == document.forma.korisnickoime.value){
+						document.getElementById("kime").innerHTML = y;
+					}
+					else{
+						if (document.forma.saglasnost.checked){
+							alert("Korisnik je uspesno ubacen u bazu");
+							location.reload();
+						}
+						else {
+							alert("Morate da se slozite sa uslovima koriscenja naseg servisa")
+						}
+					}
+					//
+				}
+				if (uslov){
+					document.getElementById("obavezno").innerHTML = "Polja sa zvezdicim su obavezna";
+				}
+				brojac = 0;
+			}
+			
+			function proveri(){
+				var test=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+				var tekst=document.forma.email.value;
+				var rezultat = tekst.match(test); 
+				if (rezultat != null) return true;
+				return false;
+			}
+			
+		</SCRIPT>
+	</head>
+	<body>
+		<form name = "forma" method = "post">
+			<table width = "900" border = "0" cellspacing = "1" color = "blue" align = "center">
+			
+				<tr>
+					<td>Korisnicko ime :</td>
+					<td><input type="text" name="korisnickoime" size="25">*</td>
+					<td><p id="kime"></p></td>
+				</tr>
+				<tr>
+					<td>Lozinka : </td>
+					<td><input type = "password" name = "lozinka" size = "25">*</td>
+					<td><p id="klozinka"></p></td>
+				</tr>
+				<tr>
+					<td>Ime i Prezime : </td>
+					<td><input type = "text" name = "imeprezime" size = "25">*</td>
+					<td><p id="kprezime"></p></td>
+				</tr>
+				<tr>
+					<td>E-mail : </td>
+					<td><input type = "text" name = "email" size = "25">*</td>
+					<td><p id="kemail"></p></td>
+				</tr>
+				<tr>
+					<td>Telefon : </td>
+					<td><input type = "text" name = "telefon" size = "25"></td>
+				</tr>
+				<tr>
+					<td>Nadimak : </td>
+					<td><input type = "text" name = "nadimak" size = "25"></td>
+				</tr>
+				<tr>
+				<tr>
+					<td>Saglasnost : </td>
+					<td><input type="checkbox" name="saglasnost"></td>
+					<td><p id="kprezime"></p></td>
+				</tr>
+					<td colspan="2">
+						<input type="button" value="POTVRDI" onclick = "validate()">
+						<input type="button" onclick="location.href='index.html';" value="ODUSTANI" />
+						<input type="button" value="EMAIL" onclick = "proveri()">
+					</td>
+				</tr>
+				<tr>
+					<td><p id="obavezno"></p></td>
+				</tr>
+				<tr>
+					<td><a href = "uslovikoriscenja.html">Uslovi koriscenja</td>
+				</tr>
+			</table>
+		</form>
+	<body>
+</html>

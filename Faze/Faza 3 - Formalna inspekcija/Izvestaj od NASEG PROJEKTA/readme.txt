@@ -1,0 +1,1 @@
+﻿Stefan Azarić: Ispravke većine stvari su direktno u FAZI 2 folderu ispravljene.

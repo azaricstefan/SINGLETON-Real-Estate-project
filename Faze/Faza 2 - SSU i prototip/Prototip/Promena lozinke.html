@@ -1,0 +1,73 @@
+<html>
+	<head>
+		<title>Dodavanje Moderatora</title>
+		<SCRIPT LANGUAGE="JavaScript">
+			function validate () {
+				var brojac = 0;
+				var uslov = 0;
+				var password = "korisnik";
+				if (document.forma.lozinka.value == password) {
+					document.getElementById("lozinka").innerHTML = "";
+					brojac++;
+				}
+				else document.getElementById("lozinka").innerHTML = "Pogresno uneta stara lozinka";
+				
+				if (document.forma.nlozinka.value == "") {
+					document.getElementById("nlozinka").innerHTML = "Polje mora biti popunjeno";
+					uslov++;
+				}
+				else{
+					document.getElementById("nlozinka").innerHTML = "";
+				}
+				if (document.forma.plozinka.value == "") {
+					document.getElementById("plozinka").innerHTML = "Polje mora biti popunjeno";
+					uslov++;
+				}
+				else{
+					document.getElementById("plozinka").innerHTML = "";
+				}
+				if (!uslov){
+					if (document.forma.nlozinka.value == document.forma.plozinka.value){
+						brojac++;
+					}
+					else document.getElementById("nnlozinka").innerHTML = "Nova lozinka i ponovljena nova lozinka se ne poklapaju";
+				}
+				if (brojac == 2){
+					alert("Uspesno promenjena lozinka");
+					location.reload();
+				}
+				brojac = 0;
+			}
+		</SCRIPT>
+	</head>
+	<body>
+		<form name = "forma" method = "post">
+			<table width = "900" border = "0" cellspacing = "1" color = "blue" align = "center">
+				<tr>
+					<td>Lozinka : </td>
+					<td><input type = "password" name = "lozinka" size = "25"></td>
+					<td><p id="lozinka"></p></td>
+				</tr>
+				<tr>
+					<td>Nova lozinka : </td>
+					<td><input type = "password" name = "nlozinka" size = "25"></td>
+					<td><p id="nlozinka"></p></td>
+				</tr>
+				<tr>
+					<td>Ponovite lozinku : </td>
+					<td><input type = "passowrd" name = "plozinka" size = "25"></td>
+					<td><p id="plozinka"></p></td>
+				</tr>
+				<tr>
+					<td><p id="nnlozinka"></p></td>
+				</tr>
+				</tr>
+					<td colspan="2">
+						<input type="button" value="POTVRDI" onclick = "validate()">
+						<input type="button" onclick="location.href='GlavnaKorisnik.html'" value="ODUSTANI" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	<body>
+</html>
