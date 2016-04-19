@@ -1,4 +1,8 @@
-.idea/
+.idea
+.inspection
+.codestyles
+._windows
+*.xml
 
 #################
 ## Eclipse

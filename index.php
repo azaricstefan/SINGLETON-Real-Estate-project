@@ -11,3 +11,4 @@
 <title>Pocetna stranica</title>
 <h1>Nekretnine Beograd</h1>
 
+<p>Ovo je pocetna stranica.</p>
