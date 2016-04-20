@@ -9,7 +9,7 @@ Ovde imate tekstualno objašnjeno delovi sa klipa: <a href="https://confluence.j
 <u><p>Odgledati takođe i klipove na dropbox-u "Laravel from scratch"</p><u>
 <p>Kome nije nešto jasno nek se javi na chat što pre, da bi se to razjasnilo.</p>
 <p>.env fajl tu podesiti bazu parametre<p>
-
+<u>Also, note that Laravel 5.1 and 5.2 requires PHP >= 5.5.9 whereas for PHP 5.0, you only need PHP >= 5.4.</u> <br>
 ------------------------------------------------------------------------------------------------------
 <p>Mihailo: Ispratiti tutorial i uraditi sve iz prvog videa "Podesavanje okruzenja"</p>
 <p>Napraviti novi folder negde na disku koji ce sluziti kao root projekta i ujedno i kao lokalni repozitorijum</p>
