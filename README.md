@@ -9,6 +9,7 @@
 <p>Kome nije nešto jasno nek se javi na chat što pre, da bi se to razjasnilo.</p>
 <p>.env fajl tu podesiti bazu parametre<p>
 
+------------------------------------------------------------------------------------------------------
 <p>Mihailo: Ispratiti tutorial i uraditi sve iz prvog videa "Podesavanje okruzenja"</p>
 <p>Napraviti novi folder negde na disku koji ce sluziti kao root projekta i ujedno i kao lokalni repozitorijum</p>
 <p>Pulovati sa githuba u taj folder, prekopirati .idea folder iz projekta u kome je podesavano okruzenje u taj folder</p>
