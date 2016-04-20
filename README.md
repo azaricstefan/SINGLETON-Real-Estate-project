@@ -1,5 +1,6 @@
 <h2>PREĆI SLEDEĆI KLIP ZA PODEŠAVANJE OKRUŽENJA</h2>
 <a href="https://www.youtube.com/watch?v=QSZK1W0fbGQ" target="_blank">Podešavanje okruženja -> youtube</a> <br>
+Ovde imate tekstualno objašnjeno delovi sa klipa: <a href="https://confluence.jetbrains.com/display/PhpStorm/Laravel+Development+using+PhpStorm#LaravelDevelopmentusingPhpStorm-LaravelFrameworkSupportinPhpStorm" target="_blank">Podešavanje okruženja -> tekstualno</a> <br>
 <a href="https://laravelcollective.com/docs/5.2/html" target="_blank">Laravel Collective</a> <br>
 <a href="https://github.com/barryvdh/laravel-ide-helper" target="_blank">Laravel IDE helper</a> <br>
 <a href="https://github.com/koomai/phpstorm-laravel-live-templates" target="_blank">PhpStorm Laravel Live templates</a>
