@@ -2,6 +2,7 @@
 <a href="https://www.youtube.com/watch?v=QSZK1W0fbGQ" target="_blank">Podešavanje okruženja -> youtube</a> <br>
 <a href="https://laravelcollective.com/docs/5.2/html" target="_blank">Laravel Collective</a> <br>
 <a href="https://github.com/barryvdh/laravel-ide-helper" target="_blank">Laravel IDE helper</a>
+<a href="https://github.com/koomai/phpstorm-laravel-live-templates" target="_blank">PhpStorm Laravel Live templates</a>
 <strong><p>Upoznati se sa funkcionisanje laravel framework-a do 27-og Aprila.</p><strong>
 <p>Stefan: dodao sam dependency(zavisnosti) za LaravelCollective(forme), za Jezike(imamo SR i EN)</p>
 <u><p>Odgledati takođe i klipove na dropbox-u "Laravel from scratch"</p><u>
