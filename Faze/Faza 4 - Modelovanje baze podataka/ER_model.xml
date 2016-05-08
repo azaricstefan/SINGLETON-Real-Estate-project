@@ -1785,6 +1785,174 @@
                        <int>1</int>
                       </void>
                       <void method="put">
+                       <string>offset</string>
+                       <object class="org.jgraph.graph.AttributeMap$SerializablePoint2D" id="AttributeMap$SerializablePoint2D9">
+                        <void class="java.awt.geom.Point2D$Double" method="getField">
+                         <string>y</string>
+                         <void method="set">
+                          <object idref="AttributeMap$SerializablePoint2D9"/>
+                          <double>1.4210854715202004E-13</double>
+                         </void>
+                        </void>
+                       </object>
+                      </void>
+                      <void method="put">
+                       <string>labelposition</string>
+                       <object class="org.jgraph.graph.AttributeMap$SerializablePoint2D" id="AttributeMap$SerializablePoint2D10">
+                        <void class="java.awt.geom.Point2D$Double" method="getField">
+                         <string>x</string>
+                         <void method="set">
+                          <object idref="AttributeMap$SerializablePoint2D10"/>
+                          <double>500.0</double>
+                         </void>
+                        </void>
+                       </object>
+                      </void>
+                      <void method="put">
+                       <string>bendable</string>
+                       <boolean>true</boolean>
+                      </void>
+                      <void method="put">
+                       <string>points</string>
+                       <object class="java.util.ArrayList">
+                        <void method="add">
+                         <object class="org.jgraph.graph.AttributeMap$SerializablePoint2D" id="AttributeMap$SerializablePoint2D11">
+                          <void class="java.awt.geom.Point2D$Double" method="getField">
+                           <string>x</string>
+                           <void method="set">
+                            <object idref="AttributeMap$SerializablePoint2D11"/>
+                            <double>462.0</double>
+                           </void>
+                          </void>
+                          <void class="java.awt.geom.Point2D$Double" method="getField">
+                           <string>y</string>
+                           <void method="set">
+                            <object idref="AttributeMap$SerializablePoint2D11"/>
+                            <double>204.51315789473685</double>
+                           </void>
+                          </void>
+                         </object>
+                        </void>
+                        <void method="add">
+                         <object class="org.jgraph.graph.AttributeMap$SerializablePoint2D" id="AttributeMap$SerializablePoint2D12">
+                          <void class="java.awt.geom.Point2D$Double" method="getField">
+                           <string>x</string>
+                           <void method="set">
+                            <object idref="AttributeMap$SerializablePoint2D12"/>
+                            <double>221.0</double>
+                           </void>
+                          </void>
+                          <void class="java.awt.geom.Point2D$Double" method="getField">
+                           <string>y</string>
+                           <void method="set">
+                            <object idref="AttributeMap$SerializablePoint2D12"/>
+                            <double>207.68421052631578</double>
+                           </void>
+                          </void>
+                         </object>
+                        </void>
+                       </object>
+                      </void>
+                      <void method="put">
+                       <string>extraLabels</string>
+                       <array class="java.lang.String" length="2">
+                        <void index="0">
+                         <string></string>
+                        </void>
+                        <void index="1">
+                         <string>(0,N)</string>
+                        </void>
+                       </array>
+                      </void>
+                      <void method="put">
+                       <string>editable</string>
+                       <boolean>false</boolean>
+                      </void>
+                      <void method="put">
+                       <string>extraLabelPositions</string>
+                       <array class="java.awt.geom.Point2D" length="2">
+                        <void index="0">
+                         <object class="org.jgraph.graph.AttributeMap$SerializablePoint2D" id="AttributeMap$SerializablePoint2D13">
+                          <void class="java.awt.geom.Point2D$Double" method="getField">
+                           <string>x</string>
+                           <void method="set">
+                            <object idref="AttributeMap$SerializablePoint2D13"/>
+                            <double>875.0</double>
+                           </void>
+                          </void>
+                          <void class="java.awt.geom.Point2D$Double" method="getField">
+                           <string>y</string>
+                           <void method="set">
+                            <object idref="AttributeMap$SerializablePoint2D13"/>
+                            <double>-10.0</double>
+                           </void>
+                          </void>
+                         </object>
+                        </void>
+                        <void index="1">
+                         <object class="org.jgraph.graph.AttributeMap$SerializablePoint2D" id="AttributeMap$SerializablePoint2D14">
+                          <void class="java.awt.geom.Point2D$Double" method="getField">
+                           <string>x</string>
+                           <void method="set">
+                            <object idref="AttributeMap$SerializablePoint2D14"/>
+                            <double>127.97996346938817</double>
+                           </void>
+                          </void>
+                          <void class="java.awt.geom.Point2D$Double" method="getField">
+                           <string>y</string>
+                           <void method="set">
+                            <object idref="AttributeMap$SerializablePoint2D14"/>
+                            <double>11.92002081847883</double>
+                           </void>
+                          </void>
+                         </object>
+                        </void>
+                       </array>
+                      </void>
+                     </object>
+                     <void property="source">
+                      <object idref="DefaultPort0"/>
+                     </void>
+                     <void property="target">
+                      <object idref="DefaultPort12"/>
+                     </void>
+                    </object>
+                   </void>
+                   <void method="add">
+                    <object class="org.jgraph.graph.DefaultEdge" id="DefaultEdge14">
+                     <object class="org.jgraph.data.Relation">
+                      <string>E</string>
+                      <null/>
+                      <null/>
+                      <int>0</int>
+                      <int>2</int>
+                      <int>0</int>
+                     </object>
+                     <object class="org.jgraph.graph.AttributeMap">
+                      <void method="put">
+                       <string>dashPattern</string>
+                       <array class="float" length="2">
+                        <void index="0">
+                         <float>10.0</float>
+                        </void>
+                        <void index="1">
+                         <float>10.0</float>
+                        </void>
+                       </array>
+                      </void>
+                      <void method="put">
+                       <string>connectable</string>
+                       <boolean>false</boolean>
+                      </void>
+                      <void method="put">
+                       <string>disconnectable</string>
+                       <boolean>false</boolean>
+                      </void>
+                      <void method="put">
+                       <string>lineEnd</string>
+                       <int>1</int>
+                      </void>
+                      <void method="put">
                        <string>bendable</string>
                        <boolean>true</boolean>
                       </void>
@@ -1854,181 +2022,6 @@
                     </object>
                    </void>
                    <void method="add">
-                    <object class="org.jgraph.graph.DefaultEdge" id="DefaultEdge14">
-                     <object class="org.jgraph.data.Relation">
-                      <string>E</string>
-                      <null/>
-                      <null/>
-                      <int>0</int>
-                      <int>2</int>
-                      <int>0</int>
-                     </object>
-                     <object class="org.jgraph.graph.AttributeMap">
-                      <void method="put">
-                       <string>dashPattern</string>
-                       <array class="float" length="2">
-                        <void index="0">
-                         <float>10.0</float>
-                        </void>
-                        <void index="1">
-                         <float>10.0</float>
-                        </void>
-                       </array>
-                      </void>
-                      <void method="put">
-                       <string>connectable</string>
-                       <boolean>false</boolean>
-                      </void>
-                      <void method="put">
-                       <string>disconnectable</string>
-                       <boolean>false</boolean>
-                      </void>
-                      <void method="put">
-                       <string>lineEnd</string>
-                       <int>1</int>
-                      </void>
-                      <void method="put">
-                       <string>offset</string>
-                       <object class="org.jgraph.graph.AttributeMap$SerializablePoint2D" id="AttributeMap$SerializablePoint2D9">
-                        <void class="java.awt.geom.Point2D$Double" method="getField">
-                         <string>y</string>
-                         <void method="set">
-                          <object idref="AttributeMap$SerializablePoint2D9"/>
-                          <double>2.8421709430404007E-14</double>
-                         </void>
-                        </void>
-                       </object>
-                      </void>
-                      <void method="put">
-                       <string>labelposition</string>
-                       <object class="org.jgraph.graph.AttributeMap$SerializablePoint2D" id="AttributeMap$SerializablePoint2D10">
-                        <void class="java.awt.geom.Point2D$Double" method="getField">
-                         <string>x</string>
-                         <void method="set">
-                          <object idref="AttributeMap$SerializablePoint2D10"/>
-                          <double>486.9817747455478</double>
-                         </void>
-                        </void>
-                        <void class="java.awt.geom.Point2D$Double" method="getField">
-                         <string>y</string>
-                         <void method="set">
-                          <object idref="AttributeMap$SerializablePoint2D10"/>
-                          <double>-23.652843032260943</double>
-                         </void>
-                        </void>
-                       </object>
-                      </void>
-                      <void method="put">
-                       <string>bendable</string>
-                       <boolean>true</boolean>
-                      </void>
-                      <void method="put">
-                       <string>points</string>
-                       <object class="java.util.ArrayList">
-                        <void method="add">
-                         <object class="org.jgraph.graph.AttributeMap$SerializablePoint2D" id="AttributeMap$SerializablePoint2D11">
-                          <void class="java.awt.geom.Point2D$Double" method="getField">
-                           <string>x</string>
-                           <void method="set">
-                            <object idref="AttributeMap$SerializablePoint2D11"/>
-                            <double>159.0</double>
-                           </void>
-                          </void>
-                          <void class="java.awt.geom.Point2D$Double" method="getField">
-                           <string>y</string>
-                           <void method="set">
-                            <object idref="AttributeMap$SerializablePoint2D11"/>
-                            <double>208.5</double>
-                           </void>
-                          </void>
-                         </object>
-                        </void>
-                        <void method="add">
-                         <object class="org.jgraph.graph.AttributeMap$SerializablePoint2D" id="AttributeMap$SerializablePoint2D12">
-                          <void class="java.awt.geom.Point2D$Double" method="getField">
-                           <string>x</string>
-                           <void method="set">
-                            <object idref="AttributeMap$SerializablePoint2D12"/>
-                            <double>501.0</double>
-                           </void>
-                          </void>
-                          <void class="java.awt.geom.Point2D$Double" method="getField">
-                           <string>y</string>
-                           <void method="set">
-                            <object idref="AttributeMap$SerializablePoint2D12"/>
-                            <double>204.0</double>
-                           </void>
-                          </void>
-                         </object>
-                        </void>
-                       </object>
-                      </void>
-                      <void method="put">
-                       <string>extraLabels</string>
-                       <array class="java.lang.String" length="2">
-                        <void index="0">
-                         <string></string>
-                        </void>
-                        <void index="1">
-                         <string>(0,N)</string>
-                        </void>
-                       </array>
-                      </void>
-                      <void method="put">
-                       <string>editable</string>
-                       <boolean>false</boolean>
-                      </void>
-                      <void method="put">
-                       <string>extraLabelPositions</string>
-                       <array class="java.awt.geom.Point2D" length="2">
-                        <void index="0">
-                         <object class="java.awt.geom.Point2D$Double" id="Point2D$Double26">
-                          <void class="java.awt.geom.Point2D$Double" method="getField">
-                           <string>x</string>
-                           <void method="set">
-                            <object idref="Point2D$Double26"/>
-                            <double>875.0</double>
-                           </void>
-                          </void>
-                          <void class="java.awt.geom.Point2D$Double" method="getField">
-                           <string>y</string>
-                           <void method="set">
-                            <object idref="Point2D$Double26"/>
-                            <double>-10.0</double>
-                           </void>
-                          </void>
-                         </object>
-                        </void>
-                        <void index="1">
-                         <object class="java.awt.geom.Point2D$Double" id="Point2D$Double27">
-                          <void class="java.awt.geom.Point2D$Double" method="getField">
-                           <string>x</string>
-                           <void method="set">
-                            <object idref="Point2D$Double27"/>
-                            <double>125.0</double>
-                           </void>
-                          </void>
-                          <void class="java.awt.geom.Point2D$Double" method="getField">
-                           <string>y</string>
-                           <void method="set">
-                            <object idref="Point2D$Double27"/>
-                            <double>-10.0</double>
-                           </void>
-                          </void>
-                         </object>
-                        </void>
-                       </array>
-                      </void>
-                     </object>
-                     <void property="source">
-                      <object idref="DefaultPort12"/>
-                     </void>
-                     <void property="target">
-                      <object idref="DefaultPort0"/>
-                     </void>
-                    </object>
-                   </void>
-                   <void method="add">
                     <object idref="DefaultEdge12"/>
                    </void>
                   </void>
@@ -2051,10 +2044,10 @@
           <object idref="DefaultEdge13"/>
          </void>
          <void method="add">
-          <object idref="DefaultEdge3"/>
+          <object idref="DefaultEdge14"/>
          </void>
          <void method="add">
-          <object idref="DefaultEdge14"/>
+          <object idref="DefaultEdge3"/>
          </void>
          <void method="add">
           <object class="org.jgraph.graph.DefaultEdge" id="DefaultEdge15">
@@ -2092,11 +2085,11 @@
             </void>
             <void method="put">
              <string>labelposition</string>
-             <object class="org.jgraph.graph.AttributeMap$SerializablePoint2D" id="AttributeMap$SerializablePoint2D13">
+             <object class="org.jgraph.graph.AttributeMap$SerializablePoint2D" id="AttributeMap$SerializablePoint2D15">
               <void class="java.awt.geom.Point2D$Double" method="getField">
                <string>x</string>
                <void method="set">
-                <object idref="AttributeMap$SerializablePoint2D13"/>
+                <object idref="AttributeMap$SerializablePoint2D15"/>
                 <double>500.0</double>
                </void>
               </void>
@@ -2121,36 +2114,36 @@
              <string>points</string>
              <object class="java.util.ArrayList">
               <void method="add">
-               <object class="org.jgraph.graph.AttributeMap$SerializablePoint2D" id="AttributeMap$SerializablePoint2D14">
+               <object class="org.jgraph.graph.AttributeMap$SerializablePoint2D" id="AttributeMap$SerializablePoint2D16">
                 <void class="java.awt.geom.Point2D$Double" method="getField">
                  <string>x</string>
                  <void method="set">
-                  <object idref="AttributeMap$SerializablePoint2D14"/>
+                  <object idref="AttributeMap$SerializablePoint2D16"/>
                   <double>501.4092409240924</double>
                  </void>
                 </void>
                 <void class="java.awt.geom.Point2D$Double" method="getField">
                  <string>y</string>
                  <void method="set">
-                  <object idref="AttributeMap$SerializablePoint2D14"/>
+                  <object idref="AttributeMap$SerializablePoint2D16"/>
                   <double>80.0</double>
                  </void>
                 </void>
                </object>
               </void>
               <void method="add">
-               <object class="org.jgraph.graph.AttributeMap$SerializablePoint2D" id="AttributeMap$SerializablePoint2D15">
+               <object class="org.jgraph.graph.AttributeMap$SerializablePoint2D" id="AttributeMap$SerializablePoint2D17">
                 <void class="java.awt.geom.Point2D$Double" method="getField">
                  <string>x</string>
                  <void method="set">
-                  <object idref="AttributeMap$SerializablePoint2D15"/>
+                  <object idref="AttributeMap$SerializablePoint2D17"/>
                   <double>501.16831683168317</double>
                  </void>
                 </void>
                 <void class="java.awt.geom.Point2D$Double" method="getField">
                  <string>y</string>
                  <void method="set">
-                  <object idref="AttributeMap$SerializablePoint2D15"/>
+                  <object idref="AttributeMap$SerializablePoint2D17"/>
                   <double>153.0</double>
                  </void>
                 </void>
@@ -2166,36 +2159,36 @@
              <string>extraLabelPositions</string>
              <array class="java.awt.geom.Point2D" length="2">
               <void index="0">
-               <object class="org.jgraph.graph.AttributeMap$SerializablePoint2D" id="AttributeMap$SerializablePoint2D16">
+               <object class="org.jgraph.graph.AttributeMap$SerializablePoint2D" id="AttributeMap$SerializablePoint2D18">
                 <void class="java.awt.geom.Point2D$Double" method="getField">
                  <string>x</string>
                  <void method="set">
-                  <object idref="AttributeMap$SerializablePoint2D16"/>
+                  <object idref="AttributeMap$SerializablePoint2D18"/>
                   <double>875.0</double>
                  </void>
                 </void>
                 <void class="java.awt.geom.Point2D$Double" method="getField">
                  <string>y</string>
                  <void method="set">
-                  <object idref="AttributeMap$SerializablePoint2D16"/>
+                  <object idref="AttributeMap$SerializablePoint2D18"/>
                   <double>-10.0</double>
                  </void>
                 </void>
                </object>
               </void>
               <void index="1">
-               <object class="org.jgraph.graph.AttributeMap$SerializablePoint2D" id="AttributeMap$SerializablePoint2D17">
+               <object class="org.jgraph.graph.AttributeMap$SerializablePoint2D" id="AttributeMap$SerializablePoint2D19">
                 <void class="java.awt.geom.Point2D$Double" method="getField">
                  <string>x</string>
                  <void method="set">
-                  <object idref="AttributeMap$SerializablePoint2D17"/>
+                  <object idref="AttributeMap$SerializablePoint2D19"/>
                   <double>122.49105881264622</double>
                  </void>
                 </void>
                 <void class="java.awt.geom.Point2D$Double" method="getField">
                  <string>y</string>
                  <void method="set">
-                  <object idref="AttributeMap$SerializablePoint2D17"/>
+                  <object idref="AttributeMap$SerializablePoint2D19"/>
                   <double>-17.620366084381196</double>
                  </void>
                 </void>
@@ -2595,14 +2588,14 @@
           <string>x</string>
           <void method="set">
            <object idref="AttributeMap$SerializableRectangle2D3"/>
-           <double>97.0</double>
+           <double>101.0</double>
           </void>
          </void>
          <void class="java.awt.geom.Rectangle2D$Double" method="getField">
           <string>y</string>
           <void method="set">
            <object idref="AttributeMap$SerializableRectangle2D3"/>
-           <double>154.0</double>
+           <double>153.0</double>
           </void>
          </void>
          <void class="java.awt.geom.Rectangle2D$Double" method="getField">
@@ -2634,9 +2627,6 @@
        <object idref="DefaultPort12"/>
       </void>
      </object>
-    </void>
-    <void method="add">
-     <object idref="DefaultEdge13"/>
     </void>
     <void method="add">
      <object idref="DefaultEdge14"/>
@@ -3864,6 +3854,9 @@
     <void method="add">
      <object idref="DefaultEdge12"/>
     </void>
+    <void method="add">
+     <object idref="DefaultEdge13"/>
+    </void>
    </object>
    <object class="org.jgraph.graph.AttributeMap"/>
   </object>
@@ -3921,16 +3914,16 @@
      </object>
     </void>
     <void index="7">
-     <object class="org.jgraph.graph.EdgeView">
+     <object class="org.jgraph.graph.VertexView">
       <void property="cell">
-       <object idref="DefaultEdge14"/>
+       <object idref="DefaultGraphCell6"/>
       </void>
      </object>
     </void>
     <void index="8">
-     <object class="org.jgraph.graph.VertexView">
+     <object class="org.jgraph.graph.EdgeView">
       <void property="cell">
-       <object idref="DefaultGraphCell6"/>
+       <object idref="DefaultEdge13"/>
       </void>
      </object>
     </void>
@@ -4126,7 +4119,7 @@
     <void index="36">
      <object class="org.jgraph.graph.EdgeView">
       <void property="cell">
-       <object idref="DefaultEdge13"/>
+       <object idref="DefaultEdge14"/>
       </void>
      </object>
     </void>
@@ -4203,9 +4196,6 @@
      <object idref="DefaultPort0"/>
     </void>
     <void method="add">
-     <object idref="DefaultEdge14"/>
-    </void>
-    <void method="add">
      <object idref="DefaultPort3"/>
     </void>
     <void method="add">
@@ -4275,6 +4265,9 @@
      <object idref="DefaultGraphCell11"/>
     </void>
     <void method="add">
+     <object idref="DefaultEdge13"/>
+    </void>
+    <void method="add">
      <object idref="DefaultEdge6"/>
     </void>
     <void method="add">
@@ -4302,7 +4295,7 @@
      <object idref="DefaultPort10"/>
     </void>
     <void method="add">
-     <object idref="DefaultEdge13"/>
+     <object idref="DefaultEdge14"/>
     </void>
     <void method="add">
      <object idref="DefaultEdge7"/>
