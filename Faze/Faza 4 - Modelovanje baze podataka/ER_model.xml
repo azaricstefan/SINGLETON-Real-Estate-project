@@ -1312,11 +1312,11 @@
               <void method="add">
                <object class="org.jgraph.graph.DefaultEdge" id="DefaultEdge9">
                 <object class="org.jgraph.data.Relation">
-                 <string>E</string>
+                 <string>I</string>
                  <null/>
                  <null/>
                  <int>0</int>
-                 <int>2</int>
+                 <int>3</int>
                  <int>5</int>
                 </object>
                 <object class="org.jgraph.graph.AttributeMap">
@@ -1346,6 +1346,10 @@
                  <void method="put">
                   <string>bendable</string>
                   <boolean>true</boolean>
+                 </void>
+                 <void method="put">
+                  <string>endFill</string>
+                  <boolean>false</boolean>
                  </void>
                  <void method="put">
                   <string>extraLabels</string>
@@ -1414,11 +1418,11 @@
                    <void method="add">
                     <object class="org.jgraph.graph.DefaultEdge" id="DefaultEdge10">
                      <object class="org.jgraph.data.Relation">
-                      <string>E</string>
+                      <string>I</string>
                       <null/>
                       <null/>
                       <int>0</int>
-                      <int>2</int>
+                      <int>3</int>
                       <int>5</int>
                      </object>
                      <object class="org.jgraph.graph.AttributeMap">
@@ -1448,6 +1452,10 @@
                       <void method="put">
                        <string>bendable</string>
                        <boolean>true</boolean>
+                      </void>
+                      <void method="put">
+                       <string>endFill</string>
+                       <boolean>false</boolean>
                       </void>
                       <void method="put">
                        <string>extraLabels</string>
@@ -3462,28 +3470,28 @@
           <string>x</string>
           <void method="set">
            <object idref="AttributeMap$SerializableRectangle2D10"/>
-           <double>578.0</double>
+           <double>585.0</double>
           </void>
          </void>
          <void class="java.awt.geom.Rectangle2D$Double" method="getField">
           <string>y</string>
           <void method="set">
            <object idref="AttributeMap$SerializableRectangle2D10"/>
-           <double>543.0</double>
+           <double>546.0</double>
           </void>
          </void>
          <void class="java.awt.geom.Rectangle2D$Double" method="getField">
           <string>width</string>
           <void method="set">
            <object idref="AttributeMap$SerializableRectangle2D10"/>
-           <double>102.0</double>
+           <double>97.0</double>
           </void>
          </void>
          <void class="java.awt.geom.Rectangle2D$Double" method="getField">
           <string>height</string>
           <void method="set">
            <object idref="AttributeMap$SerializableRectangle2D10"/>
-           <double>96.0</double>
+           <double>93.0</double>
           </void>
          </void>
         </object>
