@@ -44,7 +44,7 @@ class AuthController extends Controller
             
         ]);
         
-        return redirect('home');
+        return redirect('/');
     }
 
     public function openLogin()

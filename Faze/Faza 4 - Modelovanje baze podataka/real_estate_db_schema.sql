@@ -125,7 +125,8 @@ CREATE TABLE user
 	fullname             NVARCHAR(70) NOT NULL,
 	email                VARCHAR(254) NOT NULL UNIQUE,
 	telefon              VARCHAR(20) NULL,
-	user_type_id         INTEGER NOT NULL,
+	user_type_id         INTEGER NOT NULL DEFAULT 3,
+	remember_token 		 VARCHAR(255),
 	CONSTRAINT PKuser PRIMARY KEY (user_id)
 );
 
@@ -198,15 +199,25 @@ ADD CONSTRAINT user_FK_user_type FOREIGN KEY (user_type_id) REFERENCES user_type
 ALTER TABLE has_additions
 ADD CONSTRAINT has_additions_unique_ad_addition UNIQUE(addition_id, ad_id);
 
-/*TODO: INSERT VALUES FOR LOOKUP TABLES*/
-INSERT INTO user_type VALUES(1,"Administrator"),(2,"Moderator"),(3,"Seljak");
-INSERT INTO real_estate_type VALUES(1, "Stan");
-INSERT INTO apartment_type VALUES(1,"Četvorosoban");
-INSERT INTO floor_desc VALUES(1, "Visoko prizemlje");
-INSERT INTO heating_option VALUES(1, "Centralno grejanje");
+/*lookup population*/
+INSERT INTO user_type 
+VALUES(1,"Administrator"),(2,"Moderator"),(3,"User");
+INSERT INTO real_estate_type 
+VALUES(1, "Stan"),(2, "Kuća"),(3,"Poslovni prostor");
+INSERT INTO apartment_type 
+VALUES(1,"Garsonjera"),(2,"Jednosoban"),(3,"Dvosoban"),
+(4,"Trosoban"),(5,"Četvorosoban"),(6,"Petosoban"),(7,"Ostalo");
+INSERT INTO floor_desc 
+VALUES(1, "Prizemlje"),(2,"Visoko prizemlje"),(3,"1. sprat"),
+(4,"2. sprat"),(5,"3. sprat"),(6,"4. sprat"),(7,"5. sprat"),
+(8,"6. sprat"),(9,"7. sprat"),(10,"8. sprat"),(11,"9. sprat")
+,(12,"10. sprat"),(13,"Preko 10");
+INSERT INTO heating_option 
+VALUES(1, "Centralno grejanje"),(2,"Etažno grejanje"),(3,"Grejanje na struju");
 INSERT INTO addition VALUES(1, "Lift"),(2,"Kablovska"),(3,"Terasa");
 INSERT INTO parking_option VALUES(1, "Garaža");
 INSERT INTO woodwork_type VALUES(1, "Aluminijum");
+
 
 INSERT INTO `real_estate_db`.`user`
 (`username`,

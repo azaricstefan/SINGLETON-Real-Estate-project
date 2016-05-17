@@ -16,7 +16,6 @@ Route::get('/', function(){
 });
 
 Route::get('login', [ 'middleware' => 'ifLoggedInGoHome', 'uses' => 'AuthController@openLogin']);
-
 Route::get('register',[ 'middleware' => 'ifLoggedInGoHome', 'uses' =>  'AuthController@openRegister']);
 
 Route::post('register', 'AuthController@register');
@@ -27,7 +26,8 @@ Route::get('logout', function(){
     return redirect('/');
 });
 
-Route::get('dashboard', 'DashboardController@selectDashboard');
-
-Route::get('admin', 'AdminController@index');
+Route::get('/dashboard', 'DashboardController@selectDashboard')->middleware("ifNotLoggedInGoLogIn");
+Route::get('/dashboard/admin','AdminDashboardController@index')->middleware(["ifNotLoggedInGoLogIn" , "dashboardSelector"]);
+Route::get('/dashboard/moderator','ModeratorDashboardController@index')->middleware(["ifNotLoggedInGoLogIn" , "dashboardSelector"]);
+Route::get('/dashboard/user','UserDashboardController@index')->middleware(["ifNotLoggedInGoLogIn" , "dashboardSelector"]);
 

@@ -52,5 +52,6 @@ class Kernel extends HttpKernel
         'ifLoggedInGoHome' => \SingletonApp\Http\Middleware\IfLoggedInGoHome::class,
         'ifNotLoggedInGoLogIn' => \SingletonApp\Http\Middleware\IfNotLoggedInGoLogIn::class,
         'checkIfAdmin' => \SingletonApp\Http\Middleware\CheckIfAdmin::class,
+        'dashboardSelector' => \SingletonApp\Http\Middleware\DashbordSelector::class,
     ];
 }
