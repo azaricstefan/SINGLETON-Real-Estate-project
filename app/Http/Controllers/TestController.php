@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use SingletonApp\Http\Requests;
 use SingletonApp\Http\Controllers\Controller;
 
+use Form;
+
 class TestController extends Controller
 {
     public function index()

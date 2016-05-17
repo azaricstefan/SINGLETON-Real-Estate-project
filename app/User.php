@@ -11,7 +11,7 @@ class User extends Authenticatable
     public $timestamps = false;
 
     protected $fillable = [
-        'fullname', 'email', 'password', 'username', 'user_type'
+        'fullname', 'email', 'password', 'username', 'user_type_id'
     ];
 
     /**
@@ -35,5 +35,21 @@ class User extends Authenticatable
     public function comments()
     {
         return $this->hasMany(Comment::class, 'user_id');
+    }
+
+    public function isAdmin()
+    {
+        //dd($this);
+        return ($this->user_type_id == 1) ? true : false;
+    }
+
+    public function isModerator()
+    {
+        return ($this->user_type_id == 2) ? true : false;
+    }
+
+    public function isPlebs()
+    {
+        return ($this->user_type_id == 3) ? true : false;
     }
 }
