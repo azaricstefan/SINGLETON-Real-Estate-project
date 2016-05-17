@@ -10,7 +10,7 @@ class Addition extends Model
     public $timestamps = false;
     public $primaryKey = 'addition_id';
 
-    public function additions()
+    public function hasAds()
     {
         return $this->hasMany(HasAddition::class, 'addition_id');
     }

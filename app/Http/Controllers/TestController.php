@@ -13,7 +13,9 @@ class TestController extends Controller
 {
     public function index()
     {
-        return $test = Ad::with("user")->get();
-
+        \Auth::loginUsingId(1);
+        $user = \Auth::user();
+        $user->load("ads.comments");
+        return $user;
     }
 }
