@@ -49,5 +49,9 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Foundation\Http\Middleware\Authorize::class,
         'guest' => \SingletonApp\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'ifLoggedInGoHome' => \SingletonApp\Http\Middleware\IfLoggedInGoHome::class,
+        'ifNotLoggedInGoLogIn' => \SingletonApp\Http\Middleware\IfNotLoggedInGoLogIn::class,
+        'checkIfAdmin' => \SingletonApp\Http\Middleware\CheckIfAdmin::class,
+        'dashboardSelector' => \SingletonApp\Http\Middleware\DashbordSelector::class,
     ];
 }
