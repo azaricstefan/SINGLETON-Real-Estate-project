@@ -13,7 +13,7 @@ class TestController extends Controller
 {
     public function index()
     {
-        \Auth::loginUsingId(1);
+        \Auth::loginUsingId(4);
         $user = \Auth::user();
         $user->load("ads.comments");
         return $user;
