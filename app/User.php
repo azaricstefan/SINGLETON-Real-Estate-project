@@ -6,13 +6,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    public $primaryKey = 'user_id';
+    public $table = 'user';
+    public $timestamps = false;
+
     protected $fillable = [
-        'name', 'email', 'password',
+        'fullname', 'email', 'password', 'username', 'user_type'
     ];
 
     /**
@@ -23,4 +22,18 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function type()
+    {
+        return $this->belongsTo(UserType::class, 'user_type_id');
+    }
+
+    public function ads(){
+        return $this->hasMany(Ad::class, 'user_id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'user_id');
+    }
 }
