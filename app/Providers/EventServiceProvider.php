@@ -1,6 +1,6 @@
 <?php
 
-namespace SingletonApp\Providers;
+namespace RealEstate\Providers;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'SingletonApp\Events\SomeEvent' => [
-            'SingletonApp\Listeners\EventListener',
+        'RealEstate\Events\SomeEvent' => [
+            'RealEstate\Listeners\EventListener',
         ],
     ];
 

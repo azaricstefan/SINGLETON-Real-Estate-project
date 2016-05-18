@@ -1,6 +1,6 @@
 <?php
 
-namespace SingletonApp\Providers;
+namespace RealEstate\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

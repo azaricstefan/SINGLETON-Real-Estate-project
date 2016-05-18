@@ -1,6 +1,6 @@
 <?php
 
-namespace SingletonApp\Providers;
+namespace RealEstate\Providers;
 
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'SingletonApp\Model' => 'SingletonApp\Policies\ModelPolicy',
+        'RealEstate\Model' => 'RealEstate\Policies\ModelPolicy',
     ];
 
     /**

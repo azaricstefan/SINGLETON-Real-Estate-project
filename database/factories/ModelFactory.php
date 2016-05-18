@@ -11,7 +11,7 @@
 |
 */
 
-$factory->define(SingletonApp\User::class, function (Faker\Generator $faker) {
+$factory->define(RealEstate\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->safeEmail,

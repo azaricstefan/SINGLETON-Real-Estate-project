@@ -1,14 +1,14 @@
 <?php
 
-namespace SingletonApp\Http\Controllers;
+namespace RealEstate\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-use SingletonApp\Http\Requests;
-use SingletonApp\Ad;
-use SingletonApp\Http\Controllers\Controller;
+use RealEstate\Http\Requests;
+use RealEstate\Ad;
+use RealEstate\Http\Controllers\Controller;
 
-use SingletonApp\User;
+use RealEstate\User;
 use Hash;
 class AuthController extends Controller
 {

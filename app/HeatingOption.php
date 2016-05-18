@@ -1,6 +1,6 @@
 <?php
 
-namespace SingletonApp;
+namespace RealEstate;
 
 use Illuminate\Database\Eloquent\Model;
 
