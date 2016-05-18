@@ -48,3 +48,6 @@ Route::patch('ad/{id}/edit', 'AdController@update');
 
 Route::get('myads','AdController@myAds')->middleware('ifNotLoggedInGoLogIn');
 
+/*Comment routes*/
+Route::post('comment/add', 'CommentController@add')->middleware('ifNotLoggedInGoLogIn');
+Route::get('comment/{id}/report', 'CommentController@report');

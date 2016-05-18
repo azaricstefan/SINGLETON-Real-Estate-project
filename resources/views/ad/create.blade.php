@@ -82,6 +82,7 @@
         @endforeach
         {{Form::label('parking_option_id', 'Parking:')}}
         {{Form::select('parking_option_id', \RealEstate\ParkingOption::helperSelect())}}<br/>
+        {{Form::label('woodwork_type_id','Drvenarija')}}
         {{Form::select('woodwork_type_id', \RealEstate\WoodworkType::helperSelect())}}<br/>
         {{Form::label('furniture_desc_id','Namestenost:')}}
         {{Form::select('furniture_desc_id', \RealEstate\FurnitureDescription::helperSelect())}}<br/>

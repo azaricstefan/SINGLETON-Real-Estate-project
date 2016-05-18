@@ -1,7 +1,7 @@
 <?php
 
 namespace RealEstate;
-
+use Auth;
 use Illuminate\Database\Eloquent\Model;
 
 class Ad extends Model
@@ -66,11 +66,16 @@ class Ad extends Model
 
     public function woodWorkType()
     {
-        return $this->belongsTo('RealEstate\WoodworkType', 'woodwork_type_id');
+        return $this->belongsTo(WoodworkType::class, 'woodwork_type_id');
     }
 
     public function furnitureDescription()
     {
         return $this->belongsTo(FurnitureDescription::class, 'furniture_desc_id');
+    }
+
+    public function checkPermissionToEdit()
+    {
+        return !Auth::guest() && (Auth::user()->user_id == $this->user_id || Auth::user()->isAdmin() || Auth::user()->isModerator());
     }
 }
