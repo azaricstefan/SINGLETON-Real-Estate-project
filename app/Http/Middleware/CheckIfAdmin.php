@@ -20,7 +20,6 @@ class CheckIfAdmin
         if (!Auth::guest() && Auth::user()->isAdmin()) {
             return $next($request);
         }
-        //return redirect('/');
-        return 'Nisi admin tebra';
+        abort(401);
     }
 }
