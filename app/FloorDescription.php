@@ -14,4 +14,15 @@ class FloorDescription extends Model
     {
         return $this->hasMany(Ad::class, 'floor_desc');
     }
+
+    public static function helperSelect()
+    {
+        $types = FloorDescription::all();
+        $array = array();
+        foreach ($types as $type){
+            $array[$type->floor_desc]=$type->description;
+        }
+
+        return $array;
+    }
 }

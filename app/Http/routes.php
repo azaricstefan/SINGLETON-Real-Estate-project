@@ -31,3 +31,6 @@ Route::get('/dashboard/admin','AdminDashboardController@index')->middleware(["if
 Route::get('/dashboard/moderator','ModeratorDashboardController@index')->middleware(["ifNotLoggedInGoLogIn" , "dashboardSelector"]);
 Route::get('/dashboard/user','UserDashboardController@index')->middleware(["ifNotLoggedInGoLogIn" , "dashboardSelector"]);
 
+Route::get('ad', function(){
+   return view('ad.create');
+});

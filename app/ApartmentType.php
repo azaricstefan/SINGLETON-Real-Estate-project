@@ -14,4 +14,15 @@ class ApartmentType extends Model
     {
         return $this->hasMany('App\Ad', 'apartment_type_id');
     }
+
+    public static function helperSelect()
+    {
+        $types = ApartmentType::all();
+        $array = array();
+        foreach ($types as $type){
+            $array[$type->apartment_type_id]=$type->type_name;
+        }
+
+        return $array;
+    }
 }
