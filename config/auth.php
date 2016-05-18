@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => SingletonApp\User::class,
+            'model' => RealEstate\User::class,
         ],
 
         // 'users' => [

@@ -1,6 +1,6 @@
 <?php
 
-namespace SingletonApp\Http\Requests;
+namespace RealEstate\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

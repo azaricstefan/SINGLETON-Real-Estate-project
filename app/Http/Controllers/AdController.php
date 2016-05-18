@@ -1,19 +1,30 @@
 <?php
 
-namespace SingletonApp\Http\Controllers;
+namespace RealEstate\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use SingletonApp\HasAddition;
-use SingletonApp\Http\Requests;
-use SingletonApp\Ad;
+use RealEstate\HasAddition;
+use RealEstate\Http\Requests;
+use RealEstate\Ad;
 use Auth;
 
 class AdController extends Controller
 {
     public function create(Request $request)
     {
-        //dd($request->documentation);
+        $this->validate($request, [
+            'city' => 'required|max:40',
+            'municipality' => 'required|max:40',
+            'address' => 'required|max:80',
+            'price' => 'required',
+            'description' => 'max:300',
+            'floor_area' => 'required',
+            'num_of_rooms' => 'required',
+            'num_of_bathrooms' => 'required',
+            'construction_year' => 'required',
+            'note' => 'max:300',
+        ]);
 
         $ad = new Ad();
         $ad->city = $request->city;
@@ -73,5 +84,11 @@ class AdController extends Controller
             'note' => $request->note,
             'approvement_status' => 'Pending',
         ]);*/
+    }
+
+    public function myAds()
+    {
+        $myads = Ad::all()->where('user_id', Auth::user()->user_id);
+        return view('dashboard.user.myads', compact('myads'));
     }
 }

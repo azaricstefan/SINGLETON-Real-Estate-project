@@ -36,3 +36,6 @@ Route::get('ad/create', function(){
 })->middleware('ifNotLoggedInGoLogIn');
 
 Route::post('ad/create', 'AdController@create');
+
+
+Route::get('myads','AdController@myAds');

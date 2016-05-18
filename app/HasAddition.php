@@ -1,6 +1,6 @@
 <?php
 
-namespace SingletonApp;
+namespace RealEstate;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,5 +18,10 @@ class HasAddition extends Model
     public function addition()
     {
         return $this->belongsTo(Addition::class, 'addition_id');
+    }
+
+    public static function getAdditions(Ad $ad)
+    {
+        return HasAddition::all()->where('ad_id',$ad->ad_id);
     }
 }

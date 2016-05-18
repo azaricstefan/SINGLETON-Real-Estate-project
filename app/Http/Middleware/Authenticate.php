@@ -1,6 +1,6 @@
 <?php
 
-namespace SingletonApp\Http\Middleware;
+namespace RealEstate\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;

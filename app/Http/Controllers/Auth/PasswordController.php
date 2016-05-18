@@ -1,8 +1,8 @@
 <?php
 
-namespace SingletonApp\Http\Controllers\Auth;
+namespace RealEstate\Http\Controllers\Auth;
 
-use SingletonApp\Http\Controllers\Controller;
+use RealEstate\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class PasswordController extends Controller

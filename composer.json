@@ -23,7 +23,7 @@
             "database"
         ],
         "psr-4": {
-            "SingletonApp\\": "app/"
+            "RealEstate\\": "app/"
         }
     },
     "autoload-dev": {
