@@ -40,7 +40,7 @@
             {{Form::label(null, $ad->heatingOption->option_name)}}<br/>
             {{Form::label(null, 'Osnovna opremljenost:')}}<br/>
             <ol>
-            @foreach(\RealEstate\HasAddition::getAdditions($ad) as $addition)
+            @foreach($ad->hasAdditions as $addition)
                 <li>
                     {{Form::label(null, $addition->addition->description)}}
                 </li>
