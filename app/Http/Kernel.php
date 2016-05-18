@@ -53,6 +53,6 @@ class Kernel extends HttpKernel
         'ifNotLoggedInGoLogIn' => \RealEstate\Http\Middleware\IfNotLoggedInGoLogIn::class,
         'checkIfAdmin' => \RealEstate\Http\Middleware\CheckIfAdmin::class,
         'dashboardSelector' => \RealEstate\Http\Middleware\DashbordSelector::class,
-        'checkModeratorPrivleges' => \RealEstate\Http\Middleware\CheckModeratorPrivleges::class
+        'checkModeratorPrivileges' => \RealEstate\Http\Middleware\CheckModeratorPrivileges::class
     ];
 }

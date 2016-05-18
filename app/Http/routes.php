@@ -51,4 +51,4 @@ Route::get('myads','AdController@myAds')->middleware('ifNotLoggedInGoLogIn');
 /*Comment routes*/
 Route::post('comment/add', 'CommentController@add')->middleware('ifNotLoggedInGoLogIn');
 Route::get('comment/{id}/report', 'CommentController@report');
-Route::get('comment/{id}/delete', 'CommentController@delete');
+Route::get('comment/{id}/delete', 'CommentController@delete')->middleware(['ifNotLoggedInGoLogIn', 'checkModeratorPrivileges']);

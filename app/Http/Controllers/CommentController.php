@@ -26,4 +26,11 @@ class CommentController extends Controller
         $id->save();
         return redirect()->back();
     }
+
+    public function delete(Comment $id)
+    {
+        
+        Comment::destroy($id->comment_id);
+        return redirect()->back();
+    }
 }
