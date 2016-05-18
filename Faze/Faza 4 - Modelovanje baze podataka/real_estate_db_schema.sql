@@ -90,10 +90,10 @@ CREATE TABLE furniture_desc
 
 CREATE TABLE has_additions
 (
-	has_aditions_id		 INTEGER NOT NULL AUTO_INCREMENT,
-	addition_id          INTEGER NOT NULL,
-	ad_id                INTEGER NOT NULL,
-	CONSTRAINT PKhas_additions PRIMARY KEY (has_aditions_id)
+	has_additions_id		 INTEGER NOT NULL AUTO_INCREMENT,
+	addition_id          	 INTEGER NOT NULL,
+	ad_id                    INTEGER NOT NULL,
+	CONSTRAINT PKhas_additions PRIMARY KEY (has_additions_id)
 );
 
 CREATE TABLE heating_option
