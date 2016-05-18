@@ -4,6 +4,7 @@ namespace RealEstate\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use RealEstate\Addition;
 use RealEstate\HasAddition;
 use RealEstate\Http\Requests;
 use RealEstate\Ad;
@@ -13,18 +14,7 @@ class AdController extends Controller
 {
     public function create(Request $request)
     {
-        $this->validate($request, [
-            'city' => 'required|max:40',
-            'municipality' => 'required|max:40',
-            'address' => 'required|max:80',
-            'price' => 'required',
-            'description' => 'max:300',
-            'floor_area' => 'required',
-            'num_of_rooms' => 'required',
-            'num_of_bathrooms' => 'required',
-            'construction_year' => 'required',
-            'note' => 'max:300',
-        ]);
+        $this->validetAd($request);
 
         $ad = new Ad();
         $ad->city = $request->city;
@@ -62,7 +52,7 @@ class AdController extends Controller
         });
     }
 
-    public function myAds()
+    private function returnCurrentUserAds()
     {
         $myads = Ad::all()->where('user_id', Auth::user()->user_id)->load('realEstateType' ,
             'hasAdditions.addition' ,'apartmentType',
@@ -70,6 +60,88 @@ class AdController extends Controller
             'parkingOption', 'woodWorkType',
             'furnitureDescription'
         );
+        return $myads;
+    }
+
+    public function myAds()
+    {
+        $myads = $this->returnCurrentUserAds();
         return view('dashboard.user.myads', compact('myads'));
+    }
+
+    private function returnEagerAdd($id)
+    {
+        return Ad::find($id)->load('realEstateType' ,
+            'hasAdditions.addition' ,'apartmentType',
+            'floorDescription', 'heatingOption',
+            'parkingOption', 'woodWorkType',
+            'furnitureDescription'
+        );
+    }
+
+    public function show($id)
+    {
+        $ad = Ad::find($id);
+        if ($ad == null) {
+            return 'greska';
+        }
+
+        $ad = $this->returnEagerAdd($id);
+
+
+        return view('ad.show', compact('ad'));
+    }
+
+    public function edit($id)
+    {
+        $ad = $this->returnEagerAdd($id);
+        if(Auth::user()->user_id == $ad->user_id || Auth::user()->isAdmin() || Auth::user()->isModerator())
+            return view('ad.edit', compact('ad'));
+        else
+            return 'Nije tvoj oglas';
+    }
+
+    public function update(Request $request,Ad $id)
+    {
+       // return $request->all();
+        $this->validetAd($request);
+        \DB::transaction(function() use($request, $id){
+            $additions = $id->hasAdditions;
+
+            foreach ($additions as $addition){
+                $addition->delete();
+            }
+
+            $newAdditions = $request->addition_id;
+            if ($newAdditions != null) {
+                foreach ($newAdditions as $newAddition) {
+                    $newHasAddition = new HasAddition();
+                    $newHasAddition->ad_id = $id->ad_id;
+                    $newHasAddition->addition_id = $newAddition;
+                    $newHasAddition->save();
+                }
+            }
+            $id->update($request->all());
+        });
+        return redirect('myads');
+    }
+
+    /**
+     * @param Request $request
+     */
+    private function validetAd(Request $request)
+    {
+        $this->validate($request, [
+            'city' => 'required|max:40',
+            'municipality' => 'required|max:40',
+            'address' => 'required|max:80',
+            'price' => 'required',
+            'description' => 'max:300',
+            'floor_area' => 'required',
+            'num_of_rooms' => 'required',
+            'num_of_bathrooms' => 'required',
+            'construction_year' => 'required',
+            'note' => 'max:300',
+        ]);
     }
 }
