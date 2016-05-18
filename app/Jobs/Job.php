@@ -1,6 +1,6 @@
 <?php
 
-namespace SingletonApp\Jobs;
+namespace RealEstate\Jobs;
 
 use Illuminate\Bus\Queueable;
 

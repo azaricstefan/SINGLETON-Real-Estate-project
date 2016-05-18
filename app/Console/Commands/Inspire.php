@@ -1,6 +1,6 @@
 <?php
 
-namespace SingletonApp\Console\Commands;
+namespace RealEstate\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Inspiring;

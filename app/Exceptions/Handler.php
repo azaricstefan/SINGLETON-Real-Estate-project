@@ -1,6 +1,6 @@
 <?php
 
-namespace SingletonApp\Exceptions;
+namespace RealEstate\Exceptions;
 
 use Exception;
 use Illuminate\Validation\ValidationException;

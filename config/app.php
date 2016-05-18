@@ -151,10 +151,10 @@ return [
         /*
          * Application Service Providers...
          */
-        SingletonApp\Providers\AppServiceProvider::class,
-        SingletonApp\Providers\AuthServiceProvider::class,
-        SingletonApp\Providers\EventServiceProvider::class,
-        SingletonApp\Providers\RouteServiceProvider::class,
+        RealEstate\Providers\AppServiceProvider::class,
+        RealEstate\Providers\AuthServiceProvider::class,
+        RealEstate\Providers\EventServiceProvider::class,
+        RealEstate\Providers\RouteServiceProvider::class,
 
         
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,

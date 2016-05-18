@@ -11,14 +11,14 @@
         <label>Ime opstine:</label><input type="text" name="municipality"><br/>
         <label>Adresa:</label><input type="text" name="address"><br/>
         <label>Vrsta nekretnine:</label>
-        {{ Form::select('real_estate_type_id', \SingletonApp\RealEstateType::helperSelect())}}<br/>
+        {{ Form::select('real_estate_type_id', \RealEstate\RealEstateType::helperSelect())}}<br/>
         <label>Tip oglasa:</label>
         {{Form::select('ad_type', ['Renting' => 'Izdavanje','Selling' =>'Prodaja'])}}<br/>
         <label>Struktura stana</label>
-        {{Form::select('apartment_type_id', \SingletonApp\ApartmentType::helperSelect())}}<br/>
+        {{Form::select('apartment_type_id', \RealEstate\ApartmentType::helperSelect())}}<br/>
         @if(true)
             <label>Sprat</label>
-            {{Form::select('floor_desc', \SingletonApp\FloorDescription::helperSelect(), '1')}}<br/>
+            {{Form::select('floor_desc', \RealEstate\FloorDescription::helperSelect(), '1')}}<br/>
         @endif
         <label>Cena nekretnine:</label>
         {{Form::text('price')}}<br/>
@@ -35,18 +35,18 @@
         {{Form::label('documentation', 'Uknjizenost')}}
         {{Form::select('documentation', ['1' => 'Da' , '0' => 'Ne'])}}<br/>
         {{Form::label('heating_option_id', 'Grejanje')}}
-        {{Form::select('heating_option_id', \SingletonApp\HeatingOption::helperSelect())}}<br/>
+        {{Form::select('heating_option_id', \RealEstate\HeatingOption::helperSelect())}}<br/>
         {{Form::label('addition_id', 'Osnovna opremljenost:')}}<br/>
-        @foreach(\SingletonApp\Addition::all() as $addition)
+        @foreach(\RealEstate\Addition::all() as $addition)
             {{Form::label($addition->description, $addition->description)}}
             {{Form::checkbox('addition_id[]', $addition->addition_id,false, [ 'id' => $addition->description])}}<br/>
         @endforeach
         {{Form::label('parking_option_id', 'Parking:')}}
-        {{Form::select('parking_option_id', \SingletonApp\ParkingOption::helperSelect())}}<br/>
+        {{Form::select('parking_option_id', \RealEstate\ParkingOption::helperSelect())}}<br/>
         {{Form::label('woodwork_type_id')}}
-        {{Form::select('woodwork_type_id', \SingletonApp\WoodworkType::helperSelect())}}<br/>
+        {{Form::select('woodwork_type_id', \RealEstate\WoodworkType::helperSelect())}}<br/>
         {{Form::label('furniture_desc_id','Namestenost:')}}
-        {{Form::select('furniture_desc_id', \SingletonApp\FurnitureDescription::helperSelect())}}<br/>
+        {{Form::select('furniture_desc_id', \RealEstate\FurnitureDescription::helperSelect())}}<br/>
         {{Form::label('note', 'Napomena')}}
         {{Form::textarea('note')}}<br/>
         {{Form::submit('Posalji')}}

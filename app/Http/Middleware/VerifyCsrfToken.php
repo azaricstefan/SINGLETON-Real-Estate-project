@@ -1,6 +1,6 @@
 <?php
 
-namespace SingletonApp\Http\Middleware;
+namespace RealEstate\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
 
