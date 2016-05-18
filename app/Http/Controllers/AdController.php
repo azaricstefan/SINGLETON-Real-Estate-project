@@ -48,7 +48,7 @@ class AdController extends Controller
         $ad->note = $request->note;
         $ad->approvement_status = 'Pending';
         $ad->furniture_desc_id = $request->furniture_desc_id;
-        //return $ad;
+
         \DB::transaction(function() use ($request, $ad){
             $ad->save();
             if (isset($request->addition_id)) {
@@ -60,35 +60,16 @@ class AdController extends Controller
                 }
             }
         });
-
-
-        /*Ad::create([
-           'city' =>  $request->city,
-            'municipality' => $request->municipality,
-            'address' => $request->address,
-            'ad_type' => $request->ad_type,
-            'real_estate_type_id' => $request->real_estate_type_id,
-            'apartment_type_id' => $request->apartment_type_id,
-            'floor_desc' => $request->floor_desc,
-            'price' => $request->price,
-            'description' => $request->description,
-            'floor_area' => $request->floor_area,
-            'num_of_rooms' => $request->num_of_rooms,
-            'num_of_bathrooms' => $request->num_of_bathrooms,
-            'construction_year' => $request->construction_year,
-            'documentation' => $request->documentation,
-            'heating_option_id' => $request->heating_option_id,
-            'parking_option_id' => $request->parking_option_id,
-            'user_id' => \Auth::user()->user_id,
-            'woodwork_type_id' => $request->woodwork_type_id,
-            'note' => $request->note,
-            'approvement_status' => 'Pending',
-        ]);*/
     }
 
     public function myAds()
     {
-        $myads = Ad::all()->where('user_id', Auth::user()->user_id);
+        $myads = Ad::all()->where('user_id', Auth::user()->user_id)->load('realEstateType' ,
+            'hasAdditions.addition' ,'apartmentType',
+            'floorDescription', 'heatingOption',
+            'parkingOption', 'woodWorkType',
+            'furnitureDescription'
+        );
         return view('dashboard.user.myads', compact('myads'));
     }
 }
