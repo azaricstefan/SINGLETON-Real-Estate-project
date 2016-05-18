@@ -12,7 +12,7 @@ CREATE TABLE ad
 (
 	ad_id                INTEGER NOT NULL AUTO_INCREMENT,
 	city                 NVARCHAR(40) NOT NULL,
-	muncipality          NVARCHAR(40) NOT NULL,
+	municipality         NVARCHAR(40) NOT NULL,
 	address              NVARCHAR(80) NOT NULL,
 	ad_type              ENUM('Renting','Selling') NOT NULL,
 	real_estate_type_id  INTEGER NOT NULL,
@@ -52,7 +52,7 @@ CREATE TABLE apartment_type
 
 CREATE TABLE appointment
 (
-	appoitment_id        INTEGER NOT NULL AUTO_INCREMENT,
+	appointment_id        INTEGER NOT NULL AUTO_INCREMENT,
 	user_id              INTEGER NOT NULL,
 	agent_id             INTEGER NULL,
 	appoitment_time      DATETIME NOT NULL,
@@ -60,7 +60,7 @@ CREATE TABLE appointment
 	user_note            NVARCHAR(300) NULL,
 	ad_id                INTEGER NOT NULL,
 	agent_note           NVARCHAR(300) NULL,
-	CONSTRAINT PKappointment PRIMARY KEY (appoitment_id)
+	CONSTRAINT PKappointment PRIMARY KEY (appointment_id)
 );
 
 CREATE TABLE comment
@@ -278,7 +278,7 @@ VALUES(
 
 INSERT INTO `real_estate_db`.`ad`
 (`city`,
-`muncipality`,
+`municipality`,
 `address`,
 `ad_type`,
 `real_estate_type_id`,
@@ -301,7 +301,7 @@ INSERT INTO `real_estate_db`.`ad`
 `post_date`)
 VALUES(
 	"Beograd", #city
-	"Savski Venac", #muncipality
+	"Savski Venac", #municipality
 	"Kralja Milutina 50", #address
 	"Renting", #ad_type
 	1, #real_estate_type_id
@@ -325,7 +325,7 @@ VALUES(
 	"2014-11-22 12:45:34" #post_date
 ),(
 	"Beograd", #city
-	"Stari Grad", #muncipality
+	"Stari Grad", #municipality
 	"Karadjorjeva 20", #address
 	"Selling", #ad_type
 	1, #real_estate_type_id
@@ -348,7 +348,7 @@ VALUES(
 	NOW() #post_date
 ),(
 	"Beograd", #city
-	"Stari Grad", #muncipality
+	"Stari Grad", #municipality
 	"Kraljevica Marka 20", #address
 	"Selling", #ad_type
 	1, #real_estate_type_id
@@ -371,7 +371,7 @@ VALUES(
 	"2015-04-23 13:45:34" #post_date
 ),(
 	"Beograd", #city
-	"Stari Grad", #muncipality
+	"Stari Grad", #municipality
 	"Savska 10", #address
 	"Selling", #ad_type
 	1, #real_estate_type_id
@@ -394,7 +394,7 @@ VALUES(
 	"2015-05-21 16:45:34" #post_date
 ),(
 	"Beograd", #city
-	"Borča", #muncipality
+	"Borča", #municipality
 	"Andersenova 2", #address
 	"Renting", #ad_type
 	2, #real_estate_type_id

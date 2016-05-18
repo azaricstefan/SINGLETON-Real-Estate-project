@@ -64,4 +64,9 @@ class Ad extends Model
     {
         return $this->belongsTo('SingletonApp\WoodworkType', 'woodwork_type_id');
     }
+
+    public function furnitureDescription()
+    {
+        return $this->belongsTo(FurnitureDescription::class, 'furniture_desc_id');
+    }
 }
