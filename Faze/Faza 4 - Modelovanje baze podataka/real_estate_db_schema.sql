@@ -29,9 +29,10 @@ CREATE TABLE ad
 	parking_option_id    INTEGER NOT NULL,
 	user_id              INTEGER NOT NULL,
 	woodwork_type_id     INTEGER NOT NULL,
+	furniture_desc_id	 INTEGER NOT NULL,
 	note                 NVARCHAR(300) NULL,
-	approvement_status   ENUM('Pending','Approved','Denied') NOT NULL,
-	post_date            DATETIME NOT NULL,
+	approvement_status   ENUM('Pending','Approved','Denied') NOT NULL DEFAULT 'Pending',
+	post_date            DATETIME NOT NULL DEFAULT NOW(),
 	CONSTRAINT PKad PRIMARY KEY (ad_id)
 );
 
@@ -78,6 +79,13 @@ CREATE TABLE floor_desc
 	floor_desc           INTEGER NOT NULL,
 	description          NVARCHAR(30) NOT NULL,
 	CONSTRAINT PKfloor_desc PRIMARY KEY (floor_desc)
+);
+
+CREATE TABLE furniture_desc
+(
+	furniture_desc_id    INTEGER NOT NULL,
+	description          NVARCHAR(30) NOT NULL,
+	CONSTRAINT PKfurniture_desc PRIMARY KEY (furniture_desc_id)
 );
 
 CREATE TABLE has_additions
@@ -158,6 +166,9 @@ ALTER TABLE ad
 ADD CONSTRAINT ad_FK_floor_desc FOREIGN KEY (floor_desc) REFERENCES floor_desc (floor_desc) ON UPDATE CASCADE;
 
 ALTER TABLE ad
+ADD CONSTRAINT ad_FK_furniture_desc FOREIGN KEY (furniture_desc_id) REFERENCES furniture_desc (furniture_desc_id) ON UPDATE CASCADE;
+
+ALTER TABLE ad
 ADD CONSTRAINT ad_FK_heating_option FOREIGN KEY (heating_option_id) REFERENCES heating_option (heating_option_id) ON UPDATE CASCADE;
 
 ALTER TABLE ad
@@ -213,12 +224,28 @@ VALUES(1, "Prizemlje"),(2,"Visoko prizemlje"),(3,"1. sprat"),
 (8,"6. sprat"),(9,"7. sprat"),(10,"8. sprat"),(11,"9. sprat")
 ,(12,"10. sprat"),(13,"Preko 10");
 INSERT INTO heating_option 
-VALUES(1, "Centralno grejanje"),(2,"Etažno grejanje"),(3,"Grejanje na struju");
-INSERT INTO addition VALUES(1, "Lift"),(2,"Kablovska"),(3,"Terasa");
-INSERT INTO parking_option VALUES(1, "Garaža");
-INSERT INTO woodwork_type VALUES(1, "Aluminijum");
+VALUES(1, "Centralno grejanje"),(2,"Etažno grejanje"),(3,"Grejanje na struju"),
+(4,"Podno grejanje"),(5, "Klima"),(6,"Ostalo");
+INSERT INTO addition 
+VALUES(1, "Lift"),(2,"Terasa"),(3,"Telefon"),
+(4,"Internet"), (5,"Kablovska"),(6,"Klima"),(7,"Obezbeđenje"),
+(8,"Alarm"),(9,"Kamere"),(10,"Interfon"),(11,"Rampa za invalide");
+INSERT INTO parking_option 
+VALUES(1, "Garaža"),(2, "Privatni parking"),(3, "Parking zgrade"),
+(4, "Slobodna zona"),(5,"Zona");
+INSERT INTO woodwork_type 
+VALUES(1, "Aluminijum"),(2, "PVC"),(3, "Drvo"),
+(4, "Metal"),(5, "Ostalo");
+INSERT INTO furniture_desc 
+VALUES (1, "Ekstra namešten"), (2, "Namešten"), (3, "Polunamešten"),
+(4, "Prazan");
 
+/*
+	Dummy data za testiranje ovo menjajte kako god hocete da odgovara vasim testovima
+	samo pazite da strane kljuceve lepo namestite ako koristitite ovo nad vec napravljenom tabelom
+*/
 
+/*Tri tipa korisnika*/
 INSERT INTO `real_estate_db`.`user`
 (`username`,
 `password`,
@@ -227,25 +254,25 @@ INSERT INTO `real_estate_db`.`user`
 `telefon`,
 `user_type_id`)
 VALUES(
-	"smiki", #username
-	"$2a$10$Ukk3oPZAOdUk/zb3bKeyIuBf9sX.nPi2S3QzG9xsze7uswCf72T.m", #password https://www.dailycred.com/article/bcrypt-calculator
-	"Smiljan Djuric",
-	"djuric.smiljan@gmail.com",
-	"0692701199",
+	"admin", #username
+	"$2a$10$Xw6uuT1kOziHK4BYy2kTuu1g/E2UBzRokq.FDtd5haOmQbjoy8CFm", #password admin123 https://www.dailycred.com/article/bcrypt-calculator
+	"Admin Admin",
+	"admin@retail.com",
+	"0692323876",
 	1
 ),(
-	"piki", #username
-	"$2a$10$wp/bw3fcjIMSWme2M4yVQ.3iAAcfQW6lwdFBa8pTlUSLszE0ghmvS", #password piki123
-	"Piki Pikovic",
-	"pikibrat@gmail.com",
-	"0691234589",
+	"moderator", #username
+	"$2a$10$d35KQGYtUGMbLFAK9BeRI.6TjlpvzAtjzH.YuA8aeLeeg8r/uI7QO", #password moderator123
+	"Mod Mod",
+	"mod@retail.com",
+	"0691234567",
 	2
 ),(
-	"tiki", #username
-	"$2a$10$.ZE8/Tef9OcoWB8v/neWsO1oU9To0IeWASEkAPQ.4NRQPOc8wMRiC", #password tiki123
-	"Tiki tikovic",
-	"tikibrat@gmail.com",
-	"0691234589",
+	"korisnik", #username
+	"$2a$10$SNj1Q.SrQNjWG5ls7oQVA.SAS.Qc.GpvYveEV5LZV2hMag9NAvcka", #password korisnik123
+	"Pera Peric",
+	"peric.pera@gmail.com",
+	"0691112223",
 	3
 );
 
@@ -268,6 +295,7 @@ INSERT INTO `real_estate_db`.`ad`
 `parking_option_id`,
 `user_id`,
 `woodwork_type_id`,
+`furniture_desc_id`,
 `note`,
 `approvement_status`,
 `post_date`)
@@ -280,7 +308,7 @@ VALUES(
 	1, #apartment_type_id
 	1, #floor_desc
 	500.00, #price
-	"Mnogo lep stan", #description
+	"Lorem ipsum dolor sit amet, et prompta feugiat nec, no audire consequuntur ius. Enim nusquam liberavisse ut quo, dicant vivendo vituperatoribus ius cu. Ex est aperiam facilisis rationibus. Modo homero sit ad, consul blandit at cum.", #description
 	100, #floor area
 	4, #num_of_rooms
 	2, #num_of_bathrooms
@@ -288,21 +316,23 @@ VALUES(
 	true, #documentation
 	1, #heating_option
 	1, #parking_option
-	1, #user_id,
+	3, #user_id,
     1, #woodwork_type_id
-	"Mnogo lepa poruka sa ĆŠĐŽČ", #note
+	1, #furniture_desc_id
+	"Dolor appareat disputando ius ad. Ex mediocrem urbanitas scripserit eos. Sit paulo tempor altera ex. Sadipscing deterruisset mei ei, qui consul saperet theophrastus no. Ut mutat affert dolores cum, id graeco corpora tractatos eos, no solet nullam contentiones mea.
+", #note
 	"Approved", #approvement_status
 	"2014-11-22 12:45:34" #post_date
 ),(
 	"Beograd", #city
 	"Stari Grad", #muncipality
-	"Hercegovačka", #address
-	"Renting", #ad_type
+	"Karadjorjeva 20", #address
+	"Selling", #ad_type
 	1, #real_estate_type_id
 	1, #apartment_type_id
 	1, #floor_desc
 	10000.00, #price
-	"Pogled na reku", #description
+	"Pogled na reku malo ĆŽŠŽČ Ut mutat affert dolores cum, id graeco corpora tractatos eos, no solet nullam contentiones mea }", #description
 	100, #floor area
 	4, #num_of_rooms
 	2, #num_of_bathrooms
@@ -310,13 +340,133 @@ VALUES(
 	true, #documentation
 	1, #heating_option
 	1, #parking_option
-	1, #user_id,
-    1, #woodwork_type_id
-	"Ћирилица мало", #note
+	3, #user_id,
+    2, #woodwork_type_id
+	2, #furniture_desc_id
+	"Dolor appareat disputando ius ad. Ex mediocrem urbanitas scripserit eos. Sit paulo tempor altera ex. Sadipscing deterruisset mei ei, qui consul saperet theophrastus no. Ut mutat affert dolores cum, id graeco corpora tractatos eos, no solet nullam contentiones mea", #note
 	"Approved", #approvement_status
 	NOW() #post_date
+),(
+	"Beograd", #city
+	"Stari Grad", #muncipality
+	"Kraljevica Marka 20", #address
+	"Selling", #ad_type
+	1, #real_estate_type_id
+	2, #apartment_type_id
+	4, #floor_desc
+	1500.02, #price
+	"Pogled na reku malo ĆŽŠŽČ Ut mutat affert dolores cum, id graeco corpora tractatos eos, no solet nullam contentiones mea }", #description
+	122, #floor area
+	5, #num_of_rooms
+	6, #num_of_bathrooms
+	2008, #construction_year
+	true, #documentation
+	2, #heating_option
+	2, #parking_option
+	3, #user_id,
+    2, #woodwork_type_id
+	2, #furniture_desc_id
+	"Dolor appareat disputando ius ad. Ex mediocrem urbanitas scripserit eos. Sit paulo tempor altera ex. Sadipscing deterruisset mei ei, qui consul saperet theophrastus no. Ut mutat affert dolores cum, id graeco corpora tractatos eos, no solet nullam contentiones mea", #note
+	"Pending", #approvement_status
+	"2015-04-23 13:45:34" #post_date
+),(
+	"Beograd", #city
+	"Stari Grad", #muncipality
+	"Savska 10", #address
+	"Selling", #ad_type
+	1, #real_estate_type_id
+	2, #apartment_type_id
+	4, #floor_desc
+	1500.02, #price
+	"Pogled na reku malo ĆŽŠŽČ Ut mutat affert dolores cum, id graeco corpora tractatos eos, no solet nullam contentiones mea }", #description
+	122, #floor area
+	5, #num_of_rooms
+	6, #num_of_bathrooms
+	2008, #construction_year
+	true, #documentation
+	2, #heating_option
+	2, #parking_option
+	3, #user_id,
+    2, #woodwork_type_id
+	2, #furniture_desc_id
+	"Dolor appareat disputando ius ad. Ex mediocrem urbanitas scripserit eos. Sit paulo tempor altera ex. Sadipscing deterruisset mei ei, qui consul saperet theophrastus no. Ut mutat affert dolores cum, id graeco corpora tractatos eos, no solet nullam contentiones mea", #note
+	"Approved", #approvement_status
+	"2015-05-21 16:45:34" #post_date
+),(
+	"Beograd", #city
+	"Borča", #muncipality
+	"Andersenova 2", #address
+	"Renting", #ad_type
+	2, #real_estate_type_id
+	null, #apartment_type_id
+	null, #floor_desc
+	1500.02, #price
+	"Dolor appareat disputando ius ad. Ex mediocrem urbanitas scripserit eos. Sit paulo tempor altera ex. Sadipscing deterruisset mei ei, qui consul saperet theophrastus no. Ut mutat affert dolores cum, id graeco corpora tractatos eos, no solet nullam contentiones mea", #description
+	122, #floor area
+	5, #num_of_rooms
+	6, #num_of_bathrooms
+	2008, #construction_year
+	true, #documentation
+	3, #heating_option
+	3, #parking_option
+	3, #user_id,
+    4, #woodwork_type_id
+	2, #furniture_desc_id
+	"Dolor appareat disputando ius ad. Ex mediocrem urbanitas scripserit eos. Sit paulo tempor altera ex. Sadipscing deterruisset mei ei, qui consul saperet theophrastus no. Ut mutat affert dolores cum, id graeco corpora tractatos eos, no solet nullam contentiones mea", #note
+	"Approved", #approvement_status
+	"2015-05-21 16:45:34" #post_date
 );
 
-INSERT INTO has_additions (addition_id, ad_id) VALUES(1,1),(2,1),(3,1),(1,2);
+INSERT INTO has_additions (addition_id, ad_id) 
+VALUES(1,1),(2,1),(3,1),(4,1),
+(9,2),(10,2),(11,2),
+(1,3),(3,3),(5,3),(6,3),(9,3),
+(1,4),(2,4),(3,4),(4,4),(5,4),(6,4),(7,4),(8,4),(9,4),(10,4),
+(3,5),(2,5),(7,5);
 
-INSERT INTO comment (ad_id, user_id, body) VALUES (1,1,"LEPA KUCA"),(1,2,"VUCIC PEDER");
+INSERT INTO comment (ad_id, user_id, body) 
+VALUES (1,3,"Dolor appareat disputando ius ad. Ex mediocrem urbanitas scripserit"),
+(1,3,"Sadipscing deterruisset mei ei, qui consul saperet theophrastus");
+
+INSERT INTO comment (ad_id, user_id, body, reported) VALUES (1,3,"mei ei, qui consul saperet theophrastus no. Ut mutat affert dolores cum, id graeco corpora tractatos eos, no solet nullam contentiones mea", true);
+
+INSERT INTO image(image_path,ad_id)
+VALUES ('http://i.imgur.com/bOGu7hs.jpg' ,1),('http://i.imgur.com/bOGu7hs.jpg' ,1),
+('http://i.imgur.com/bOGu7hs.jpg' ,1),('http://i.imgur.com/bOGu7hs.jpg' ,2),('http://i.imgur.com/bOGu7hs.jpg' ,2);
+
+INSERT INTO `real_estate_db`.`appointment`
+(
+`user_id`,
+`agent_id`,
+`appoitment_time`,
+`status`,
+`user_note`,
+`ad_id`,
+`agent_note`
+)
+VALUES
+(
+	3, #user_id
+	null, #agent_id`,
+	"2016-11-22 12:45:00", #appoitment_time
+	"Pending", #status
+	"Dolor appareat disputando ius ad. Ex mediocrem urbanitas scripserit eos. Sit paulo tempor altera ex. Sadipscing deterruisset mei ei, qui consul saperet theophrastus no. Ut mutat affert dolores cum, id graeco corpora tractatos eos, no solet nullam contentiones mea", #user_note
+	1, #ad_id
+	null #agent_note
+),(
+	3, #user_id
+	2, #agent_id`,
+	"2015-11-22 12:45:00", #appoitment_time
+	"Completed", #status
+	"Dolor appareat disputando ius ad. Ex mediocrem urbanitas scripserit eos. Sit paulo tempor altera ex. Sadipscing deterruisset mei ei, qui consul saperet theophrastus no. Ut mutat affert dolores cum, id graeco corpora tractatos eos, no solet nullam contentiones mea", #user_note
+	2, #ad_id
+	"Dolor appareat disputando ius ad. Ex mediocrem urbanitas scripserit eos. Sit paulo tempor altera ex. Sadipscing deterruisset mei ei, qui consul saperet theophrastus no. Ut mutat affert dolores cum, id graeco corpora tractatos eos, no solet nullam contentiones mea" #agent_note
+),(
+	3, #user_id
+	2, #agent_id`,
+	"2016-11-22 12:45:00", #appoitment_time
+	"Scheduled", #status
+	"Dolor appareat disputando ius ad. Ex mediocrem urbanitas scripserit eos. Sit paulo tempor altera ex. Sadipscing deterruisset mei ei, qui consul saperet theophrastus no. Ut mutat affert dolores cum, id graeco corpora tractatos eos, no solet nullam contentiones mea",#user_note
+	5, #ad_id
+	null #agent_note
+);
