@@ -61,8 +61,10 @@
     @foreach($ad->comments as $comment)
         <fieldset>
             <legend>{{$comment->user->username}}
-                @if((!Auth::guest()) && ($ad->user_id != $comment->user->user_id))
-                    | <a href="{{url('comment/'.$comment->comment_id).'/report'}}">Prijavi komentar</a>
+                @if((!Auth::guest()) && ($ad->user_id != $comment->user->user_id) && Auth::user()->isPlebs())
+                    | <a href="{{url('comment/'.$comment->comment_id.'/report')}}">Prijavi komentar</a>
+                @elseif(!Auth::guest() && (Auth::user()->isAdmin() || Auth::user()->isModerator()))
+                    | <a href="{{url('comment/'.$comment->comment_id.'/delete')}}">Obrisi komentar</a>
                 @endif
             </legend>
             {{$comment->body}}
