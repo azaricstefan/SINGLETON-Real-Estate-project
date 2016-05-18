@@ -36,3 +36,10 @@ Route::get('ad/create', function(){
 })->middleware('ifNotLoggedInGoLogIn');
 
 Route::post('ad/create', 'AdController@create');
+Route::get('ad/{id}', 'AdController@show');
+Route::get('ad/{id}/edit', 'AdController@edit')->middleware('ifNotLoggedInGoLogIn');
+Route::patch('ad/{id}/edit', 'AdController@update');
+
+
+
+Route::get('myads','AdController@myAds')->middleware('ifNotLoggedInGoLogIn');

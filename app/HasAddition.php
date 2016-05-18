@@ -19,4 +19,9 @@ class HasAddition extends Model
     {
         return $this->belongsTo(Addition::class, 'addition_id');
     }
+
+    public static function getAdditions(Ad $ad)
+    {
+        return HasAddition::all()->where('ad_id',$ad->ad_id);
+    }
 }

@@ -25,6 +25,7 @@ class RouteServiceProvider extends ServiceProvider
     public function boot(Router $router)
     {
         //
+        //\DB::listen(function($query) {var_dump($query->sql);});
 
         parent::boot($router);
     }

@@ -10,6 +10,10 @@ class Ad extends Model
     public $timestamps = false;
     public $primaryKey = 'ad_id';
 
+    public $guarded =[
+        'user_id', 'ad_id', 'approvement_status' ,'addition_id'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');

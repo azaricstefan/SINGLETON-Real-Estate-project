@@ -11,6 +11,7 @@
             <input type="text" name="username"><br/>
             <label>Pasword</label>
             <input type="password" name="password">
-            <input type="submit" value="Login">
+            <input type="submit" value="Login"><br/>
+            <a href="register">Register</a>
         </form>
 @endsection
