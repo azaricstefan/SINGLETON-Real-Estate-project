@@ -11,6 +11,10 @@ class CommentController extends Controller
 {
     public function add(Request $request)
     {
+        $this->validate($request, [
+           'body' => 'required|max:300'
+        ]);
+
         $comment = new Comment();
         $comment->body = $request->body;
         $comment->ad_id = $request->ad_id;
