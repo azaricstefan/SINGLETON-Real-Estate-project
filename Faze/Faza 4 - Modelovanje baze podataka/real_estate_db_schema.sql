@@ -135,6 +135,8 @@ CREATE TABLE user
 	telefon              VARCHAR(20) NULL,
 	user_type_id         INTEGER NOT NULL DEFAULT 3,
 	remember_token 		 VARCHAR(255),
+	registration_date    DATETIME DEFAULT NOW(),
+	last_login			 DATETIME NULL,
 	CONSTRAINT PKuser PRIMARY KEY (user_id)
 );
 
