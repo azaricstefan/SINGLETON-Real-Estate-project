@@ -15,11 +15,10 @@
         <label>Tip oglasa:</label>
         {{Form::select('ad_type', ['Renting' => 'Izdavanje','Selling' =>'Prodaja'])}}<br/>
         <label>Struktura stana</label>
-        {{Form::select('apartment_type', \SingletonApp\ApartmentType::helperSelect())}}<br/>
-        <label>Kvadratura</label>
+        {{Form::select('apartment_type_id', \SingletonApp\ApartmentType::helperSelect())}}<br/>
         @if(true)
             <label>Sprat</label>
-            {{Form::select('floor_desc', \SingletonApp\FloorDescription::helperSelect())}}<br/>
+            {{Form::select('floor_desc', \SingletonApp\FloorDescription::helperSelect(), '1')}}<br/>
         @endif
         <label>Cena nekretnine:</label>
         {{Form::text('price')}}<br/>
@@ -46,6 +45,8 @@
         {{Form::select('parking_option_id', \SingletonApp\ParkingOption::helperSelect())}}<br/>
         {{Form::label('woodwork_type_id')}}
         {{Form::select('woodwork_type_id', \SingletonApp\WoodworkType::helperSelect())}}<br/>
+        {{Form::label('furniture_desc_id','Namestenost:')}}
+        {{Form::select('furniture_desc_id', \SingletonApp\FurnitureDescription::helperSelect())}}<br/>
         {{Form::label('note', 'Napomena')}}
         {{Form::textarea('note')}}<br/>
         {{Form::submit('Posalji')}}

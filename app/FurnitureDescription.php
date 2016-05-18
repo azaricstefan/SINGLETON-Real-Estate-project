@@ -14,4 +14,15 @@ class FurnitureDescription extends Model
     {
         return $this->hasMany(Ad::class, 'furniture_desc_id');
     }
+
+    public static function helperSelect()
+    {
+        $types = FurnitureDescription::all();
+        $array = array();
+        foreach ($types as $type){
+            $array[$type->furniture_desc_id]=$type->description;
+        }
+
+        return $array;
+    }
 }

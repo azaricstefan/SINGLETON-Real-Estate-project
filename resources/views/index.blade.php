@@ -13,4 +13,5 @@
         <a href="{{url('dashboard')}}">Dashboard</a>
         <a href="{{url('logout')}}">Logout</a>
     @endif
+    <a href="{{url('ad/create')}}">Dodaj oglas</a>
 @endsection

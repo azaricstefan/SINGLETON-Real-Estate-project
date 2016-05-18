@@ -36,6 +36,7 @@ class AdController extends Controller
         $ad->woodwork_type_id = $request->woodwork_type_id;
         $ad->note = $request->note;
         $ad->approvement_status = 'Pending';
+        $ad->furniture_desc_id = $request->furniture_desc_id;
         //return $ad;
         \DB::transaction(function() use ($request, $ad){
             $ad->save();
