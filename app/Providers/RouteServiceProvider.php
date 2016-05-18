@@ -1,6 +1,6 @@
 <?php
 
-namespace SingletonApp\Providers;
+namespace RealEstate\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'SingletonApp\Http\Controllers';
+    protected $namespace = 'RealEstate\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.

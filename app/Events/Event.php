@@ -1,6 +1,6 @@
 <?php
 
-namespace SingletonApp\Events;
+namespace RealEstate\Events;
 
 abstract class Event
 {

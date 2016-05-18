@@ -1,10 +1,10 @@
 <?php
 
-namespace SingletonApp\Http\Controllers\Auth;
+namespace RealEstate\Http\Controllers\Auth;
 
-use SingletonApp\User;
+use RealEstate\User;
 use Validator;
-use SingletonApp\Http\Controllers\Controller;
+use RealEstate\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 

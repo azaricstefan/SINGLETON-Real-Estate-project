@@ -1,6 +1,6 @@
 <?php
 
-namespace SingletonApp\Http\Middleware;
+namespace RealEstate\Http\Middleware;
 
 use Illuminate\Cookie\Middleware\EncryptCookies as BaseEncrypter;
 

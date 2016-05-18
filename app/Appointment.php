@@ -1,6 +1,6 @@
 <?php
 
-namespace SingletonApp;
+namespace RealEstate;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,12 +12,12 @@ class Appointment extends Model
 
     public function moderator()
     {
-        return $this->belongsTo('SingletonApp\User', 'agent_id');
+        return $this->belongsTo('RealEstate\User', 'agent_id');
     }
 
     public function user()
     {
-        return $this->belongsTo('SingletonApp\User', 'user_id');
+        return $this->belongsTo('RealEstate\User', 'user_id');
     }
 
     public function ad()

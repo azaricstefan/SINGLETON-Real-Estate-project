@@ -1,12 +1,12 @@
 <?php
 
-namespace SingletonApp\Http\Controllers;
+namespace RealEstate\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use SingletonApp\HasAddition;
-use SingletonApp\Http\Requests;
-use SingletonApp\Ad;
+use RealEstate\HasAddition;
+use RealEstate\Http\Requests;
+use RealEstate\Ad;
 use Auth;
 
 class AdController extends Controller
