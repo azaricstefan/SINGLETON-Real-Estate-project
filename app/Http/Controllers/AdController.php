@@ -13,7 +13,7 @@ class AdController extends Controller
 {
     public function create(Request $request)
     {
-        //dd($request->documentation);
+        $this->validetAd($request);
 
         $ad = new Ad();
         $ad->city = $request->city;
@@ -37,7 +37,7 @@ class AdController extends Controller
         $ad->note = $request->note;
         $ad->approvement_status = 'Pending';
         $ad->furniture_desc_id = $request->furniture_desc_id;
-        //return $ad;
+
         \DB::transaction(function() use ($request, $ad){
             $ad->save();
             if (isset($request->addition_id)) {
@@ -49,29 +49,98 @@ class AdController extends Controller
                 }
             }
         });
+    }
+
+    private function returnCurrentUserAds()
+    {
+        $myads = Ad::all()->where('user_id', Auth::user()->user_id)->load('realEstateType' ,
+            'hasAdditions.addition' ,'apartmentType',
+            'floorDescription', 'heatingOption',
+            'parkingOption', 'woodWorkType',
+            'furnitureDescription'
+        );
+        return $myads;
+    }
+
+    public function myAds()
+    {
+        $myads = $this->returnCurrentUserAds();
+        return view('dashboard.user.myads', compact('myads'));
+    }
+
+    private function returnEagerAdd($id)
+    {
+        return Ad::find($id)->load('realEstateType' ,
+            'hasAdditions.addition' ,'apartmentType',
+            'floorDescription', 'heatingOption',
+            'parkingOption', 'woodWorkType',
+            'furnitureDescription'
+        );
+    }
+
+    public function show($id)
+    {
+        $ad = Ad::find($id);
+        if ($ad == null) {
+            return 'greska';
+        }
+
+        $ad = $this->returnEagerAdd($id);
 
 
-        /*Ad::create([
-           'city' =>  $request->city,
-            'municipality' => $request->municipality,
-            'address' => $request->address,
-            'ad_type' => $request->ad_type,
-            'real_estate_type_id' => $request->real_estate_type_id,
-            'apartment_type_id' => $request->apartment_type_id,
-            'floor_desc' => $request->floor_desc,
-            'price' => $request->price,
-            'description' => $request->description,
-            'floor_area' => $request->floor_area,
-            'num_of_rooms' => $request->num_of_rooms,
-            'num_of_bathrooms' => $request->num_of_bathrooms,
-            'construction_year' => $request->construction_year,
-            'documentation' => $request->documentation,
-            'heating_option_id' => $request->heating_option_id,
-            'parking_option_id' => $request->parking_option_id,
-            'user_id' => \Auth::user()->user_id,
-            'woodwork_type_id' => $request->woodwork_type_id,
-            'note' => $request->note,
-            'approvement_status' => 'Pending',
-        ]);*/
+        return view('ad.show', compact('ad'));
+    }
+
+    public function edit($id)
+    {
+        $ad = $this->returnEagerAdd($id);
+        if(Auth::user()->user_id == $ad->user_id || Auth::user()->isAdmin() || Auth::user()->isModerator())
+            return view('ad.edit', compact('ad'));
+        else
+            return 'Nije tvoj oglas';
+    }
+
+    public function update(Request $request,Ad $id)
+    {
+       // return $request->all();
+        $this->validetAd($request);
+        \DB::transaction(function() use($request, $id){
+            $additions = $id->hasAdditions;
+
+            foreach ($additions as $addition){
+                $addition->delete();
+            }
+
+            $newAdditions = $request->addition_id;
+            if ($newAdditions != null) {
+                foreach ($newAdditions as $newAddition) {
+                    $newHasAddition = new HasAddition();
+                    $newHasAddition->ad_id = $id->ad_id;
+                    $newHasAddition->addition_id = $newAddition;
+                    $newHasAddition->save();
+                }
+            }
+            $id->update($request->all());
+        });
+        return redirect('myads');
+    }
+
+    /**
+     * @param Request $request
+     */
+    private function validetAd(Request $request)
+    {
+        $this->validate($request, [
+            'city' => 'required|max:40',
+            'municipality' => 'required|max:40',
+            'address' => 'required|max:80',
+            'price' => 'required',
+            'description' => 'max:300',
+            'floor_area' => 'required',
+            'num_of_rooms' => 'required',
+            'num_of_bathrooms' => 'required',
+            'construction_year' => 'required',
+            'note' => 'max:300',
+        ]);
     }
 }
