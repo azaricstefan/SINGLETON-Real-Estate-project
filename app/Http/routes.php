@@ -38,4 +38,4 @@ Route::get('ad/create', function(){
 Route::post('ad/create', 'AdController@create');
 
 
-Route::get('myads','AdController@myAds');
+Route::get('myads','AdController@myAds')->middleware('ifNotLoggedInGoLogIn');
