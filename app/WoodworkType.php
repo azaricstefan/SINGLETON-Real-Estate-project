@@ -14,4 +14,15 @@ class WoodworkType extends Model
     {
         return $this->hasMany(Ad::class, 'woodwork_type_id');
     }
+
+    public static function helperSelect()
+    {
+        $types = WoodworkType::all();
+        $array = array();
+        foreach ($types as $type){
+            $array[$type->woodwork_type_id]=$type->type_name;
+        }
+
+        return $array;
+    }
 }

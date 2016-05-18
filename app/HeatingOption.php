@@ -14,4 +14,15 @@ class HeatingOption extends Model
     {
         return $this->hasMany(Ad::class, 'heating_option_id');
     }
+
+    public static function helperSelect()
+    {
+        $types = HeatingOption::all();
+        $array = array();
+        foreach ($types as $type){
+            $array[$type->heating_option_id]=$type->option_name;
+        }
+
+        return $array;
+    }
 }

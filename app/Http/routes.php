@@ -34,3 +34,5 @@ Route::get('/dashboard/user','UserDashboardController@index')->middleware(["ifNo
 Route::get('ad', function(){
    return view('ad.create');
 });
+
+Route::post('ad/create', 'AdController@create');
