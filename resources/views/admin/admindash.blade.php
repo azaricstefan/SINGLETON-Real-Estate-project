@@ -15,4 +15,5 @@
     <hr />
     <a href="/moderator/new_ads">Pregled novih oglasa</a>
     <a href="/moderator/reported_comments">Prijavljeni komentari</a>
+    <a href="/users">Korisnicke informacije</a>
 @endsection

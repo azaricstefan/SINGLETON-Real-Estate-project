@@ -12,4 +12,5 @@
     @endif
     <a href="/moderator/new_ads">Novi oglasi({{$newAdCount}})</a> <br/>
     <a href="/moderator/reported_comments">Prijavljeni Komentari({{$reportedCommentCount}})</a>
+    <a href="/users">Pretraga korisnika</a>
 @endsection

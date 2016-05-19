@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use RealEstate\Ad;
 use RealEstate\Comment;
 use RealEstate\Http\Requests;
+use RealEstate\User;
 
 class ModeratorController extends Controller
 {
@@ -35,5 +36,16 @@ class ModeratorController extends Controller
         $reported = Comment::where("reported",1)->get();
         $reported = $reported->load("ad","user");
         return view('comment.reported',  compact("reported"));
+    }
+
+    public function displayUsers()
+    {
+        if(!empty(request()->criteria) && !empty(request()->searchString)){
+            $criteria = request()->criteria;
+            $searchString = request()->searchString;
+            $users = User::where($criteria, "LIKE", "%$searchString%")->where("user_type_id",3)->get();
+        }
+        else $users = User::where("user_type_id",3)->get();
+        return view("moderator.users_search", compact("users"));
     }
 }

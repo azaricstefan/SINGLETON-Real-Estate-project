@@ -59,5 +59,6 @@ Route::get('comment/{id}/delete', 'CommentController@delete')->middleware(['ifNo
 Route::get('comment/{comment}/approve', 'CommentController@approveComment')->middleware(['ifNotLoggedInGoLogIn', 'checkModeratorPrivileges']);
 
 /*Moderator route*/
-Route::get('moderator/new_ads', 'ModeratorController@displayNewAds');
-Route::get('moderator/reported_comments' ,'ModeratorController@displayReported');
+Route::get('moderator/new_ads', 'ModeratorController@displayNewAds')->middleware(["ifNotLoggedInGoLogIn", "checkModeratorPrivileges"]);
+Route::get('moderator/reported_comments' ,'ModeratorController@displayReported')->middleware(["ifNotLoggedInGoLogIn", "checkModeratorPrivileges"]);
+Route::get('users', 'ModeratorController@displayUsers')->middleware(["ifNotLoggedInGoLogIn", "checkModeratorPrivileges"]);
