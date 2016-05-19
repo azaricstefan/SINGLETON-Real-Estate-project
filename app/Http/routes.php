@@ -36,3 +36,6 @@ Route::get('ad/create', function(){
 })->middleware('ifNotLoggedInGoLogIn');
 
 Route::post('ad/create', 'AdController@create');
+
+Route::get('user/updateProfile', 'UserDashboardController@updateProfile');
+Route::post('user/updateProfile', 'UserDashboardController@updateProfile');

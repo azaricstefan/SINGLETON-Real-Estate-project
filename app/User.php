@@ -3,6 +3,7 @@
 namespace RealEstate;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -52,4 +53,12 @@ class User extends Authenticatable
     {
         return ($this->user_type_id == 3) ? true : false;
     }
+
+
+    //TODO IMPLEMENT @STEFAN
+    public function saveChanges(Request $request)
+    {
+        Auth::user()->fullname = "TEST";
+    }
+
 }

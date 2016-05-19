@@ -2,6 +2,7 @@
 
 namespace RealEstate\Http\Controllers;
 
+use DB;
 use Illuminate\Http\Request;
 
 use RealEstate\HasAddition;
@@ -38,7 +39,7 @@ class AdController extends Controller
         $ad->approvement_status = 'Pending';
         $ad->furniture_desc_id = $request->furniture_desc_id;
         //return $ad;
-        \DB::transaction(function() use ($request, $ad){
+        DB::transaction(function() use ($request, $ad){
             $ad->save();
             if (isset($request->addition_id)) {
                 foreach ($request->addition_id as $addition) {
@@ -52,7 +53,7 @@ class AdController extends Controller
 
 
         /*Ad::create([
-           'city' =>  $request->city,
+            'city' =>  $request->city,
             'municipality' => $request->municipality,
             'address' => $request->address,
             'ad_type' => $request->ad_type,
