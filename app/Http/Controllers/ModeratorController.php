@@ -48,4 +48,10 @@ class ModeratorController extends Controller
         else $users = User::where("user_type_id",3)->get();
         return view("moderator.users_search", compact("users"));
     }
+
+    public function displayUserInfo(User $user)
+    {
+        $user->load("ads");
+        return view("moderator.user_info", compact("user"));
+    }
 }

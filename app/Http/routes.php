@@ -62,3 +62,4 @@ Route::get('comment/{comment}/approve', 'CommentController@approveComment')->mid
 Route::get('moderator/new_ads', 'ModeratorController@displayNewAds')->middleware(["ifNotLoggedInGoLogIn", "checkModeratorPrivileges"]);
 Route::get('moderator/reported_comments' ,'ModeratorController@displayReported')->middleware(["ifNotLoggedInGoLogIn", "checkModeratorPrivileges"]);
 Route::get('users', 'ModeratorController@displayUsers')->middleware(["ifNotLoggedInGoLogIn", "checkModeratorPrivileges"]);
+Route::get('users/{user}', 'ModeratorController@displayUserInfo')->middleware(["ifNotLoggedInGoLogIn", "checkModeratorPrivileges"]);
