@@ -54,3 +54,8 @@ Route::get('myads','AdController@myAds')->middleware('ifNotLoggedInGoLogIn');
 Route::post('comment/add', 'CommentController@add')->middleware('ifNotLoggedInGoLogIn');
 Route::get('comment/{id}/report', 'CommentController@report');
 Route::get('comment/{id}/delete', 'CommentController@delete')->middleware(['ifNotLoggedInGoLogIn', 'checkModeratorPrivileges']);
+
+/*Appointment routes*/
+Route::get('appointments/{ad}/all7days','AppointmentController@all7days')->middleware('ifNotLoggedInGoLogIn')->middleware('adPending');
+Route::post('appointment/{ad}', 'AppointmentController@reserve')->middleware('ifNotLoggedInGoLogIn');
+

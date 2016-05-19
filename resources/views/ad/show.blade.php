@@ -9,6 +9,7 @@
     @if($ad->checkPermissionToEdit())
         |<a href="{{$ad->ad_id}}/edit">Izmeni</a> | <a href="#">Obrisi</a>
     @endif
+    | <a href="{{url('appointments/'.$ad->ad_id.'/all7days')}}">Zakazi termin</a>
     <br/>
     @if($errors->has('body'))
         <strong class="alert-warning">{{$errors->first('body')}}</strong><br/>

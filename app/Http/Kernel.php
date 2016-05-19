@@ -3,6 +3,7 @@
 namespace RealEstate\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use RealEstate\RealEstateType;
 
 class Kernel extends HttpKernel
 {
@@ -53,6 +54,7 @@ class Kernel extends HttpKernel
         'ifNotLoggedInGoLogIn' => \RealEstate\Http\Middleware\IfNotLoggedInGoLogIn::class,
         'checkIfAdmin' => \RealEstate\Http\Middleware\CheckIfAdmin::class,
         'dashboardSelector' => \RealEstate\Http\Middleware\DashbordSelector::class,
-        'checkModeratorPrivileges' => \RealEstate\Http\Middleware\CheckModeratorPrivileges::class
+        'checkModeratorPrivileges' => \RealEstate\Http\Middleware\CheckModeratorPrivileges::class,
+        'adPending' => \RealEstate\Http\Middleware\AdPending::class
     ];
 }
