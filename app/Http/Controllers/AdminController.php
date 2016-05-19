@@ -36,4 +36,24 @@ class AdminController extends Controller
 
         return redirect('/dashboard/admin');
     }
+
+    public function getRegisteredUsers()
+    {
+        if(!empty(request()->criteria) && (!empty(request()->searchString) || !empty(request()->searchOptionRoleType)))
+        {
+            $criteria = request()->criteria;
+            $searchString = request()->searchString;
+            $searchOptionRoleType = request()->searchOptionRoleType;
+
+            if ($criteria != "user_type_id")
+                $users = User::where($criteria, "LIKE", "%$searchString%")->with("type")->get();
+            else
+                $users = User::where($criteria,$searchOptionRoleType)->with("type")->get();
+        }
+        else{
+            $users = User::with("type")->get();
+        }
+
+        return view("admin.registered_users" , ["users" => $users]);
+    }
 }

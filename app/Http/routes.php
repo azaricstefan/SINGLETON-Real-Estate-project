@@ -40,6 +40,7 @@ Route::post('ad/create', 'AdController@create');
 /*Admin routes*/
 Route::get('/admin/add_moderator', 'AdminController@displayModeratorForm')->middleware(["ifNotLoggedInGoLogIn", "checkIfAdmin"]);
 Route::post('/admin/add_moderator', 'AdminController@createModerator')->middleware(["ifNotLoggedInGoLogIn", "checkIfAdmin"]);
+Route::get('/admin/registered_users', 'AdminController@getRegisteredUsers')->middleware(["ifNotLoggedInGoLogIn", "checkIfAdmin"]);
 
 /*Ad routes*/
 Route::get('ad/{id}', 'AdController@show');
@@ -47,4 +48,3 @@ Route::get('ad/{id}/edit', 'AdController@edit')->middleware('ifNotLoggedInGoLogI
 Route::patch('ad/{id}/edit', 'AdController@update');
 
 Route::get('myads','AdController@myAds')->middleware('ifNotLoggedInGoLogIn');
-

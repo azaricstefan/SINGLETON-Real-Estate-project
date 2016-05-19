@@ -11,4 +11,5 @@
         </div>
     @endif
     <a href="/admin/add_moderator">Novi moderatorski nalog</a>
+    <a href="/admin/registered_users">Pregled korisnickih naloga</a>
 @endsection
