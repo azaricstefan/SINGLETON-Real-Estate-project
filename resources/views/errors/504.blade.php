@@ -40,7 +40,7 @@
 <body>
 <div class="container">
     <div class="content">
-        <div class="title">GREŠKA (404)</div>
+        <div class="title">GREŠKA</div>
     </div>
 </div>
 </body>

@@ -440,7 +440,7 @@ INSERT INTO `real_estate_db`.`appointment`
 (
 `user_id`,
 `agent_id`,
-`appoitment_time`,
+`appointment_time`,
 `status`,
 `user_note`,
 `ad_id`,
@@ -450,7 +450,7 @@ VALUES
 (
 	3, #user_id
 	null, #agent_id`,
-	"2016-11-22 12:45:00", #appoitment_time
+	"2016-11-22 12:45:00", #appointment_time
 	"Pending", #status
 	"Dolor appareat disputando ius ad. Ex mediocrem urbanitas scripserit eos. Sit paulo tempor altera ex. Sadipscing deterruisset mei ei, qui consul saperet theophrastus no. Ut mutat affert dolores cum, id graeco corpora tractatos eos, no solet nullam contentiones mea", #user_note
 	1, #ad_id
@@ -458,7 +458,7 @@ VALUES
 ),(
 	3, #user_id
 	2, #agent_id`,
-	"2015-11-22 12:45:00", #appoitment_time
+	"2015-11-22 12:45:00", #appointment_time
 	"Completed", #status
 	"Dolor appareat disputando ius ad. Ex mediocrem urbanitas scripserit eos. Sit paulo tempor altera ex. Sadipscing deterruisset mei ei, qui consul saperet theophrastus no. Ut mutat affert dolores cum, id graeco corpora tractatos eos, no solet nullam contentiones mea", #user_note
 	2, #ad_id
@@ -466,7 +466,7 @@ VALUES
 ),(
 	3, #user_id
 	2, #agent_id`,
-	"2016-11-22 12:45:00", #appoitment_time
+	"2016-11-22 12:45:00", #appointment_time
 	"Scheduled", #status
 	"Dolor appareat disputando ius ad. Ex mediocrem urbanitas scripserit eos. Sit paulo tempor altera ex. Sadipscing deterruisset mei ei, qui consul saperet theophrastus no. Ut mutat affert dolores cum, id graeco corpora tractatos eos, no solet nullam contentiones mea",#user_note
 	5, #ad_id

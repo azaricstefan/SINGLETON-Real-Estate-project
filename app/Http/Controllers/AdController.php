@@ -83,7 +83,7 @@ class AdController extends Controller
     {
         $ad = Ad::find($id);
         if ($ad == null){
-            abort(404);
+            abort(504);
         }
         if ($ad->approvement_status == 'Pending') {
             if (!Auth::guest() && Auth::user()->user_id != $ad->user_id && Auth::user()->isPlebs() || Auth::guest())
@@ -164,7 +164,7 @@ class AdController extends Controller
     {
         $ad = Ad::where('ad_id', $ad)->first();
         if($ad == null){
-            abort(404);
+            abort(504);
         }
         if(Auth::user()->user_id == $ad->user_id || !Auth::user()->isPlebs()){
             $ad->delete();

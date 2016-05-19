@@ -93,14 +93,14 @@ class AppointmentController extends Controller
         if($appointment != null && $appointment->agent_id == \Auth::user()->user_id){
             return view('appointment.finish', compact('appointment'));
         }
-        return abort(404);
+        return abort(504);
     }
 
     public function complete(Request $request, $appointment)
     {
         $appointment = Appointment::where('appointment_id', $appointment)->first();
         if ($appointment == null){
-            return abort(404);
+            return abort(504);
         }
         if($appointment->agent_id == \Auth::user()->user_id){//dodati da admin moze da zavrsava sve termine
             $appointment->status = 'Completed';
@@ -116,7 +116,7 @@ class AppointmentController extends Controller
     {
         $appointment = Appointment::where('appointment_id', $appointment)->first();
         if ($appointment == null){
-            return abort(404);
+            return abort(504);
         }
         $kude = null;
         if(\Auth::user()->isPlebs()){
