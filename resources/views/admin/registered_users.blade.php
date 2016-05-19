@@ -46,6 +46,9 @@
                     <td>{{$user->type->role_name}}</td>
                     <td>{{$user->registration_date}}</td>
                     <td>{{$user->last_login}}</td>
+                    @if($user->user_type_id != 1)
+                        <td><a href="{{url('admin/delete_user',[$user->user_id])}}" class='confirmation'>Obrisi</a></td>
+                    @endif
                 </tr>
             @endforeach
         @endif
@@ -73,6 +76,14 @@
                 document.getElementById('select_role_type').style.display = 'block';
                 document.getElementById('text_like').style.display = 'none';
             }
+        }
+
+        var elems = document.getElementsByClassName('confirmation');
+        var confirmIt = function (e) {
+            if (!confirm('Da li ste sigurni? Ova akcija ce obrisati korisnicki nalog i sve informacije vezane za njega. Akcija je nepovratna!')) e.preventDefault();
+        };
+        for (var i = 0, l = elems.length; i < l; i++) {
+            elems[i].addEventListener('click', confirmIt, false);
         }
     </script>
 @endsection

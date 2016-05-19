@@ -4,6 +4,7 @@ namespace RealEstate\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use RealEstate\Appointment;
 use RealEstate\Http\Requests;
 use RealEstate\User;
 
@@ -55,5 +56,18 @@ class AdminController extends Controller
         }
 
         return view("admin.registered_users" , ["users" => $users]);
+    }
+
+    public function deleteUser(User $user)
+    {
+        if(!is_null($user->mod_appointments()))
+        {
+            Appointment::where("agent_id", $user->user_id)->update(["agent_id" => null]);
+            Appointment::where("agent_id", null)->where("status" , "Scheduled")->update(["status" => "Pending"]);
+        }
+
+        $user->delete();
+
+        return back();
     }
 }
