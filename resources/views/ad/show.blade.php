@@ -5,11 +5,14 @@
 @endsection
 
 @section('content')
-    <a href="../myads">Nazad</a>
+    <a href="{{url('myads')}}">Nazad</a>
     @if($ad->checkPermissionToEdit())
-        |<a href="{{$ad->ad_id}}/edit">Izmeni</a>
+        |<a href="{{$ad->ad_id}}/edit">Izmeni</a> | <a href="#">Obrisi</a>
     @endif
     <br/>
+    @if($errors->has('body'))
+        <strong class="alert-warning">{{$errors->first('body')}}</strong><br/>
+    @endif
     {{Form::label(null, 'Postavljen: ')}}
     {{Form::label(null, $ad->post_date)}}<br/>
     {{Form::label(null, 'Ime grada:')}}

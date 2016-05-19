@@ -7,7 +7,6 @@
 @section('content')
 
         {{Form::open(['url' => url('ad/create') , 'method' => 'post'])}}
-        {{csrf_field()}}
         {{Form::label('city', 'Ime grada:')}}
         {{Form::text('city', $value = old('city'))}}
         @if($errors->has('city'))

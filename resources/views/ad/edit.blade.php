@@ -7,7 +7,6 @@
 @section('content')
 
         {{Form::open(['method' => 'post'])}}
-        {{csrf_field()}}
         {{ method_field('PATCH') }}
         {{Form::label('city', 'Ime grada:')}}
         {{Form::text('city', $value = $ad->city)}}
