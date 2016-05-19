@@ -37,6 +37,16 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class, 'user_id');
     }
 
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class,'user_id');
+    }
+
+    public function mod_appointments()
+    {
+        return $this->hasMany(Appointment::class,'agent_id');
+    }
+
     public function isAdmin()
     {
         //dd($this);
