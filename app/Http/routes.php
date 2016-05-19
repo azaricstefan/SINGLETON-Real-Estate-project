@@ -47,6 +47,8 @@ Route::get('/admin/delete_user/{user}', 'AdminController@deleteUser')->middlewar
 Route::get('ad/{id}', 'AdController@show');
 Route::get('ad/{id}/edit', 'AdController@edit')->middleware('ifNotLoggedInGoLogIn');
 Route::patch('ad/{id}/edit', 'AdController@update');
+Route::get('ad/{ad}/approve', 'ModeratorController@approveAd')->middleware(['ifNotLoggedInGoLogIn', 'checkModeratorPrivileges']);
+Route::get('ad/{ad}/deny', 'ModeratorController@denyAd')->middleware(['ifNotLoggedInGoLogIn', 'checkModeratorPrivileges']);
 
 Route::get('myads','AdController@myAds')->middleware('ifNotLoggedInGoLogIn');
 
@@ -54,3 +56,6 @@ Route::get('myads','AdController@myAds')->middleware('ifNotLoggedInGoLogIn');
 Route::post('comment/add', 'CommentController@add')->middleware('ifNotLoggedInGoLogIn');
 Route::get('comment/{id}/report', 'CommentController@report');
 Route::get('comment/{id}/delete', 'CommentController@delete')->middleware(['ifNotLoggedInGoLogIn', 'checkModeratorPrivileges']);
+
+/*Moderator route*/
+Route::get('moderator/new_ads', 'ModeratorController@displayNewAds');
