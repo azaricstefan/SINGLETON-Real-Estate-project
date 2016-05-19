@@ -5,21 +5,30 @@
 @endsection
 
 @section('content')
-	<form method="post" action="{{url('user/updateProfile')}}">
-		{{csrf_field()}}
 
-		<label>Ime i prezime:</label>
+	{{--VERZIJA 1--}}
+	{{--{{Form::model($user, ['action' => ['UserDashboardController@updateProfile', $request] ] )}}--}}
+	{{--TODO: MODEL BINDING https://laravelcollective.com/docs/5.2/html#form-model-binding--}}
+	{{--{!! Form::close() !!}--}}
+
+
+	{{--VERZIJA 2--}}
+	{!!Form::open( ['url' => 'user/updateProfile', 'method' => 'post'] ) !!}
+		{{Form::label('fullname', 'Ime i prezime:')}}
 		{{ Form::text('fullname', Auth::user()->fullname )}}<br/>
 
-		<label>Email:</label>
-		{{ Form::text('email', Auth::user()->email )}}<br/>
+		{{Form::label('email', 'Email:')}}
+		{{ Form::email('email', Auth::user()->email )}}<br/>
 
-		<label>Telefon:</label>
+		{{Form::label('telefon', 'Telefon:')}}
 		{{ Form::text('telefon', Auth::user()->telefon )}}<br/>
 
-		<label>Username:</label>
+
+		{{Form::label('username', 'Korisničko ime:')}}
 		{{ Form::text('username', Auth::user()->username )}}<br/>
 
 		{{Form::submit('Izmeni')}}
-	</form>
+		{{Form::button('Odustani',[ 'href' => url()->previous(), 'type' => 'link' ] )}}
+	{!! Form::close() !!}
+
 @endsection
