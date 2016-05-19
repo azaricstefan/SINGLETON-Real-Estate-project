@@ -2,6 +2,7 @@
 
 namespace RealEstate\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Auth;
 use RealEstate\Http\Requests;
@@ -18,8 +19,8 @@ class AuthController extends Controller
             'username' => $request->username,
             'password' => $request->password,
         ])){
-
-            
+            Auth::user()->last_login = Carbon::now()->toDateTimeString();
+            Auth::user()->save();
             return redirect()->intended('/');
         }
         

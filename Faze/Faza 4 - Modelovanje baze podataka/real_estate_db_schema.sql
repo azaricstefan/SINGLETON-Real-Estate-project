@@ -135,6 +135,8 @@ CREATE TABLE user
 	telefon              VARCHAR(20) NULL,
 	user_type_id         INTEGER NOT NULL DEFAULT 3,
 	remember_token 		 VARCHAR(255),
+	registration_date    DATETIME DEFAULT NOW(),
+	last_login			 DATETIME NULL,
 	CONSTRAINT PKuser PRIMARY KEY (user_id)
 );
 
@@ -212,7 +214,7 @@ ADD CONSTRAINT has_additions_unique_ad_addition UNIQUE(addition_id, ad_id);
 
 /*lookup population*/
 INSERT INTO user_type 
-VALUES(1,"Administrator"),(2,"Moderator"),(3,"User");
+VALUES(1,"Administrator"),(2,"Moderator"),(3,"Klijent");
 INSERT INTO real_estate_type 
 VALUES(1, "Stan"),(2, "Kuća"),(3,"Poslovni prostor");
 INSERT INTO apartment_type 

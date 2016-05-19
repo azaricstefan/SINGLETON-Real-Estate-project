@@ -1,0 +1,78 @@
+@extends('layouts.auth')
+
+@section('title')
+    Dodaj moderatora
+@endsection
+
+@section('content')
+
+
+    <table align="center">
+
+        <tr>
+        {!! Form::open(["method" => 'GET']) !!}
+            <td colspan="2">
+                {!! Form::label("criteria" , "Filter:") !!}
+                {!! Form::select("criteria", ["username" => "Korisničko ime", "fullname" => "Puno ime", "user_type_id" => "Kategorija"],null, [
+                "placeholder" => 'Bez filtera', "id" =>"criteria_select"]) !!}
+            </td>
+            <td colspan="2">
+                {!! Form::text("searchString",null, ["id" => "text_like"])!!}
+                {!! Form::select("searchOptionRoleType", ["1" => 'Administrator' ,'2' =>"Moderator" , '3' => "Klijent"], null ,
+                ["placeholder" => 'Izaberite kategoriju', "id" =>"select_role_type"]) !!}
+            </td>
+            <td>
+                {!! Form::submit("Filtriraj") !!}
+            </td>
+        {!! Form::close() !!}
+        </tr>
+        <tr>
+            <th>Id</th>
+            <th>Korisničko ime</th>
+            <th>Ime i prezime</th>
+            <th>E-mail</th>
+            <th>Kategorija</th>
+            <th>Datum registracije</th>
+            <th>Poslednji login</th>
+            <td>&nbsp;</td>
+        </tr>
+        @if(count($users) > 0)
+            @foreach($users as $user)
+                <tr align="center">
+                    <td>{{$user->user_id}}</td>
+                    <td>{{$user->username}}</td>
+                    <td>{{$user->fullname}}</td>
+                    <td>{{$user->email}}</td>
+                    <td>{{$user->type->role_name}}</td>
+                    <td>{{$user->registration_date}}</td>
+                    <td>{{$user->last_login}}</td>
+                </tr>
+            @endforeach
+        @endif
+    </table>
+
+    <script>
+        window.onload = function()
+        {
+            var s = document.getElementById("criteria_select");
+            if(s.options[s.selectedIndex].value != "user_type_id")
+            {
+                document.getElementById('select_role_type').style.display = 'none';
+            }
+        }
+
+        document.getElementById("criteria_select").onchange = function()
+        {
+            var s = document.getElementById("criteria_select");
+            if(s.options[s.selectedIndex].value != "user_type_id")
+            {
+                document.getElementById('select_role_type').style.display = 'none';
+                document.getElementById('text_like').style.display = 'block';
+            }
+            else {
+                document.getElementById('select_role_type').style.display = 'block';
+                document.getElementById('text_like').style.display = 'none';
+            }
+        }
+    </script>
+@endsection
