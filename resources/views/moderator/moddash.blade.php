@@ -10,6 +10,6 @@
             {{session('flash_message')}}
         </div>
     @endif
-    <a href="/moderator/new_ads">Novi oglasi({{$newAdCount}})</a>
-
+    <a href="/moderator/new_ads">Novi oglasi({{$newAdCount}})</a> <br/>
+    <a href="/moderator/reported_comments">Prijavljeni Komentari({{$reportedCommentCount}})</a>
 @endsection

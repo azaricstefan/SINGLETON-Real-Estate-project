@@ -5,6 +5,7 @@ namespace RealEstate\Http\Controllers;
 use Illuminate\Http\Request;
 
 use RealEstate\Ad;
+use RealEstate\Comment;
 use RealEstate\Http\Requests;
 
 class ModeratorController extends Controller
@@ -27,5 +28,12 @@ class ModeratorController extends Controller
         $ad->approvement_status = "Denied";
         $ad->save();
         return redirect('/moderator/new_ads');
+    }
+
+    public function displayReported()
+    {
+        $reported = Comment::where("reported",1)->get();
+        $reported = $reported->load("ad","user");
+        return view('comment.reported',  compact("reported"));
     }
 }

@@ -56,6 +56,8 @@ Route::get('myads','AdController@myAds')->middleware('ifNotLoggedInGoLogIn');
 Route::post('comment/add', 'CommentController@add')->middleware('ifNotLoggedInGoLogIn');
 Route::get('comment/{id}/report', 'CommentController@report');
 Route::get('comment/{id}/delete', 'CommentController@delete')->middleware(['ifNotLoggedInGoLogIn', 'checkModeratorPrivileges']);
+Route::get('comment/{comment}/approve', 'CommentController@approveComment')->middleware(['ifNotLoggedInGoLogIn', 'checkModeratorPrivileges']);
 
 /*Moderator route*/
 Route::get('moderator/new_ads', 'ModeratorController@displayNewAds');
+Route::get('moderator/reported_comments' ,'ModeratorController@displayReported');

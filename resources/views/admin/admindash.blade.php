@@ -14,4 +14,5 @@
     <a href="/admin/registered_users">Pregled korisnickih naloga</a>
     <hr />
     <a href="/moderator/new_ads">Pregled novih oglasa</a>
+    <a href="/moderator/reported_comments">Prijavljeni komentari</a>
 @endsection
