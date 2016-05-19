@@ -11,7 +11,7 @@ class UserDashboardController extends Controller
 {
     public function index()
     {
-	    return 'user dash';
+        return view('dashboard.user.index');
     }
 
 

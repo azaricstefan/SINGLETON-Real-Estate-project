@@ -52,10 +52,10 @@ CREATE TABLE apartment_type
 
 CREATE TABLE appointment
 (
-	appointment_id        INTEGER NOT NULL AUTO_INCREMENT,
+	appointment_id       INTEGER NOT NULL AUTO_INCREMENT,
 	user_id              INTEGER NOT NULL,
 	agent_id             INTEGER NULL,
-	appoitment_time      DATETIME NOT NULL,
+	appointment_time     DATETIME NOT NULL,
 	status               ENUM('Pending','Scheduled','Canceled','Completed') NOT NULL,
 	user_note            NVARCHAR(300) NULL,
 	ad_id                INTEGER NOT NULL,
@@ -90,10 +90,10 @@ CREATE TABLE furniture_desc
 
 CREATE TABLE has_additions
 (
-	has_aditions_id		 INTEGER NOT NULL AUTO_INCREMENT,
-	addition_id          INTEGER NOT NULL,
-	ad_id                INTEGER NOT NULL,
-	CONSTRAINT PKhas_additions PRIMARY KEY (has_aditions_id)
+	has_additions_id		 INTEGER NOT NULL AUTO_INCREMENT,
+	addition_id          	 INTEGER NOT NULL,
+	ad_id                    INTEGER NOT NULL,
+	CONSTRAINT PKhas_additions PRIMARY KEY (has_additions_id)
 );
 
 CREATE TABLE heating_option
@@ -135,6 +135,8 @@ CREATE TABLE user
 	telefon              VARCHAR(20) NULL,
 	user_type_id         INTEGER NOT NULL DEFAULT 3,
 	remember_token 		 VARCHAR(255),
+	registration_date    DATETIME DEFAULT NOW(),
+	last_login			 DATETIME NULL,
 	CONSTRAINT PKuser PRIMARY KEY (user_id)
 );
 
@@ -175,31 +177,31 @@ ALTER TABLE ad
 ADD CONSTRAINT ad_FK_parking_option FOREIGN KEY (parking_option_id) REFERENCES parking_option (parking_option_id) ON UPDATE CASCADE;
 
 ALTER TABLE ad
-ADD CONSTRAINT ad_FK_user FOREIGN KEY (user_id) REFERENCES user (user_id) ON UPDATE CASCADE;
+ADD CONSTRAINT ad_FK_user FOREIGN KEY (user_id) REFERENCES user (user_id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 ALTER TABLE ad
 ADD CONSTRAINT ad_FK_woodwork_type FOREIGN KEY (woodwork_type_id) REFERENCES woodwork_type (woodwork_type_id) ON UPDATE CASCADE;
 
 ALTER TABLE appointment
-ADD CONSTRAINT appointment_FK_user_poster FOREIGN KEY (user_id) REFERENCES user (user_id) ON UPDATE CASCADE;
+ADD CONSTRAINT appointment_FK_user_poster FOREIGN KEY (user_id) REFERENCES user (user_id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 ALTER TABLE appointment
-ADD CONSTRAINT appointment_FK_user_agent FOREIGN KEY (agent_id) REFERENCES user (user_id) ON UPDATE CASCADE;
+ADD CONSTRAINT appointment_FK_user_agent FOREIGN KEY (agent_id) REFERENCES user (user_id) ON UPDATE CASCADE ON DELETE SET NULL;
 
 ALTER TABLE appointment
-ADD CONSTRAINT appointment_FK_ad FOREIGN KEY (ad_id) REFERENCES ad (ad_id) ON UPDATE CASCADE;
+ADD CONSTRAINT appointment_FK_ad FOREIGN KEY (ad_id) REFERENCES ad (ad_id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 ALTER TABLE comment
-ADD CONSTRAINT comment_FK_user FOREIGN KEY (user_id) REFERENCES user (user_id) ON UPDATE CASCADE;
+ADD CONSTRAINT comment_FK_user FOREIGN KEY (user_id) REFERENCES user (user_id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 ALTER TABLE comment
-ADD CONSTRAINT comment_FK_ad FOREIGN KEY (ad_id) REFERENCES ad (ad_id) ON UPDATE CASCADE;
+ADD CONSTRAINT comment_FK_ad FOREIGN KEY (ad_id) REFERENCES ad (ad_id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 ALTER TABLE has_additions
 ADD CONSTRAINT has_additions_FK_addition FOREIGN KEY (addition_id) REFERENCES addition (addition_id) ON UPDATE CASCADE;
 
 ALTER TABLE has_additions
-ADD CONSTRAINT has_additions_FK_ad FOREIGN KEY (ad_id) REFERENCES ad (ad_id) ON UPDATE CASCADE;
+ADD CONSTRAINT has_additions_FK_ad FOREIGN KEY (ad_id) REFERENCES ad (ad_id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 ALTER TABLE image
 ADD CONSTRAINT image_FK_ad FOREIGN KEY (ad_id) REFERENCES ad (ad_id) ON UPDATE CASCADE ON DELETE CASCADE;
@@ -212,7 +214,7 @@ ADD CONSTRAINT has_additions_unique_ad_addition UNIQUE(addition_id, ad_id);
 
 /*lookup population*/
 INSERT INTO user_type 
-VALUES(1,"Administrator"),(2,"Moderator"),(3,"User");
+VALUES(1,"Administrator"),(2,"Moderator"),(3,"Klijent");
 INSERT INTO real_estate_type 
 VALUES(1, "Stan"),(2, "Kuća"),(3,"Poslovni prostor");
 INSERT INTO apartment_type 
@@ -438,7 +440,7 @@ INSERT INTO `real_estate_db`.`appointment`
 (
 `user_id`,
 `agent_id`,
-`appoitment_time`,
+`appointment_time`,
 `status`,
 `user_note`,
 `ad_id`,
@@ -448,7 +450,7 @@ VALUES
 (
 	3, #user_id
 	null, #agent_id`,
-	"2016-11-22 12:45:00", #appoitment_time
+	"2016-11-22 12:45:00", #appointment_time
 	"Pending", #status
 	"Dolor appareat disputando ius ad. Ex mediocrem urbanitas scripserit eos. Sit paulo tempor altera ex. Sadipscing deterruisset mei ei, qui consul saperet theophrastus no. Ut mutat affert dolores cum, id graeco corpora tractatos eos, no solet nullam contentiones mea", #user_note
 	1, #ad_id
@@ -456,7 +458,7 @@ VALUES
 ),(
 	3, #user_id
 	2, #agent_id`,
-	"2015-11-22 12:45:00", #appoitment_time
+	"2015-11-22 12:45:00", #appointment_time
 	"Completed", #status
 	"Dolor appareat disputando ius ad. Ex mediocrem urbanitas scripserit eos. Sit paulo tempor altera ex. Sadipscing deterruisset mei ei, qui consul saperet theophrastus no. Ut mutat affert dolores cum, id graeco corpora tractatos eos, no solet nullam contentiones mea", #user_note
 	2, #ad_id
@@ -464,7 +466,7 @@ VALUES
 ),(
 	3, #user_id
 	2, #agent_id`,
-	"2016-11-22 12:45:00", #appoitment_time
+	"2016-11-22 12:45:00", #appointment_time
 	"Scheduled", #status
 	"Dolor appareat disputando ius ad. Ex mediocrem urbanitas scripserit eos. Sit paulo tempor altera ex. Sadipscing deterruisset mei ei, qui consul saperet theophrastus no. Ut mutat affert dolores cum, id graeco corpora tractatos eos, no solet nullam contentiones mea",#user_note
 	5, #ad_id

@@ -33,7 +33,7 @@ return [
     'date_format'          => 'Polje :attribute ne odgovora prema formatu :format.',
     'different'            => 'Polja :attribute i :other moraju biti različita.',
     'digits'               => 'Polje :attribute mora sadržati :digits šifri.',
-    'digits_between'       => 'Поље :attribute мора да садржи између :min и :max цифри.',
+    'digits_between'       => 'Polje :attribute mora da sadrži između :min и :max cifri.',
     'distinct'             => 'The :attribute field has a duplicate value.',
     'email'                => 'Format polja :attribute nije validan.',
     'exists'               => 'Odabrano polje :attribute nije validno.',

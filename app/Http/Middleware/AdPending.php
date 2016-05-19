@@ -3,9 +3,8 @@
 namespace RealEstate\Http\Middleware;
 
 use Closure;
-use Auth;
 
-class CheckIfAdmin
+class AdPending
 {
     /**
      * Handle an incoming request.
@@ -16,10 +15,9 @@ class CheckIfAdmin
      */
     public function handle($request, Closure $next)
     {
-
-        if (!Auth::guest() && Auth::user()->isAdmin()) {
-            return $next($request);
+        if ($request->ad->approvement_status == 'Pending'){
+            return abort(401);
         }
-        abort(401);
+        return $next($request);
     }
 }

@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+    <div align="center">
     @if(Auth::guest())
         <a href="{{url('login')}}">Login</a>
         <a href="{{url('register')}}">Register</a>
@@ -17,4 +18,5 @@
         </ul>
     @endif
     <a href="{{url('ad/create')}}">Dodaj oglas</a>
+    </div>
 @endsection

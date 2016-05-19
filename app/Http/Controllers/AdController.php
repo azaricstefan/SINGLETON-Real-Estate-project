@@ -2,7 +2,6 @@
 
 namespace RealEstate\Http\Controllers;
 
-use DB;
 use Illuminate\Http\Request;
 
 use RealEstate\HasAddition;
@@ -14,7 +13,7 @@ class AdController extends Controller
 {
     public function create(Request $request)
     {
-        //dd($request->documentation);
+        $this->validetAd($request);
 
         $ad = new Ad();
         $ad->city = $request->city;
@@ -38,8 +37,8 @@ class AdController extends Controller
         $ad->note = $request->note;
         $ad->approvement_status = 'Pending';
         $ad->furniture_desc_id = $request->furniture_desc_id;
-        //return $ad;
-        DB::transaction(function() use ($request, $ad){
+
+        \DB::transaction(function() use ($request, $ad){
             $ad->save();
             if (isset($request->addition_id)) {
                 foreach ($request->addition_id as $addition) {
@@ -50,29 +49,127 @@ class AdController extends Controller
                 }
             }
         });
+        return redirect('myads');
+    }
 
+    private function returnCurrentUserAds()
+    {
+        $myads = Ad::all()->where('user_id', Auth::user()->user_id)->load('realEstateType' ,
+            'hasAdditions.addition' ,'apartmentType',
+            'floorDescription', 'heatingOption',
+            'parkingOption', 'woodWorkType',
+            'furnitureDescription'
+        );
+        return $myads;
+    }
 
-        /*Ad::create([
-            'city' =>  $request->city,
-            'municipality' => $request->municipality,
-            'address' => $request->address,
-            'ad_type' => $request->ad_type,
-            'real_estate_type_id' => $request->real_estate_type_id,
-            'apartment_type_id' => $request->apartment_type_id,
-            'floor_desc' => $request->floor_desc,
-            'price' => $request->price,
-            'description' => $request->description,
-            'floor_area' => $request->floor_area,
-            'num_of_rooms' => $request->num_of_rooms,
-            'num_of_bathrooms' => $request->num_of_bathrooms,
-            'construction_year' => $request->construction_year,
-            'documentation' => $request->documentation,
-            'heating_option_id' => $request->heating_option_id,
-            'parking_option_id' => $request->parking_option_id,
-            'user_id' => \Auth::user()->user_id,
-            'woodwork_type_id' => $request->woodwork_type_id,
-            'note' => $request->note,
-            'approvement_status' => 'Pending',
-        ]);*/
+    public function myAds()
+    {
+        $myads = $this->returnCurrentUserAds();
+        return view('dashboard.user.myads', compact('myads'));
+    }
+
+    private function returnEagerAdd($id)
+    {
+        return Ad::find($id)->load('realEstateType' ,
+            'hasAdditions.addition' ,'apartmentType',
+            'floorDescription', 'heatingOption',
+            'parkingOption', 'woodWorkType',
+            'furnitureDescription'
+        );
+    }
+
+    public function show($id)
+    {
+        $ad = Ad::find($id);
+        if ($ad == null){
+            abort(504);
+        }
+        if ($ad->approvement_status == 'Pending') {
+            if (!Auth::guest() && Auth::user()->user_id != $ad->user_id && Auth::user()->isPlebs() || Auth::guest())
+                abort(401);
+        }
+        $ad = $this->returnEagerAdd($id);
+        return view('ad.show', compact('ad'));
+    }
+
+    public function edit($id)
+    {
+        $ad = $this->returnEagerAdd($id);
+        if($ad->checkPermissionToEdit())
+            return view('ad.edit', compact('ad'));
+        else
+            return 'Nije tvoj oglas';
+    }
+
+    public function update(Request $request,Ad $id)
+    {
+        $this->validetAd($request);
+
+        \DB::transaction(function() use($request, $id){
+            $currentAdditions = HasAddition::all()->where('ad_id', $id->ad_id);
+            $newAdditions = $request->addition_id;
+            $forDelete = array();
+            $toKeep = array();
+            foreach ($currentAdditions as $addition){
+                $contains = false;
+                foreach ($newAdditions as $newAddition){
+                    if($newAddition == $addition->addition_id){
+                        $contains = true;
+                        break;
+                    }
+                }
+                if (!$contains){
+                    array_push($forDelete, $addition->has_additions_id);
+                }else{
+                    array_push($toKeep, $addition->addition_id);
+                }
+            }
+            HasAddition::destroy($forDelete);
+
+            foreach ($newAdditions as $newAddition){
+                if (!in_array($newAddition, $toKeep)){
+                    $newHasAddition = new HasAddition();
+                    $newHasAddition->ad_id = $id->ad_id;
+                    $newHasAddition->addition_id = $newAddition;
+                    $newHasAddition->save();
+                }
+            }
+            $id->update($request->all());
+
+        });
+        return redirect(url('ad/'.$id->ad_id));
+    }
+
+    /**
+     * @param Request $request
+     */
+    private function validetAd(Request $request)
+    {
+        $this->validate($request, [
+            'city' => 'required|max:40',
+            'municipality' => 'required|max:40',
+            'address' => 'required|max:80',
+            'price' => 'required',
+            'description' => 'max:300',
+            'floor_area' => 'required',
+            'num_of_rooms' => 'required',
+            'num_of_bathrooms' => 'required',
+            'construction_year' => 'required',
+            'note' => 'max:300',
+        ]);
+    }
+
+    public function delete($ad)
+    {
+        $ad = Ad::where('ad_id', $ad)->first();
+        if($ad == null){
+            abort(504);
+        }
+        if(Auth::user()->user_id == $ad->user_id || !Auth::user()->isPlebs()){
+            $ad->delete();
+            return redirect('dashboard');
+        }
+        return abort(401);
     }
 }
