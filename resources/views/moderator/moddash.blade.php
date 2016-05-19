@@ -14,4 +14,5 @@
     <a href="/moderator/reported_comments">Prijavljeni Komentari({{$reportedCommentCount}})</a><br/>
     <a href="{{url('appointments/pending')}}">Novi zakazani termini</a><br/>
     <a href="{{url('appointments/my_appointments')}}">Moji termini</a><br/>
+    <a href="/users">Pretraga korisnika</a>
 @endsection

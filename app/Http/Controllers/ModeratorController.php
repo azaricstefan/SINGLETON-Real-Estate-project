@@ -8,6 +8,7 @@ use RealEstate\Ad;
 use RealEstate\Appointment;
 use RealEstate\Comment;
 use RealEstate\Http\Requests;
+use RealEstate\User;
 
 class ModeratorController extends Controller
 {
@@ -38,10 +39,29 @@ class ModeratorController extends Controller
         return view('comment.reported',  compact("reported"));
     }
 
+
     public function displayPendingAppointments()
     {
         $pendingAppointments = Appointment::where('status', 'Pending')->get()->load('ad');
         return view('appointment.pending', compact('pendingAppointments'));
+    }
+    
+
+    public function displayUsers()
+    {
+        if(!empty(request()->criteria) && !empty(request()->searchString)){
+            $criteria = request()->criteria;
+            $searchString = request()->searchString;
+            $users = User::where($criteria, "LIKE", "%$searchString%")->where("user_type_id",3)->get();
+        }
+        else $users = User::where("user_type_id",3)->get();
+        return view("moderator.users_search", compact("users"));
+    }
+
+    public function displayUserInfo(User $user)
+    {
+        $user->load("ads");
+        return view("moderator.user_info", compact("user"));
     }
     
 }

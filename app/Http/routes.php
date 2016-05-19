@@ -69,6 +69,9 @@ Route::post('appointment/{appointment}/complete', 'AppointmentController@complet
 Route::get('appointment/{appointment}/cancel', 'AppointmentController@cancel')->middleware('ifNotLoggedInGoLogIn');
 
 /*Moderator route*/
-Route::get('moderator/new_ads', 'ModeratorController@displayNewAds');
-Route::get('moderator/reported_comments' ,'ModeratorController@displayReported');
+Route::get('moderator/new_ads', 'ModeratorController@displayNewAds')->middleware(["ifNotLoggedInGoLogIn", "checkModeratorPrivileges"]);
+Route::get('moderator/reported_comments' ,'ModeratorController@displayReported')->middleware(["ifNotLoggedInGoLogIn", "checkModeratorPrivileges"]);
+Route::get('users', 'ModeratorController@displayUsers')->middleware(["ifNotLoggedInGoLogIn", "checkModeratorPrivileges"]);
+Route::get('users/{user}', 'ModeratorController@displayUserInfo')->middleware(["ifNotLoggedInGoLogIn", "checkModeratorPrivileges"]);
 Route::get('appointments/pending', 'ModeratorController@displayPendingAppointments');
+ 
