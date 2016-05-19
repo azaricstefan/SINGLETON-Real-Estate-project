@@ -5,7 +5,7 @@ namespace RealEstate\Http\Middleware;
 use Closure;
 use Auth;
 
-class CheckModeratorPrivleges
+class CheckModeratorPrivileges
 {
     /**
      * Handle an incoming request.

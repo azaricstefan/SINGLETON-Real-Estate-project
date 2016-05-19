@@ -94,7 +94,7 @@ class AdController extends Controller
     public function edit($id)
     {
         $ad = $this->returnEagerAdd($id);
-        if(Auth::user()->user_id == $ad->user_id || Auth::user()->isAdmin() || Auth::user()->isModerator())
+        if($ad->checkPermissionToEdit())
             return view('ad.edit', compact('ad'));
         else
             return 'Nije tvoj oglas';

@@ -5,7 +5,11 @@
 @endsection
 
 @section('content')
-    <a href="../myads">Nazad</a><br/>
+    <a href="../myads">Nazad</a>
+    @if($ad->checkPermissionToEdit())
+        |<a href="{{$ad->ad_id}}/edit">Izmeni</a>
+    @endif
+    <br/>
     {{Form::label(null, 'Postavljen: ')}}
     {{Form::label(null, $ad->post_date)}}<br/>
     {{Form::label(null, 'Ime grada:')}}
@@ -17,7 +21,7 @@
     {{Form::label(null, 'Vrsta nekretnine:')}}
     {{Form::label(null, $ad->realEstateType->type_name)}}<br/>
     {{Form::label(null, 'Tip oglasa:')}}
-    {{Form::label(null, $ad->add_type)}}<br/>
+    {{Form::label(null, (($ad->ad_type == 'Renting') ? 'Izdavanje' : 'Prodaja'))}}<br/>
     {{Form::label(null, 'Struktura stana:')}}
     {{Form::label(null, $ad->apartmentType->type_name)}}<br/>
     {{Form::label(null, 'Sprat:')}}
@@ -49,9 +53,32 @@
     {{Form::label(null, 'Parking:')}}
     {{Form::label(null, $ad->parkingOption->option_name)}}<br/>
     {{Form::label(null, 'Drvenarija:')}}
-    {{Form::label(null, $ad->woodWorkType->option_name)}}<br/>
+    {{Form::label(null, $ad->woodWorkType->type_name)}}<br/>
     {{Form::label(null, 'Namestenost:')}}
     {{Form::label(null, $ad->furnitureDescription->description)}}<br/>
     {{Form::label(null, 'Napomena:')}}
     {{Form::label(null, $ad->note)}}<br/>
+    @foreach($ad->comments as $comment)
+        <fieldset>
+            <legend>{{$comment->user->username}}
+                @if((!Auth::guest()) && ($ad->user_id != $comment->user->user_id) && Auth::user()->isPlebs())
+                    | <a href="{{url('comment/'.$comment->comment_id.'/report')}}">Prijavi komentar</a>
+                @elseif(!Auth::guest() && (Auth::user()->isAdmin() || Auth::user()->isModerator()))
+                    | <a href="{{url('comment/'.$comment->comment_id.'/delete')}}">Obrisi komentar</a>
+                @endif
+            </legend>
+            {{$comment->body}}
+        </fieldset>
+    @endforeach
+    {{Form::open(['method' => 'POST', 'url' => url('comment/add')])}}
+    {{Form::hidden('ad_id', $ad->ad_id)}}
+    <table width="100%">
+        <tr>
+            <td>
+                {{Form::textarea('body',null,['style' => 'width:100%;','rows' => '5'])}}<br/>
+            </td>
+        </tr>
+    </table>
+    {{Form::submit('Posalji Komentar')}}
+    {{Form::close()}}
 @endsection
