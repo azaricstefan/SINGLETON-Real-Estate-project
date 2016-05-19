@@ -78,4 +78,9 @@ class Ad extends Model
     {
         return !Auth::guest() && (Auth::user()->user_id == $this->user_id || Auth::user()->isAdmin() || Auth::user()->isModerator());
     }
+
+    public function getName()
+    {
+        return $this->city." ".$this->address;
+    }
 }

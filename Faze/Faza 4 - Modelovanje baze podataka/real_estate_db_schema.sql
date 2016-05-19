@@ -52,10 +52,10 @@ CREATE TABLE apartment_type
 
 CREATE TABLE appointment
 (
-	appointment_id        INTEGER NOT NULL AUTO_INCREMENT,
+	appointment_id       INTEGER NOT NULL AUTO_INCREMENT,
 	user_id              INTEGER NOT NULL,
 	agent_id             INTEGER NULL,
-	appoitment_time      DATETIME NOT NULL,
+	appointment_time     DATETIME NOT NULL,
 	status               ENUM('Pending','Scheduled','Canceled','Completed') NOT NULL,
 	user_note            NVARCHAR(300) NULL,
 	ad_id                INTEGER NOT NULL,

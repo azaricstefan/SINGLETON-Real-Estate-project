@@ -37,4 +37,11 @@ class CommentController extends Controller
         Comment::destroy($id->comment_id);
         return redirect()->back();
     }
+
+    public function approveComment(Comment $comment)
+    {
+        $comment->reported = 0;
+        $comment->save();
+        return back();
+    }
 }

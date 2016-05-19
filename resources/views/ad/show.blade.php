@@ -5,11 +5,19 @@
 @endsection
 
 @section('content')
-    <a href="{{url('myads')}}">Nazad</a>
+    <a href="{{url('myads')}}">Nazad na moje oglase</a>
     @if($ad->checkPermissionToEdit())
         |<a href="{{$ad->ad_id}}/edit">Izmeni</a> | <a href="#">Obrisi</a>
+        @if((Auth::user()->isAdmin() || Auth::user()->isModerator()) && $ad->approvement_status == "Pending")
+            |<a href="{{$ad->ad_id}}/approve">Odobri</a>| <a href="{{$ad->ad_id}}/deny">Zabrani</a>
+        @endif
     @endif
     | <a href="{{url('appointments/'.$ad->ad_id.'/all7days')}}">Zakazi termin</a>
+    @if($ad->approvement_status == "Pending")
+        <br/><span id="approvement_status_msg">Oglas jos nije odobren!</span><br/>
+    @elseif($ad->approvement_status == "Denied")
+        <br/><span id="approvement_status_msg">Oglas je odbijen!</span><br/>
+    @endif
     <br/>
     @if($errors->has('body'))
         <strong class="alert-warning">{{$errors->first('body')}}</strong><br/>
@@ -65,7 +73,7 @@
     @foreach($ad->comments as $comment)
         <fieldset>
             <legend>{{$comment->user->username}}
-                @if((!Auth::guest()) && ($ad->user_id != $comment->user->user_id) && Auth::user()->isPlebs())
+                @if((!Auth::guest()) && (Auth::user()->user_id != $comment->user->user_id) && Auth::user()->isPlebs())
                     | <a href="{{url('comment/'.$comment->comment_id.'/report')}}">Prijavi komentar</a>
                 @elseif(!Auth::guest() && (Auth::user()->isAdmin() || Auth::user()->isModerator()))
                     | <a href="{{url('comment/'.$comment->comment_id.'/delete')}}">Obrisi komentar</a>
