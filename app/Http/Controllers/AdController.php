@@ -110,17 +110,33 @@ class AdController extends Controller
         BRISANJE VISKA -> sve iz niza za brisanje
          u drugom prolasku se uporedjuju niz onih koji se cuvaju sa dohvacenim add + ad_id gg wp ez
          */
+
         $this->validetAd($request);
+
+
         \DB::transaction(function() use($request, $id){
-            $additions = $id->hasAdditions;
-
-            foreach ($additions as $addition){
-                $addition->delete();
-            }
-
+            $currentAdditions = HasAddition::all()->where('ad_id', $id->ad_id);
             $newAdditions = $request->addition_id;
-            if ($newAdditions != null) {
-                foreach ($newAdditions as $newAddition) {
+            $forDelete = array();
+            $toKeep = array();
+            foreach ($currentAdditions as $addition){
+                $contains = false;
+                foreach ($newAdditions as $newAddition){
+                    if($newAddition == $addition->addition_id){
+                        $contains = true;
+                        break;
+                    }
+                }
+                if (!$contains){
+                    array_push($forDelete, $addition->has_additions_id);
+                }else{
+                    array_push($toKeep, $addition->addition_id);
+                }
+            }
+            HasAddition::destroy($forDelete);
+
+            foreach ($newAdditions as $newAddition){
+                if (!in_array($newAddition, $toKeep)){
                     $newHasAddition = new HasAddition();
                     $newHasAddition->ad_id = $id->ad_id;
                     $newHasAddition->addition_id = $newAddition;
@@ -128,8 +144,9 @@ class AdController extends Controller
                 }
             }
             $id->update($request->all());
+
         });
-        return redirect('myads');
+        return redirect(url('ad/'.$id->ad_id));
     }
 
     /**
