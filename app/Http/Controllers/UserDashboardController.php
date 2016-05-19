@@ -17,26 +17,34 @@ class UserDashboardController extends Controller
 
 	public function updateProfile(Request $request)
 	{
-		if ($request->has('fullname') ||
+		if( $request->has('fullname') ||
 			$request->has('username') ||
 			$request->has('telefon') ||
 			$request->has('email')
 			)
 		{
-
 			//nadji korisnika
 			$user = User::find(Auth::user()->user_id);
 
-			//izmeni podatke
-			$user->fullname = $request->fullname;
-			$user->username = $request->username;
-			$user->telefon = $request->telefon;
-			$user->email = $request->email;
+			//izmeni samo unete podatke
+			if($request->has('fullname'))
+				$user->fullname = $request->fullname;
 
-			//sacuvaj sve u bazi
+			if($request->has('username'))
+				$user->username = $request->username;
+
+			if($request->has('telefon'))
+				$user->telefon = $request->telefon;
+
+			if($request->has('email'))
+				$user->email = $request->email;
+
+			//sacuvaj sve u bazi i preusmeri na pocetnu
 			$user->save();
+			return redirect('/');
+			//TODO: dodati obavestenje(alert) korisniku da je (ne)uspesna izmena
 		}
-			return view('user.updateProfile'); //TODO: u jednom slucaju treba redirect u drugom samo da prikaze
+
+		return view('user.updateProfile');
 	}
-    //TODO: @Stefan => Azuriranje I Pregled kontakt podataka od strane obicnog korisnika
 }
