@@ -81,13 +81,11 @@ class AdController extends Controller
     public function show($id)
     {
         $ad = Ad::find($id);
-        if ($ad == null) {
-            return 'greska';
+        if ($ad == null || $ad->approvement_status == 'Pending') {
+            if (!Auth::guest() && Auth::user()->user_id != $ad->ad_id && Auth::user()->isPlebs() || Auth::guest())
+                return 'greska';
         }
-
         $ad = $this->returnEagerAdd($id);
-
-
         return view('ad.show', compact('ad'));
     }
 
