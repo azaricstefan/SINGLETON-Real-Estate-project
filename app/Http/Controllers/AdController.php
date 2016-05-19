@@ -83,7 +83,7 @@ class AdController extends Controller
     {
         $ad = Ad::find($id);
         if ($ad == null){
-            abort(401);
+            abort(404);
         }
         if ($ad->approvement_status == 'Pending') {
             if (!Auth::guest() && Auth::user()->user_id != $ad->user_id && Auth::user()->isPlebs() || Auth::guest())
@@ -158,5 +158,18 @@ class AdController extends Controller
             'construction_year' => 'required',
             'note' => 'max:300',
         ]);
+    }
+
+    public function delete($ad)
+    {
+        $ad = Ad::where('ad_id', $ad)->first();
+        if($ad == null){
+            abort(404);
+        }
+        if(Auth::user()->user_id == $ad->user_id || !Auth::user()->isPlebs()){
+            $ad->delete();
+            return redirect('dashboard');
+        }
+        return abort(401);
     }
 }

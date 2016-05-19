@@ -7,7 +7,7 @@
 @section('content')
     <a href="{{url('myads')}}">Nazad na moje oglase</a>
     @if($ad->checkPermissionToEdit())
-        |<a href="{{$ad->ad_id}}/edit">Izmeni</a> | <a href="#">Obrisi</a>
+        |<a href="{{$ad->ad_id}}/edit">Izmeni</a> | <a href="{{url('ad/'.$ad->ad_id.'/delete')}}">Obrisi</a>
         @if((Auth::user()->isAdmin() || Auth::user()->isModerator()) && $ad->approvement_status == "Pending")
             |<a href="{{$ad->ad_id}}/approve">Odobri</a>| <a href="{{$ad->ad_id}}/deny">Zabrani</a>
         @endif

@@ -35,7 +35,11 @@
     <br/>
     @if(Auth::user()->isPlebs() && Auth::user()->user_id != $ad->user_id)
     <div align="center">
-    {{Form::submit('Rezervisi termin')}}
+        <div width="60%">
+            {{Form::label(null,'Poruka:')}}<br>
+            {{Form::textarea('user_note',null,['style' => 'width:60%;'])}}
+        </div>
+        {{Form::submit('Rezervisi termin')}}
     </div>
     @endif
     {{Form::close()}}

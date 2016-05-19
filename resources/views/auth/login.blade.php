@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+    <div align="center">
         <form method="POST" action="{{url('login')}}">
             {{csrf_field()}}
             <label>Username</label>
@@ -14,4 +15,5 @@
             <input type="submit" value="Login"><br/>
             <a href="register">Register</a>
         </form>
+    </div>
 @endsection

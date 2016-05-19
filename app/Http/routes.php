@@ -49,6 +49,7 @@ Route::get('ad/{id}/edit', 'AdController@edit')->middleware('ifNotLoggedInGoLogI
 Route::patch('ad/{id}/edit', 'AdController@update');
 Route::get('ad/{ad}/approve', 'ModeratorController@approveAd')->middleware(['ifNotLoggedInGoLogIn', 'checkModeratorPrivileges']);
 Route::get('ad/{ad}/deny', 'ModeratorController@denyAd')->middleware(['ifNotLoggedInGoLogIn', 'checkModeratorPrivileges']);
+Route::get('ad/{ad}/delete', 'AdController@delete')->middleware('ifNotLoggedInGoLogIn');
 
 Route::get('myads','AdController@myAds')->middleware('ifNotLoggedInGoLogIn');
 
@@ -61,8 +62,13 @@ Route::get('comment/{comment}/approve', 'CommentController@approveComment')->mid
 /*Appointment routes*/
 Route::get('appointments/{ad}/all7days','AppointmentController@all7days')->middleware('ifNotLoggedInGoLogIn')->middleware('adPending');
 Route::post('appointment/{ad}', 'AppointmentController@reserve')->middleware('ifNotLoggedInGoLogIn');
+Route::get('appointment/{appointment}/schedule', 'AppointmentController@schedule')->middleware(['ifNotLoggedInGoLogIn', 'checkModeratorPrivileges']);
+Route::get('appointments/my_appointments', 'AppointmentController@myAppointments')->middleware('ifNotLoggedInGoLogIn');
+Route::get('appointment/{appointment}/complete', 'AppointmentController@finish')->middleware(['ifNotLoggedInGoLogIn', 'checkModeratorPrivileges']);
+Route::post('appointment/{appointment}/complete', 'AppointmentController@complete')->middleware(['ifNotLoggedInGoLogIn', 'checkModeratorPrivileges']);
+Route::get('appointment/{appointment}/cancel', 'AppointmentController@cancel')->middleware('ifNotLoggedInGoLogIn');
 
 /*Moderator route*/
 Route::get('moderator/new_ads', 'ModeratorController@displayNewAds');
 Route::get('moderator/reported_comments' ,'ModeratorController@displayReported');
-
+Route::get('appointments/pending', 'ModeratorController@displayPendingAppointments');

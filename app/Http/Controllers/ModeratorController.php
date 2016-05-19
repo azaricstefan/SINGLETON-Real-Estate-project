@@ -5,6 +5,7 @@ namespace RealEstate\Http\Controllers;
 use Illuminate\Http\Request;
 
 use RealEstate\Ad;
+use RealEstate\Appointment;
 use RealEstate\Comment;
 use RealEstate\Http\Requests;
 
@@ -36,4 +37,11 @@ class ModeratorController extends Controller
         $reported = $reported->load("ad","user");
         return view('comment.reported',  compact("reported"));
     }
+
+    public function displayPendingAppointments()
+    {
+        $pendingAppointments = Appointment::where('status', 'Pending')->get()->load('ad');
+        return view('appointment.pending', compact('pendingAppointments'));
+    }
+    
 }

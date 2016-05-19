@@ -1,6 +1,7 @@
 @extends('dashboard.layout')
 
 @section('content')
+    <div align="center">
     <h1>Oglasi korisnika: {{Auth::user()->username}}</h1><br/>
     <a href="{{url('dashboard')}}">Nazad na dashboard</a>
     <table>
@@ -25,6 +26,6 @@
     @endforeach
 
     </table>
-
+    </div>
 
 @endsection

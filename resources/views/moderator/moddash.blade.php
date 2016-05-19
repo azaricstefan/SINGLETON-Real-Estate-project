@@ -11,5 +11,7 @@
         </div>
     @endif
     <a href="/moderator/new_ads">Novi oglasi({{$newAdCount}})</a> <br/>
-    <a href="/moderator/reported_comments">Prijavljeni Komentari({{$reportedCommentCount}})</a>
+    <a href="/moderator/reported_comments">Prijavljeni Komentari({{$reportedCommentCount}})</a><br/>
+    <a href="{{url('appointments/pending')}}">Novi zakazani termini</a><br/>
+    <a href="{{url('appointments/my_appointments')}}">Moji termini</a><br/>
 @endsection
