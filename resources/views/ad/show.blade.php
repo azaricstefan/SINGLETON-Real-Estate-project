@@ -7,7 +7,7 @@
 @section('content')
     <a href="{{url('myads')}}">Nazad</a>
     @if($ad->checkPermissionToEdit())
-        |<a href="{{$ad->ad_id}}/edit">Izmeni</a>
+        |<a href="{{$ad->ad_id}}/edit">Izmeni</a> | <a href="#">Obrisi</a>
     @endif
     <br/>
     @if($errors->has('body'))
