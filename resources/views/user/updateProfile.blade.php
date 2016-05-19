@@ -7,28 +7,40 @@
 @section('content')
 
 	{{--VERZIJA 1--}}
+
 	{{--{{Form::model($user, ['action' => ['UserDashboardController@updateProfile', $request] ] )}}--}}
 	{{--TODO: MODEL BINDING https://laravelcollective.com/docs/5.2/html#form-model-binding--}}
 	{{--{!! Form::close() !!}--}}
 
 
 	{{--VERZIJA 2--}}
+
 	{!!Form::open( ['url' => 'user/updateProfile', 'method' => 'post'] ) !!}
-		{{Form::label('fullname', 'Ime i prezime:')}}
-		{{ Form::text('fullname', Auth::user()->fullname )}}<br/>
 
-		{{Form::label('email', 'Email:')}}
-		{{ Form::email('email', Auth::user()->email )}}<br/>
+		<div class="form-group">
+			{{Form::label('fullname', 'Ime i prezime:')}}
+			{{ Form::text('fullname', Auth::user()->fullname )}}
+		</div>
 
-		{{Form::label('telefon', 'Telefon:')}}
-		{{ Form::text('telefon', Auth::user()->telefon )}}<br/>
+		<div class="form-group">
+			{{Form::label('email', 'Email:')}}
+			{{ Form::email('email', Auth::user()->email )}}
+		</div>
 
+		<div class="form-group">
+			{{Form::label('telefon', 'Telefon:')}}
+			{{ Form::text('telefon', Auth::user()->telefon )}}
+		</div>
 
-		{{Form::label('username', 'Korisničko ime:')}}
-		{{ Form::text('username', Auth::user()->username )}}<br/>
+		<div class="form-group">
+			{{Form::label('username', 'Korisničko ime:')}}
+			{{ Form::text('username', Auth::user()->username )}}
+		</div>
 
-		{{Form::submit('Izmeni')}}
-		{{Form::button('Odustani',[ 'href' => url()->previous(), 'type' => 'link' ] )}}
+		<div class="form-group">
+			{{Form::submit('Izmeni')}}
+			{{Form::button('Odustani',[ 'href' => url()->previous(), 'type' => 'link' ] )}}
+		</div>
+
 	{!! Form::close() !!}
-
 @endsection
