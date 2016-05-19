@@ -49,6 +49,7 @@ class AdController extends Controller
                 }
             }
         });
+        return redirect('myads');
     }
 
     private function returnCurrentUserAds()
@@ -81,9 +82,12 @@ class AdController extends Controller
     public function show($id)
     {
         $ad = Ad::find($id);
-        if ($ad == null || $ad->approvement_status == 'Pending') {
-            if (!Auth::guest() && Auth::user()->user_id != $ad->ad_id && Auth::user()->isPlebs() || Auth::guest())
-                return 'greska';
+        if ($ad == null){
+            abort(401);
+        }
+        if ($ad->approvement_status == 'Pending') {
+            if (!Auth::guest() && Auth::user()->user_id != $ad->user_id && Auth::user()->isPlebs() || Auth::guest())
+                abort(401);
         }
         $ad = $this->returnEagerAdd($id);
         return view('ad.show', compact('ad'));
@@ -100,17 +104,7 @@ class AdController extends Controller
 
     public function update(Request $request,Ad $id)
     {
-       // return $request->all();
-        //Uraditi vezu u 2 prolaska
-        /*
-         u prvom napravi 2 niza, u prvi smestaj one koji su za brisanje u drugi one koji su za cuvanje
-        novi add + id == add_iz_baze + id znaci da je za cuvanje
-        BRISANJE VISKA -> sve iz niza za brisanje
-         u drugom prolasku se uporedjuju niz onih koji se cuvaju sa dohvacenim add + ad_id gg wp ez
-         */
-
         $this->validetAd($request);
-
 
         \DB::transaction(function() use($request, $id){
             $currentAdditions = HasAddition::all()->where('ad_id', $id->ad_id);
