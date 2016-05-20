@@ -52,12 +52,15 @@ class ModeratorController extends Controller
 
     public function displayUsers()
     {
-        if(!empty(request()->criteria) && !empty(request()->searchString)){
+        if(request()->has('criteria') && request()->has('searchString')){
             $criteria = request()->criteria;
             $searchString = request()->searchString;
             $users = User::where($criteria, "LIKE", "%$searchString%")->where("user_type_id",3)->get();
         }
         else $users = User::where("user_type_id",3)->get();
+        if(request()->ajax()){
+            return view('ajax.users_search',compact('users'));
+        }
         $modDash = getModDash();
         return view("moderator.users_search", compact("users", "modDash"));
     }
