@@ -24,7 +24,7 @@
                     @if(!Auth::user()->isPlebs())
                         <td><a href="{{url('appointment/'.$appointment->appointment_id.'/complete')}}">Termin završen</a></td>
                     @endif
-                    <td><a href="{{url('appointment/'.$appointment->appointment_id.'/cancel')}}">Otkazi termin</a></td>
+                    <td><a id="appointment_cancel" href="{{url('appointment/'.$appointment->appointment_id.'/cancel')}}">Otkazi termin</a></td>
                 </tr>
             @endforeach
         </table>
@@ -35,6 +35,17 @@
     <script>
         $(function () {
             $('#appointments_my_appointments').addClass('active');
+
+            /*$('#appointment_cancel').on('click', function () {
+                var app_c = $(this);
+               $.ajax({
+                  type: 'GET',
+                   url: app_c.attr('href'),
+                   success: function (response) {
+                       $.(each)
+                   }
+               });
+            });*/
         })
     </script>
 @endsection

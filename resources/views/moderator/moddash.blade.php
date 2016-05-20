@@ -5,11 +5,6 @@
 @endsection
 
 @section('navbar')
-    @if(session()->has('flash_message'))
-        <div style='width:200px; background-color: #00b3ee; text-align: center'>
-            {{session('flash_message')}}
-        </div>
-    @endif
     <div class="navbar-header">
         <a class="navbar-brand" href="{{url('dashboard/moderator')}}">Dashboard</a>
     </div>{{--
