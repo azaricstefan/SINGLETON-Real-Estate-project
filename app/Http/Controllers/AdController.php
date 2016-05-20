@@ -13,7 +13,7 @@ class AdController extends Controller
 {
     public function create(Request $request)
     {
-        $this->validetAd($request);
+        $this->validateAd($request);
 
         $ad = new Ad();
         $ad->city = $request->city;
@@ -104,7 +104,7 @@ class AdController extends Controller
 
     public function update(Request $request,Ad $id)
     {
-        $this->validetAd($request);
+        $this->validateAd($request);
 
         \DB::transaction(function() use($request, $id){
             $currentAdditions = HasAddition::all()->where('ad_id', $id->ad_id);
@@ -144,7 +144,7 @@ class AdController extends Controller
     /**
      * @param Request $request
      */
-    private function validetAd(Request $request)
+    private function validateAd(Request $request)
     {
         $this->validate($request, [
             'city' => 'required|max:40',
