@@ -1,5 +1,6 @@
 #Sa laravel/laravel .gitignore fajl preporucen
 /vendor
+/.vscode
 /node_modules
 /public/storage
 Homestead.yaml
