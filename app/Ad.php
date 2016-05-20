@@ -83,4 +83,27 @@ class Ad extends Model
     {
         return $this->city." ".$this->address;
     }
+
+    /*punjenje baze sa dummy podacima*/
+    public static function populateWithAds()
+    {
+        $ads = factory(Ad::class, 50)
+            ->create()
+            ->each(function($ad) {
+                $d = range(1,10);
+                shuffle($d);
+                $n = rand(0,10);
+
+                for ($i=0 ; $i<$n ; $i++){
+                    $ha = new hasAddition();
+                    $ha->ad_id = $ad->ad_id;
+                    $ha->addition_id = $d[$i];
+                    $ha->save();
+                }
+
+                for ($i=1 ; $i<=3 ; $i++){
+                    $ad->images()->save(factory(Image::class)->make());
+                }
+            });
+    }
 }
