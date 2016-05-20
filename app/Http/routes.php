@@ -12,7 +12,10 @@
 */
 
 Route::get('/', function(){
-    return view('index');
+    //if(Auth::guest())
+        return view('index');
+   // if(Auth::user()->isModerator())
+     //   return redirect('dashboard');
 });
 
 Route::get('login', [ 'middleware' => 'ifLoggedInGoHome', 'uses' => 'AuthController@openLogin']);
@@ -38,8 +41,8 @@ Route::get('ad/create', function(){
 Route::post('ad/create', 'AdController@create');
 
 /*User update profile*/
-Route::get('user/updateProfile', 'UserDashboardController@updateProfile');
-Route::post('user/updateProfile', 'UserDashboardController@updateProfile');
+Route::get('user/updateProfile', 'UserDashboardController@updateProfile')->middleware('ifNotLoggedInGoLogIn');
+Route::post('user/updateProfile', 'UserDashboardController@updateProfile')->middleware('ifNotLoggedInGoLogIn');
 
 /*Admin routes*/
 Route::get('/admin/add_moderator', 'AdminController@displayModeratorForm')->middleware(["ifNotLoggedInGoLogIn", "checkIfAdmin"]);
@@ -79,4 +82,9 @@ Route::get('moderator/reported_comments' ,'ModeratorController@displayReported')
 Route::get('users', 'ModeratorController@displayUsers')->middleware(["ifNotLoggedInGoLogIn", "checkModeratorPrivileges"]);
 Route::get('users/{user}', 'ModeratorController@displayUserInfo')->middleware(["ifNotLoggedInGoLogIn", "checkModeratorPrivileges"]);
 Route::get('appointments/pending', 'ModeratorController@displayPendingAppointments');
+
+
+Route::get('boot', function(){
+   return view('bootstrap'); 
+});
  

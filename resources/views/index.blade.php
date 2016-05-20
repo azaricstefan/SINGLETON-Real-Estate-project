@@ -1,4 +1,4 @@
-@extends('layouts.auth')
+@extends('bootstrap')
 
 @section('title')
     Agencija poy
