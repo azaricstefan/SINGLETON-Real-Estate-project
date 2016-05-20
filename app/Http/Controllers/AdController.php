@@ -172,4 +172,61 @@ class AdController extends Controller
         }
         return abort(401);
     }
+
+    private static function requestArrayToInStatement($requestArray)
+    {
+        $searchString = array_values($requestArray);
+        $searchString = implode(",",$searchString);
+        $searchString = "(".$searchString.")";
+        return $searchString;
+    }
+    public function displayAds()
+    {
+        $ads = Ad::query();
+        if(request()->has("ad_type"))$ads = $ads->where("ad_type",request()->ad_type);
+        if(request()->has("real_estate_type_id"))$ads = $ads->where("real_estate_type_id", request()->real_estate_type_id);
+        if(request()->has("city"))$ads = $ads->where("city", 'like', request()->city."%");
+        if(request()->has("municipality"))$ads = $ads->where("municipality", 'like', request()->municipality."%");
+        if(request()->has("address"))$ads = $ads->where("address", 'like', "%".request()->address."%");
+        if(request()->has("apartment_type_id"))$ads = $ads->where("apartment_type_id", request()->apartment_type_id);
+        if(request()->has("floor_desc")){
+            $searchString = self::requestArrayToInStatement(request()->floor_desc);
+            $ads = $ads->whereRaw("floor_desc IN ".$searchString);
+        }
+        if(request()->has("price_from"))$ads = $ads->where("price",">=",request()->price_from);
+        if(request()->has("price_to"))$ads = $ads->where("price","<=",request()->price_to);
+        if(request()->has("area_from"))$ads = $ads->where("floor_area", ">=",request()->area_from);
+        if(request()->has("area_to"))$ads = $ads->where("floor_area", "<=" ,request()->area_to);
+        if(request()->has("documentation"))$ads = $ads->where("documentation",request()->documentation);
+        if(request()->has("heating_option_id"))
+        {
+            $searchString = self::requestArrayToInStatement(request()->heating_option_id);
+            $ads = $ads->whereRaw("heating_option_id IN ".$searchString);
+        }
+        if(request()->has("addition_id")){
+            $searchString = self::requestArrayToInStatement(request()->addition_id);
+            $ads = $ads->whereRaw(count(request()->addition_id)." <= (select count(*) from `has_additions` where `has_additions`.`ad_id` = ad.ad_id and addition_id in $searchString)");
+        }
+        if(request()->has("parking_option_id"))
+        {
+            $searchString = self::requestArrayToInStatement(request()->parking_option_id);
+            $ads = $ads->whereRaw("parking_option_id IN ".$searchString);
+        }
+        if(request()->has("woodwork_type_id"))
+        {
+            $searchString = self::requestArrayToInStatement(request()->woodwork_type_id);
+            $ads = $ads->whereRaw("woodwork_type_id IN ".$searchString);
+        }
+        if(request()->has("furniture_desc_id"))
+        {
+            $searchString = self::requestArrayToInStatement(request()->furniture_desc_id);
+            $ads = $ads->whereRaw("furniture_desc_id IN ".$searchString);
+        }
+        $ads = $ads->paginate(5);
+        request()->flash();
+        return view('ad.search', compact("ads"));
+    }
+
+
 }
+
