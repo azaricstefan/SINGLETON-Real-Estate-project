@@ -2,14 +2,14 @@
 <html>
 <head>
     <link rel="icon" href="{{url('favicon.ico')}}"/>
-    <title>@yield('title')</title>
+    <title>@yield('title2')</title>
 </head>
 <body>
-    @if(session()->has('flash_message'))
+   {{-- @if(session()->has('flash_message'))
     <div style='width:200px; background-color: #00b3ee; text-align: center'>
            {{session('flash_message')}}
     </div>
-    @endif
+    @endif--}}
     <div align="=center">
     @yield('content')
     </div>
