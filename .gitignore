@@ -6,6 +6,7 @@ Homestead.yaml
 Homestead.json
 .env
 _ide_helper.php
+composer.phar
 
 ### PhpStorm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm

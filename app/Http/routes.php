@@ -37,6 +37,10 @@ Route::get('ad/create', function(){
 
 Route::post('ad/create', 'AdController@create');
 
+/*User update profile*/
+Route::get('user/updateProfile', 'UserDashboardController@updateProfile');
+Route::post('user/updateProfile', 'UserDashboardController@updateProfile');
+
 /*Admin routes*/
 Route::get('/admin/add_moderator', 'AdminController@displayModeratorForm')->middleware(["ifNotLoggedInGoLogIn", "checkIfAdmin"]);
 Route::post('/admin/add_moderator', 'AdminController@createModerator')->middleware(["ifNotLoggedInGoLogIn", "checkIfAdmin"]);
