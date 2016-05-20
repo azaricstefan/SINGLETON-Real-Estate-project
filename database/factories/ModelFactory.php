@@ -13,8 +13,10 @@
 
 $factory->define(RealEstate\User::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name,
+        'username' => $faker->userName,
         'email' => $faker->safeEmail,
+        'fullname' => $faker->name,
+        'telefon' => $faker->phoneNumber,
         'password' => bcrypt(str_random(10)),
         'remember_token' => str_random(10),
     ];
@@ -49,8 +51,6 @@ $factory->define(RealEstate\Ad::class, function (Faker\Generator $faker) {
 
 $factory->define(RealEstate\Image::class, function (Faker\Generator $faker) {
     return [
-
         'image_path' => 'http://i.imgur.com/svkcLyz.jpg'
-
     ];
 });
