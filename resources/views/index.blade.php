@@ -1,22 +1,22 @@
-@extends('layouts.auth')
+@extends('bootstrap')
 
 @section('title')
     Agencija poy
 @endsection
 
-@section('content')
-    <div align="center">
+@section('navbar')
     @if(Auth::guest())
-        <a href="{{url('login')}}">Login</a>
-        <a href="{{url('register')}}">Register</a>
+    <ul class="nav navbar-nav">
+        <li><a href="{{url('#')}}">Pretrazi oglase</a> </li>
+        <li><a href="{{url('ad/create')}}">Dodaj oglas</a></li>
+    </ul>
     @else
-        <h1>Dobro došao {{Auth::user()->fullname}}</h1>
-        <ul>
+        <ul class="nav navbar-nav">
             <li><a href="{{url('dashboard')}}">Dashboard</a></li>
-            <li><a href="{{url('user/updateProfile')}}">Izmeni profil</a></li>
-            <li><a href="{{url('logout')}}">Logout</a></li>
         </ul>
     @endif
-    <a href="{{url('ad/create')}}">Dodaj oglas</a>
-    </div>
+@endsection
+
+@section('content')
+    {{--Ovde idu oglasi--}}
 @endsection

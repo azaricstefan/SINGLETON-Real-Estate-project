@@ -15,7 +15,8 @@ class ModeratorController extends Controller
     public function displayNewAds()
     {
         $newAds = Ad::where("approvement_status","Pending")->get();
-        return view('moderator.newads', compact('newAds'));
+        $modDash = getModDash();
+        return view('moderator.newads', compact('newAds', 'modDash'));
     }
 
     public function approveAd(Ad $ad)

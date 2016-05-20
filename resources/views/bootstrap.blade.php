@@ -19,19 +19,25 @@
         <script>@yield('headScript')</script>
     </head>
     <body>
-    <nav class="navbar navbar-default" >
+    <nav class="navbar navbar-default">
         <div class="container">
-            @yield('content')
-            <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-                    <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">HTML</a></li>
-                    <li><a href="#">CSS</a></li>
-                    <li><a href="#">JavaScript</a></li>
+            @yield('navbar')
+            @if(Auth::guest())
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{url('register')}}"><span class="glyphicon glyphicon-user"></span> Registracija</a></li>
+                    <li><a href="{{urL('login')}}"><span class="glyphicon glyphicon-log-in"></span> Prijava</a></li>
                 </ul>
-            </div>
-            <h1 class="jumbotron">Ovo <mark>agencija</mark> <abbr title="Push Only Yourself">POY</abbr></h1>
+            @else
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{url('/')}}"><span class="glyphicon glyphicon-user"></span> {{Auth::user()->username}}</a></li>
+                    <li><a href="{{urL('logout')}}"><span class="glyphicon glyphicon-log-in"></span> Odjava</a></li>
+                </ul>
+            @endif
+        </div>
+    </nav>
+        <div class="container-fluid">
+            @yield('content')
+{{--
             <h1>My First Ш добро шљака Page</h1>
             <span class="glyphicon glyphicon-envelope"></span>
             <p>This is some text. <span class="glyphicon glyphicon-folder-open"></span></p>
@@ -79,7 +85,7 @@ Route::post('user/updateProfile', 'UserDashboardController@updateProfile')->midd
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <strong>Success!</strong> Indicates a successful or positive action.
 
-            </div>
+            </div>--}}
         </div>
     </nav>
     @yield('scriptAfterLoad')

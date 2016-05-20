@@ -1,6 +1,6 @@
-@extends('dashboard.layout')
+@extends('moderator.moddash')
 
-@section('content')
+@section('content-mod-dash')
     <h1>Novi oglasi: {{Auth::user()->username}}</h1><br/>
     <a href="{{url('dashboard')}}">Nazad na dashboard</a>
     <table>
@@ -19,8 +19,14 @@
             </td>
         </tr>
     @endforeach
-
     </table>
 
+    @section('scriptAfterLoad')
+        <script>
+            $(function(){
+                $()
+            });
+        </script>
+    @endsection
 
 @endsection

@@ -12,7 +12,10 @@
 */
 
 Route::get('/', function(){
-    return view('index');
+    //if(Auth::guest())
+        return view('index');
+   // if(Auth::user()->isModerator())
+     //   return redirect('dashboard');
 });
 
 Route::get('login', [ 'middleware' => 'ifLoggedInGoHome', 'uses' => 'AuthController@openLogin']);
