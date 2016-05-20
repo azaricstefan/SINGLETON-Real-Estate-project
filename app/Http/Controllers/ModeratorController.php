@@ -15,7 +15,8 @@ class ModeratorController extends Controller
     public function displayNewAds()
     {
         $newAds = Ad::where("approvement_status","Pending")->get();
-        return view('moderator.newads', compact('newAds'));
+        $modDash = getModDash();
+        return view('moderator.newads', compact('newAds', 'modDash'));
     }
 
     public function approveAd(Ad $ad)
@@ -36,14 +37,16 @@ class ModeratorController extends Controller
     {
         $reported = Comment::where("reported",1)->get();
         $reported = $reported->load("ad","user");
-        return view('comment.reported',  compact("reported"));
+        $modDash = getModDash();
+        return view('comment.reported',  compact("reported", "modDash"));
     }
 
 
     public function displayPendingAppointments()
     {
         $pendingAppointments = Appointment::where('status', 'Pending')->get()->load('ad');
-        return view('appointment.pending', compact('pendingAppointments'));
+        $modDash = getModDash();
+        return view('appointment.pending', compact('pendingAppointments', 'modDash'));
     }
     
 
@@ -55,7 +58,8 @@ class ModeratorController extends Controller
             $users = User::where($criteria, "LIKE", "%$searchString%")->where("user_type_id",3)->get();
         }
         else $users = User::where("user_type_id",3)->get();
-        return view("moderator.users_search", compact("users"));
+        $modDash = getModDash();
+        return view("moderator.users_search", compact("users", "modDash"));
     }
 
     public function displayUserInfo(User $user)

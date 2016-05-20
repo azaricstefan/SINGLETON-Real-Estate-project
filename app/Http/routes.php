@@ -12,7 +12,10 @@
 */
 
 Route::get('/', function(){
-    return view('index');
+    //if(Auth::guest())
+        return view('index');
+   // if(Auth::user()->isModerator())
+     //   return redirect('dashboard');
 });
 
 Route::get('login', [ 'middleware' => 'ifLoggedInGoHome', 'uses' => 'AuthController@openLogin']);
@@ -79,4 +82,9 @@ Route::get('moderator/reported_comments' ,'ModeratorController@displayReported')
 Route::get('users', 'ModeratorController@displayUsers')->middleware(["ifNotLoggedInGoLogIn", "checkModeratorPrivileges"]);
 Route::get('users/{user}', 'ModeratorController@displayUserInfo')->middleware(["ifNotLoggedInGoLogIn", "checkModeratorPrivileges"]);
 Route::get('appointments/pending', 'ModeratorController@displayPendingAppointments');
+
+
+Route::get('boot', function(){
+   return view('bootstrap'); 
+});
  
