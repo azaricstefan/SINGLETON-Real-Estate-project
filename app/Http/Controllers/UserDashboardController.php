@@ -45,6 +45,6 @@ class UserDashboardController extends Controller
 			//TODO: dodati obavestenje(alert) korisniku da je (ne)uspesna izmena
 		}
 
-		return view('user.updateProfile');
+		return view('dashboard.user.updateProfile');
 	}
 }
