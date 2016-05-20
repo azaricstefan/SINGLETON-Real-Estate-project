@@ -1,13 +1,14 @@
-@extends('layouts.auth')
+@extends('moderator.moddash')
 
 @section('title')
     Prijavljeni komentari
 @endsection
 
-@section('content')
+@section('content-mod-dash')
+    <h1 class="page-header">Prijavljeni komentari</h1>
     @if(count($reported)>0)
         @foreach($reported as $comment)
-            <div style="padding: 5px; margin:5px; border: 1px solid; width:400px">
+            <div class="well">
                 Komentar:<br/>{{$comment->body}} <br/>
                 Postavio: <a href="#">{{$comment->user->username}}</a> <br />
                 Oglas: <a href="/ad/{{$comment->ad->ad_id}}">{{$comment->ad->getName()}}</a><br />
@@ -18,5 +19,12 @@
     @else
         Nema nista ovde
     @endif
+@endsection
 
+@section('scriptAfterLoad')
+    <script>
+        $(function(){
+            $('#reported_comments').addClass('active');
+        });
+    </script>
 @endsection

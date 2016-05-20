@@ -79,15 +79,16 @@ class AppointmentController extends Controller
             })
             ->get()->load('ad');
         $appointments = $appointments->sortBy('appointment_time');
-        return view('appointment.my', compact('appointments'));
+        $modDash = getModDash();
+        return view('appointment.my', compact('appointments', 'modDash'));
     }
 
     private function moderatorAppointments()
     {
         $appointments = Appointment::where('agent_id', \Auth::user()->user_id)->where('status', 'Scheduled')->get()->load('ad');
         $appointments = $appointments->sortBy('appointment_time');
-
-        return view('appointment.my', compact('appointments'));
+        $modDash = getModDash();
+        return view('appointment.my', compact('appointments', 'modDash'));
     }
 
     public function finish($appointment)
