@@ -86,8 +86,7 @@ class AppointmentController extends Controller
     private function moderatorAppointments()
     {
         $appointments = $this->getModeratorAppointments();
-        $modDash = getModDash();
-        return view('appointment.my', compact('appointments', 'modDash'));
+        return view('appointment.my', compact('appointments'));
     }
 
     public function finish($appointment)

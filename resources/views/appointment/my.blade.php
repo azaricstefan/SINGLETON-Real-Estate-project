@@ -7,7 +7,7 @@
 @section('headScript')
 @endsection
 
-@section('content-mod-dash')
+@section('dash-content')
     <div class="page-header" align="center"><h1>Moji termini</h1></div>
     <div class="table-responsive">
         <table class="table table-hover">

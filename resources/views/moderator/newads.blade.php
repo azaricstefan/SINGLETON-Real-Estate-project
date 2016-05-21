@@ -1,6 +1,6 @@
 @extends('moderator.moddash')
 
-@section('content-mod-dash')
+@section('dash-content')
     <h1 class="page-header">Novi oglasi: {{Auth::user()->username}}</h1><br/>
     <div class="table-responsive">
         <table class="table table-hover">

@@ -38,7 +38,6 @@
         <div class="container-fluid">
             @yield('content')
         </div>
-    </nav>
     @yield('scriptAfterLoad')
     </body>
 </html>

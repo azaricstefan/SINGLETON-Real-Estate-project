@@ -15,8 +15,7 @@ class ModeratorController extends Controller
     public function displayNewAds()
     {
         $newAds = Ad::where("approvement_status","Pending")->get();
-        $modDash = getModDash();
-        return view('moderator.newads', compact('newAds', 'modDash'));
+        return view('moderator.newads', compact('newAds'));
     }
 
     public function approveAd(Ad $ad)
@@ -37,29 +36,29 @@ class ModeratorController extends Controller
     {
         $reported = Comment::where("reported",1)->get();
         $reported = $reported->load("ad","user");
-        $modDash = getModDash();
-        return view('comment.reported',  compact("reported", "modDash"));
+        return view('comment.reported',  compact("reported"));
     }
 
 
     public function displayPendingAppointments()
     {
         $pendingAppointments = Appointment::where('status', 'Pending')->get()->load('ad');
-        $modDash = getModDash();
-        return view('appointment.pending', compact('pendingAppointments', 'modDash'));
+        return view('appointment.pending', compact('pendingAppointments'));
     }
     
 
     public function displayUsers()
     {
-        if(!empty(request()->criteria) && !empty(request()->searchString)){
+        if(request()->has('criteria') && request()->has('searchString')){
             $criteria = request()->criteria;
             $searchString = request()->searchString;
             $users = User::where($criteria, "LIKE", "%$searchString%")->where("user_type_id",3)->get();
         }
         else $users = User::where("user_type_id",3)->get();
-        $modDash = getModDash();
-        return view("moderator.users_search", compact("users", "modDash"));
+        if(request()->ajax()){
+            return view('ajax.users_search',compact('users'));
+        }
+        return view("moderator.users_search", compact("users"));
     }
 
     public function displayUserInfo(User $user)

@@ -4,7 +4,7 @@
     Novi zakazani termini
 @endsection
 
-@section('content-mod-dash')
+@section('dash-content')
     <h1 class="page-header">Novi zakazani termini</h1><br/>
     <div class="table-responsive">
         <table class="table table-hover">
