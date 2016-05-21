@@ -1,4 +1,4 @@
-@extends('moderator.moddash')
+@extends(Auth::user()->isModerator() ? 'moderator.moddash' : 'admin.admindash')
 
 @section('title')
     Pretrazi korisnike

@@ -21,7 +21,7 @@
     <body>
     <nav class="navbar navbar-default">
         <div class="container">
-            @yield('navbar')
+            @yield('nav-bar')
             @if(Auth::guest())
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{url('register')}}"><span class="glyphicon glyphicon-user"></span> Registracija</a></li>

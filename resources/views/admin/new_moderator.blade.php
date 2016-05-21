@@ -1,12 +1,12 @@
-@extends('layouts.auth')
+@extends('admin.admindash')
 
 @section('title')
     Dodaj moderatora
 @endsection
 
-@section('content')
+@section('dash-content')
     {!! Form::open(['url' => '/admin/add_moderator']) !!}
-    <table style="margin:auto">
+    <table class="table table-hover">
         <tr>
             <td>{!! Form::label('fullname','Puno ime i prezime:') !!}</td>
             <td>{!! Form::text('fullname') !!}  </td>
@@ -32,7 +32,7 @@
              <td>{!! Form::password('password_confirmation') !!}</td>
         </tr>
         <tr>
-            <td colspan="2" align="right">{!! Form::submit("Dodaj moderatora")!!}    </td>
+            <td colspan="2" align="right">{!! Form::submit("Dodaj moderatora",['class' => 'btn btn-default'])!!}    </td>
         </tr>
     </table>
 
@@ -47,4 +47,12 @@
         </ul>
     </div>
     @endif
+@endsection
+
+@section('scriptAfterLoad')
+    <script>
+        $(function () {
+            $('#add_moderator').addClass('active');
+        })
+    </script>
 @endsection

@@ -1,10 +1,11 @@
-@extends('layouts.auth')
+@extends(Auth::user()->isPlebs() ? 'dashboard.user.userdash' :
+    (Auth::user()->isModerator() ? 'moderator.moddash' : 'admin.admindash'))
 
 @section('title')
     Dodaj novi oglas za prodaju
 @endsection
 
-@section('content')
+@section('dash-content')
 
         {{Form::open(['url' => url('ad/create') , 'method' => 'post'])}}
         {{Form::label('city', 'Ime grada:')}}
@@ -93,4 +94,12 @@
         <br/>
         {{Form::submit('Posalji')}}
         {{Form::close()}}
+@endsection
+
+@section('scriptAfterLoad')
+    <script>
+        $(function () {
+            $('#ad_create').addClass('active');
+        })
+    </script>
 @endsection

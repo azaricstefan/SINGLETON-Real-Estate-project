@@ -1,4 +1,4 @@
-@extends('bootstrap')
+@extends('layouts.bootstrap')
 
 @section('nav-bar')
     <div class="navbar-header">

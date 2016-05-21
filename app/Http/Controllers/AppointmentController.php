@@ -78,9 +78,7 @@ class AppointmentController extends Controller
             ->orWhere('status', 'Scheduled');
             })
             ->get()->load('ad');
-        $appointments = $appointments->sortBy('appointment_time');
-        $modDash = getModDash();
-        return view('appointment.my', compact('appointments', 'modDash'));
+        return view('appointment.my', compact('appointments'));
     }
 
     private function moderatorAppointments()
