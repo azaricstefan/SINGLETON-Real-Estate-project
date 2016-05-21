@@ -41,7 +41,11 @@ class UserDashboardController extends Controller
 
 			//sacuvaj sve u bazi i preusmeri na pocetnu
 			$user->save();
-			return redirect('/');
+			flash('Usposno promenjen profil');
+            /*TODO: bolje uraditi redirekciju, kod redirect('dashboard'); se izgubi flash poruka*/
+			if (Auth::user()->isPlebs()) return redirect('dashboard/user');
+            if (Auth::user()->isModerator()) return redirect('dashboard/moderator');
+            if (Auth::user()->isAdmin()) return redirect('dashboard/admin');
 			//TODO: dodati obavestenje(alert) korisniku da je (ne)uspesna izmena
 		}
 

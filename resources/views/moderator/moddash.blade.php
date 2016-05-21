@@ -4,10 +4,8 @@
     Moderator
 @endsection
 
-@section('nav-bar')
-    <div class="navbar-header">
+@section('nav-bar-header')
         <a class="navbar-brand" href="{{url('dashboard/moderator')}}">Dashboard</a>
-    </div>
 @endsection
 
 @section('dash-nav')

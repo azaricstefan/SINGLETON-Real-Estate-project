@@ -4,10 +4,8 @@
     Termin {{$appointment->appointment_time}} zavrsen
 @endsection
 
-@section('nav-bar')
-    <div class="navbar-header">
+@section('nav-bar-header')
         <a class="navbar-brand" href="{{url('appointments/my_appointments')}}">Moji termini</a>
-    </div>
 @endsection
 
 @section('content')

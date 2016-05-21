@@ -78,12 +78,14 @@ class AppointmentController extends Controller
             ->orWhere('status', 'Scheduled');
             })
             ->get()->load('ad');
+        $appointments = $appointments->sortBy('appointment_time');
         return view('appointment.my', compact('appointments'));
     }
 
     private function moderatorAppointments()
     {
         $appointments = $this->getModeratorAppointments();
+        $appointments = $appointments->sortBy('appointment_time');
         return view('appointment.my', compact('appointments'));
     }
 

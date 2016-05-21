@@ -43,6 +43,7 @@ class ModeratorController extends Controller
     public function displayPendingAppointments()
     {
         $pendingAppointments = Appointment::where('status', 'Pending')->get()->load('ad');
+        $pendingAppointments = $pendingAppointments->sortBy('appointment_time');
         return view('appointment.pending', compact('pendingAppointments'));
     }
     

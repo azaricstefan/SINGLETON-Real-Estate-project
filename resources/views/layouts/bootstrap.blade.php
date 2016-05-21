@@ -21,18 +21,22 @@
     <body>
     <nav class="navbar navbar-default">
         <div class="container">
-            @yield('nav-bar')
-            @if(Auth::guest())
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{url('register')}}"><span class="glyphicon glyphicon-user"></span> Registracija</a></li>
-                    <li><a href="{{url('login')}}"><span class="glyphicon glyphicon-log-in"></span> Prijava</a></li>
-                </ul>
-            @else
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{url('/')}}"><span class="glyphicon glyphicon-user"></span> {{Auth::user()->username}}</a></li>
-                    <li><a href="{{url('logout')}}"><span class="glyphicon glyphicon-log-in"></span> Odjava</a></li>
-                </ul>
-            @endif
+            <div class="navbar-header">
+                <img src="{{URL::asset('logo.jpg')}}" class="navbar-brand img-rounded">
+                @yield('nav-bar-header')
+            </div>
+                @yield('nav-bar')
+                @if(Auth::guest())
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{url('register')}}"><span class="glyphicon glyphicon-user"></span> Registracija</a></li>
+                        <li><a href="{{url('login')}}"><span class="glyphicon glyphicon-log-in"></span> Prijava</a></li>
+                    </ul>
+                @else
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{url('/')}}"><span class="glyphicon glyphicon-user"></span> {{Auth::user()->username}}</a></li>
+                        <li><a href="{{url('logout')}}"><span class="glyphicon glyphicon-log-in"></span> Odjava</a></li>
+                    </ul>
+                @endif
         </div>
     </nav>
         <div class="container-fluid">
