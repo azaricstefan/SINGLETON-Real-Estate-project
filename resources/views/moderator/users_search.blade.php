@@ -4,7 +4,7 @@
     Pretrazi korisnike
 @endsection
 
-@section('content-mod-dash')
+@section('dash-content')
     <div class="table-responsive">
         {!! Form::open(["method" => 'GET']) !!}
         <table class="table">

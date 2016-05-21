@@ -4,7 +4,7 @@
     Prijavljeni komentari
 @endsection
 
-@section('content-mod-dash')
+@section('dash-content')
     <h1 class="page-header">Prijavljeni komentari</h1>
     @if(count($reported)>0)
         @foreach($reported as $comment)
