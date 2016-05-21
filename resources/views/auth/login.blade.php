@@ -1,4 +1,4 @@
-@extends('bootstrap')
+@extends('layouts.bootstrap')
 
 @section('title')
     Log in

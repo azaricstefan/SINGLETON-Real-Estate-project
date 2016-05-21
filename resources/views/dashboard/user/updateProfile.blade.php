@@ -1,10 +1,23 @@
-@extends('layouts.auth')
+@extends(Auth::user()->isPlebs() ? 'dashboard.user.userdash' : (Auth::user()->isModerator() ? 'moderator.moddash' : 'admin.admindash'))
 
 @section('title')
 	Izmena podataka na profilu
 @endsection
 
-@section('content')
+@section('headScript')
+	<script lang="javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('the_submit_button').addEventListener('click',function () {
+                submit()
+            })
+        })
+		function submit() {
+            document.getElementById('my_form').submit();
+        }
+	</script>
+@endsection
+
+@section('dash-content')
 
 	{{--VERZIJA 1--}}
 
@@ -14,33 +27,41 @@
 
 
 	{{--VERZIJA 2--}}
-
-	{!!Form::open( ['url' => 'user/updateProfile', 'method' => 'post'] ) !!}
-
+	<div class="col-md-4 col-md-offset-3">
 		<div class="form-group">
-			{{Form::label('fullname', 'Ime i prezime:')}}
-			{{ Form::text('fullname', Auth::user()->fullname )}}
-		</div>
+			{!!Form::open( ['url' => 'user/updateProfile', 'method' => 'post', 'id' => 'my_form'] ) !!}
 
-		<div class="form-group">
-			{{Form::label('email', 'Email:')}}
-			{{ Form::email('email', Auth::user()->email )}}
-		</div>
 
-		<div class="form-group">
-			{{Form::label('telefon', 'Telefon:')}}
-			{{ Form::text('telefon', Auth::user()->telefon )}}
-		</div>
+				{{Form::label('fullname', 'Ime i prezime:')}}
+				{{ Form::text('fullname', Auth::user()->fullname , [ 'class' => 'form-control'])}}
 
-		<div class="form-group">
-			{{Form::label('username', 'Korisničko ime:')}}
-			{{ Form::text('username', Auth::user()->username )}}
-		</div>
 
-		<div class="form-group">
-			{{Form::submit('Izmeni')}}
-			{{Form::button('Odustani',[ 'href' => url()->previous(), 'type' => 'link' ] )}}
-		</div>
 
-	{!! Form::close() !!}
+				{{Form::label('email', 'Email:')}}
+				{{ Form::email('email', Auth::user()->email , [ 'class' => 'form-control'])}}
+
+
+
+				{{Form::label('telefon', 'Telefon:')}}
+				{{ Form::text('telefon', Auth::user()->telefon , [ 'class' => 'form-control'])}}
+
+
+
+				{{Form::label('username', 'Korisničko ime:')}}
+				{{ Form::text('username', Auth::user()->username , [ 'class' => 'form-control'])}}
+        </div>
+				<div class="btn-group btn-group-justified">
+					<a href="javascript:{}" id="the_submit_button" class="btn btn-default">Izmeni</a>
+                    <a href="{{url()->previous()}}" class="btn btn-default">Odustani</a>
+				</div>
+			{!! Form::close() !!}
+	</div>
+@endsection
+
+@section('scriptAfterLoad')
+    <script>
+        $(function () {
+            $('#update_profile').addClass('active');
+        })
+    </script>
 @endsection

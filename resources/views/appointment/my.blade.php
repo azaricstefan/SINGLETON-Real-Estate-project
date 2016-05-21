@@ -1,4 +1,5 @@
-@extends('moderator.moddash')
+@extends(Auth::user()->isPlebs() ? 'dashboard.user.userdash' :
+    (Auth::user()->isModerator() ? 'moderator.moddash' : 'admin.admindash'))
 
 @section('title')
     Moji termini
@@ -14,7 +15,12 @@
             <tr>
                 <th>Oglas</th>
                 <th>Vreme</th>
-                <th colspan="2" >Izbor</th>
+                @if(!Auth::user()->isPlebs())
+                    <th colspan="2" >Izbor</th>
+                @else
+                    <th>Izbor</th>
+                    <th title="Ukoliko je status potvrđen, agent će vas uskoro kontaktirati">Status</th>
+                @endif
             </tr>
                 @foreach($appointments as $appointment)
                     <tr>
@@ -24,6 +30,16 @@
                             <td><a href="{{url('appointment/'.$appointment->appointment_id.'/complete')}}">Termin završen</a></td>
                         @endif
                         <td><a id="appointment_cancel" href="{{url('appointment/'.$appointment->appointment_id.'/cancel')}}">Otkazi termin</a></td>
+                        {{--namerno su razdvojeni ifovi zbog redosleda u tabeli--}}
+                        @if(Auth::user()->isPlebs())
+                            <td>
+                                @if($appointment->status == 'Pending')
+                                    Nije potvrđen
+                                @else
+                                    Potvrđen
+                                @endif
+                            </td>
+                        @endif
                     </tr>
                 @endforeach
         </table>

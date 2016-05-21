@@ -1,13 +1,13 @@
-@extends('layouts.auth')
+@extends('admin.admindash')
 
 @section('title')
     Dodaj moderatora
 @endsection
 
-@section('content')
+@section('dash-content')
 
 
-    <table align="center">
+    <table class="table table-hover">
 
         <tr>
         {!! Form::open(["method" => 'GET']) !!}
@@ -24,6 +24,9 @@
             <td>
                 {!! Form::submit("Filtriraj") !!}
             </td>
+            <td></td>
+            <td></td>
+            <td></td>
         {!! Form::close() !!}
         </tr>
         <tr>
@@ -34,7 +37,7 @@
             <th>Kategorija</th>
             <th>Datum registracije</th>
             <th>Poslednji login</th>
-            <td>&nbsp;</td>
+            <td></td>
         </tr>
         @if(count($users) > 0)
             @foreach($users as $user)
@@ -48,6 +51,8 @@
                     <td>{{$user->last_login}}</td>
                     @if($user->user_type_id != 1)
                         <td><a href="{{url('admin/delete_user',[$user->user_id])}}" class='confirmation'>Obrisi</a></td>
+                    @else
+                        <td></td>
                     @endif
                 </tr>
             @endforeach
@@ -85,5 +90,13 @@
         for (var i = 0, l = elems.length; i < l; i++) {
             elems[i].addEventListener('click', confirmIt, false);
         }
+    </script>
+@endsection
+
+@section('scriptAfterLoad')
+    <script>
+        $(function () {
+            $('#registered_users').addClass('active');
+        })
     </script>
 @endsection

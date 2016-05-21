@@ -1,4 +1,4 @@
-@extends('moderator.moddash')
+@extends(Auth::user()->isModerator() ? 'moderator.moddash' : 'admin.admindash')
 
 @section('dash-content')
     <h1 class="page-header">Novi oglasi: {{Auth::user()->username}}</h1><br/>
