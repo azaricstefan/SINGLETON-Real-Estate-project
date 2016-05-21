@@ -3,16 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+	{{--Putem elixir-a dodato @Stefan--}}
+	{!! Html::style('css/app.css') !!}
+
     <title>@yield('title')</title>
-    @yield('head')
+    @yield('header')
 </head>
 <body>
     <div class="container">
         @yield('content')
     </div>
-    @yield('script')
+
+    @yield('footer')
+
+    {{Html::script('js/merged/app.min.js')}}
+    {{--elixir strpa sve zajedno--}}
+    {{--{!! Html::script('js/jquery.min.js') !!}--}}
+    {{--{!! Html::script('js/bootstrap.min.js') !!}--}}
 </body>
 </html>
