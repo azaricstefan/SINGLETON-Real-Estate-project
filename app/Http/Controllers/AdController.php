@@ -222,6 +222,7 @@ class AdController extends Controller
             $searchString = self::requestArrayToInStatement(request()->furniture_desc_id);
             $ads = $ads->whereRaw("furniture_desc_id IN ".$searchString);
         }
+        $ads = $ads->where("approvement_status","Approved");
         $ads = $ads->paginate(5);
         request()->flash();
         return view('ad.search', compact("ads"));
