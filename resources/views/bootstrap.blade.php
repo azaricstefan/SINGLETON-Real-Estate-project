@@ -2,9 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
 
         {{--Putem elixir-a dodato @Stefan--}}
         {!! Html::style('css/app.css') !!}
@@ -34,10 +32,9 @@
             @yield('content')
         </div>
     </nav>
-    @yield('scriptAfterLoad')
-    {{--Putem elixir-a dodato @Stefan--}}
-    {!! Html::script('js/jquery.min.js') !!}
-    {!! Html::script('js/bootstrap.min.js') !!}
+
+    {{--Putem elixir-a dodato sve(bootstrap,jquery za sad) @Stefan--}}
+    {{Html::script('js/merged/app.min.js')}}
 
     </body>
 </html>
