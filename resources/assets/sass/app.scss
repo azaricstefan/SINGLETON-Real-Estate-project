@@ -1,2 +1,13 @@
-// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+
+//example
+//@import "pages/home";
+//@import "components/button";
+
+$red: red;
+$primary: green;
+
+body {
+  color: $primary;
+}
