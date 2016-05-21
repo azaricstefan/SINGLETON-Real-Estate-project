@@ -10,8 +10,8 @@ class Ad extends Model
     public $timestamps = false;
     public $primaryKey = 'ad_id';
 
-    public $guarded =[
-        'user_id', 'ad_id', 'approvement_status' ,'addition_id'
+    public $guarded = [
+        'user_id', 'ad_id', 'approvement_status', 'addition_id'
     ];
 
     public function user()
@@ -81,29 +81,6 @@ class Ad extends Model
 
     public function getName()
     {
-        return $this->city." ".$this->address;
-    }
-
-    /*punjenje baze sa dummy podacima*/
-    public static function populateWithAds()
-    {
-        $ads = factory(Ad::class, 50)
-            ->create()
-            ->each(function($ad) {
-                $d = range(1,10);
-                shuffle($d);
-                $n = rand(0,10);
-
-                for ($i=0 ; $i<$n ; $i++){
-                    $ha = new hasAddition();
-                    $ha->ad_id = $ad->ad_id;
-                    $ha->addition_id = $d[$i];
-                    $ha->save();
-                }
-
-                for ($i=1 ; $i<=3 ; $i++){
-                    $ad->images()->save(factory(Image::class)->make());
-                }
-            });
+        return $this->city . " " . $this->address;
     }
 }

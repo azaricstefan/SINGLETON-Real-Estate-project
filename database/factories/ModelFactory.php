@@ -17,8 +17,20 @@ $factory->define(RealEstate\User::class, function (Faker\Generator $faker) {
         'email' => $faker->safeEmail,
         'fullname' => $faker->name,
         'telefon' => $faker->phoneNumber,
-        'password' => bcrypt(str_random(10)),
+        'password' => bcrypt('korisnik123'),
         'remember_token' => str_random(10),
+    ];
+});
+
+$factory->defineAs(RealEstate\User::class, 'moderator', function ($faker) {
+    return [
+        'username' => $faker->userName,
+        'email' => $faker->safeEmail,
+        'fullname' => $faker->name,
+        'telefon' => $faker->phoneNumber,
+        'password' => bcrypt('moderator123'),
+        'remember_token' => str_random(10),
+        'user_type_id' => 2
     ];
 });
 
@@ -43,7 +55,6 @@ $factory->define(RealEstate\Ad::class, function (Faker\Generator $faker) {
         'woodwork_type_id' => $faker->numberBetween(1,5),
         'furniture_desc_id' => $faker->numberBetween(1,4),
         'documentation' => $faker->numberBetween(0, 1),
-        'user_id' => 3,
         'approvement_status' => 'Approved',
         'note' => $faker->paragraph
     ];
@@ -51,6 +62,21 @@ $factory->define(RealEstate\Ad::class, function (Faker\Generator $faker) {
 
 $factory->define(RealEstate\Image::class, function (Faker\Generator $faker) {
     return [
-        'image_path' => 'http://i.imgur.com/svkcLyz.jpg'
+        'image_path' => $faker->imageUrl(250,190,null,true)
+    ];
+});
+
+$factory->define(RealEstate\Comment::class, function (Faker\Generator $faker) {
+    return [
+        'reported' => $faker->biasedNumberBetween(0,1, function($x) { return 1 - sqrt($x); }),
+        'body' => $faker->paragraph()
+    ];
+});
+
+$factory->define(RealEstate\Appointment::class, function (Faker\Generator $faker) {
+    return [
+        'appointment_time' => $faker->dateTimeBetween("now", "1 month")->setTime($faker->numberBetween(8,20),0,0)->format('Y-m-d H:i:s'),
+        'user_note' => $faker->paragraph(),
+        'status'=>$faker->randomElement(['Scheduled','Pending'])
     ];
 });
