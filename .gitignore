@@ -58,7 +58,6 @@ com_crashlytics_export_strings.xml
 ##########################
 ## IDEA
 ##########################
-.idea
 .inspection
 .codestyles
 ._windows
@@ -133,14 +132,12 @@ build/
 *.tlb
 *.tli
 *.tlh
-*.tmp
 *.tmp_proj
 *.log
 *.vspscc
 *.vssscc
 .builds
 *.pidb
-*.log
 *.scc
 
 # Visual C++ cache files
@@ -259,7 +256,6 @@ $RECYCLE.BIN/
 *.egg
 *.egg-info
 dist/
-build/
 eggs/
 parts/
 var/
