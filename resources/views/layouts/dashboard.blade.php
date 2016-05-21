@@ -12,15 +12,16 @@
             <div class="list-group">
                 @yield('dash-nav')
             </div>
+            @if(session()->has('flash_message'))
+                <div class="alert alert-success">
+                    {{session('flash_message')}}
+                </div>
+            @endif
         </div>
         <div class="col-md-9">
             @yield('dash-content')
         </div>
-        @if(session()->has('flash_message'))
-            <div class="alert alert-success">
-                {{session('flash_message')}}
-            </div>
-        @endif
     </div>
+
 @endsection
 
