@@ -16,7 +16,6 @@ class CheckModeratorPrivileges
      */
     public function handle($request, Closure $next)
     {
-
         if (Auth::guest() || Auth::user()->isPlebs()) {
             abort(401);
         }

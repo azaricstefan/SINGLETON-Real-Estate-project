@@ -85,8 +85,7 @@ class AppointmentController extends Controller
 
     private function moderatorAppointments()
     {
-        $appointments = Appointment::where('agent_id', \Auth::user()->user_id)->where('status', 'Scheduled')->get()->load('ad');
-        $appointments = $appointments->sortBy('appointment_time');
+        $appointments = $this->getModeratorAppointments();
         return view('appointment.my', compact('appointments'));
     }
 
@@ -133,13 +132,12 @@ class AppointmentController extends Controller
 
     private function moderatorCancel(Appointment $appointment)
     {
-        $this->middleware('checkModeratorPrivileges');
         if($appointment->agent_id == \Auth::user()->user_id) {//dodati da admin moze da zavrsava sve termine
             $appointment->status = 'Pending';
             $appointment->agent_id = null;
             $appointment->save();
             flash('Termin '.$appointment->ad->city.' '.$appointment->ad->address.' '.$appointment->appointment_time.' otkazan');
-            return back();
+            return redirect('/appointments/my_appointments');
         }
         return abort(401);
     }
@@ -152,5 +150,15 @@ class AppointmentController extends Controller
             return back();
         }
         return abort(401);
+    }
+
+    /**
+     * @return mixed
+     */
+    private function getModeratorAppointments()
+    {
+        $appointments = Appointment::where('agent_id', \Auth::user()->user_id)->where('status', 'Scheduled')->get()->load('ad');
+        $appointments = $appointments->sortBy('appointment_time');
+        return $appointments;
     }
 }

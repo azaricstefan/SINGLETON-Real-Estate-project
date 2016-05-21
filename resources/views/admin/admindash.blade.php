@@ -13,5 +13,6 @@
     <a href="{{url('appointments/pending')}}" class="list-group-item" id="appointments_pending">Novi zakazani termini&nbsp;@if($modDash['newAppointmentCount'] > 0)<span class="badge">{{$modDash['newAppointmentCount']}}</span>@endif</a>
     <a href="{{url('appointments/my_appointments')}}" class="list-group-item" id="appointments_my_appointments">Moji termini&nbsp;@if($modDash['myAppointmentCount'] > 0)<span class="badge">{{$modDash['myAppointmentCount']}}</span>@endif</a>
     <a href="/users" class="list-group-item" id="users">Pretraga korisnika</a>
+    <a href="{{url('ad/create')}}" class="list-group-item">Dodaj oglas</a>
 @endsection
 
