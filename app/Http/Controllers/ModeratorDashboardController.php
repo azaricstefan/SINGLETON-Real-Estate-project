@@ -13,7 +13,6 @@ class ModeratorDashboardController extends Controller
 {
     public function index()
     {
-        $modDash = getModDash();
-        return view('moderator.moddash',compact('modDash'));
+        return view('moderator.moddash');
     }
 }

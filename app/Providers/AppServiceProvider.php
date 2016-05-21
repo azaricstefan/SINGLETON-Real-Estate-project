@@ -13,7 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer(['admin.admindash','moderator.moddash'], function ($view) {
+            $view->with('modDash',getModDash());
+        });
     }
 
     /**

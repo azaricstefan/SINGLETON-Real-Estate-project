@@ -87,8 +87,7 @@ class AppointmentController extends Controller
     {
         $appointments = Appointment::where('agent_id', \Auth::user()->user_id)->where('status', 'Scheduled')->get()->load('ad');
         $appointments = $appointments->sortBy('appointment_time');
-        $modDash = getModDash();
-        return view('appointment.my', compact('appointments', 'modDash'));
+        return view('appointment.my', compact('appointments'));
     }
 
     public function finish($appointment)
