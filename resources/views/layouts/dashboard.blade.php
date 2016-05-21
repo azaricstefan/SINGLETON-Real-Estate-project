@@ -22,6 +22,5 @@
             @yield('dash-content')
         </div>
     </div>
-
 @endsection
 
