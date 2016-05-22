@@ -5,9 +5,13 @@
     Dodaj novi oglas za prodaju
 @endsection
 
-@section('dash-content')
+@section('headScript')
+    <link href="/fileinput/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+    <script src="/fileinput/js/fileinput.min.js"></script>
+@endsection
 
-        {{Form::open(['url' => url('ad/create') , 'method' => 'post'])}}
+@section('dash-content')
+        {{Form::open(['url' => url('ad/create') , 'method' => 'post', 'files'=>true])}}
         {{Form::label('city', 'Ime grada:')}}
         {{Form::text('city', $value = old('city'))}}
         @if($errors->has('city'))
@@ -26,7 +30,7 @@
             <strong class="alert-warning">{{$errors->first('address')}}</strong>
         @endif<br/>
         {{Form::label('real_estate_type_id', 'Vrsta nekretnine:')}}
-        {{ Form::select('real_estate_type_id', \RealEstate\RealEstateType::helperSelect())}}<br/>
+        {{Form::select('real_estate_type_id', \RealEstate\RealEstateType::helperSelect())}}<br/>
         {{Form::label('ad_type', 'Tip oglasa:')}}
         {{Form::select('ad_type', ['Renting' => 'Izdavanje','Selling' =>'Prodaja'])}}<br/>
         {{Form::label('apartment_type_id', 'Struktura stana:')}}
@@ -88,6 +92,14 @@
         {{Form::select('furniture_desc_id', \RealEstate\FurnitureDescription::helperSelect())}}<br/>
         {{Form::label('note', 'Napomena')}}
         {{Form::textarea('note')}}
+        <div class="form-group">
+            {{Form::label('images','Slike:',['data-toggle'=>'tooltip' ,'title' => 'Shift-Click za vise slika'])}}<sup>?</sup>
+            {!! Form::file('images[]',['id' => 'input-images', 'multiple']) !!}
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+            <strong class="alert-warning"></strong>
+        </div>
         @if($errors->has('note'))
             <strong class="alert-warning">{{$errors->first('note')}}</strong>
         @endif
@@ -100,6 +112,8 @@
     <script>
         $(function () {
             $('#ad_create').addClass('active');
+            $("#input-images").fileinput({'showUpload':false});
+            $('[data-toggle="tooltip"]').tooltip();
         })
     </script>
 @endsection
