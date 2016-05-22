@@ -1,7 +1,12 @@
-@extends('layouts.auth')
+@extends('layouts.bootstrap')
 
 @section('title')
     Dodaj novi oglas za prodaju
+@endsection
+
+@section('headScript')
+    <link href="/fileinput/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+    <script src="/fileinput/js/fileinput.min.js"></script>
 @endsection
 
 @section('content')
@@ -105,4 +110,40 @@
         <br/>
         {{Form::submit('Posalji')}}
         {{Form::close()}}
+
+        <div class="form-group">
+            {{Form::label('Slike')}}
+            {!! Form::file('images[]',['id' => 'input-images', 'multiple', 'class'=>'file-loading']) !!}
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </div>
+
 @endsection
+
+@section('scriptAfterLoad')
+    <script>
+        $("#input-images").fileinput({
+            uploadUrl: "/ad/{{$ad->ad_id}}/images/upload",
+            deleteUrl: "/ad/{{$ad->ad_id}}/images/delete",
+            minFileCount: 1,
+            initialPreview:[
+                @foreach($ad->images as $image)
+                        "{{ url($image->image_path)}}",
+                @endforeach
+            ],
+            initialPreviewAsData: true,
+            initialPreviewFileType: 'image',
+            overwriteInitial: false,
+            initialPreviewConfig:[
+                    @foreach($ad->images as $image)
+                {
+                    key:{{$image->image_id}},
+                },
+                @endforeach
+            ],
+            uploadExtraData: {_token: "{{csrf_token()}}"}
+        });
+    </script>
+@endsection
+

@@ -14,6 +14,46 @@ use RealEstate\Image;
 
 class AdController extends Controller
 {
+
+    public function ajaxImageUpload(Ad $ad)
+    {
+        //Ako zahtev nije ajax redirect back
+        if(!request()->ajax())return back();
+
+        //Dohvatamo prvu(i jedinu sliku jer plugin salje jednu po jednu sliku)
+        $image = request()->images[0];
+
+        //Validacija slike
+        $rules = array('image' => 'required|image');
+        $data = array('image' => $image);
+        $validator = Validator::make($data,$rules);
+
+        //Ako je validacija prosla...
+        if($validator->passes())
+        {
+            //Pamtimo sliku
+            $destinationPath = 'storage/ad_images';
+            $filename =time().'_' .str_random(5).'_'. $image->getClientOriginalName();
+            $image->move($destinationPath, $filename);
+            $image = new Image();
+            $image->image_path = '/storage/ad_images/'.$filename;
+            $ad->images()->save($image);
+
+            //Generisemo JSON odgovor za plugin
+            $full_img_path = url($image->image_path);
+            return response()->json([
+                'initialPreview' => ["$full_img_path"],
+                'initialPreviewConfig' => [['key' => "$image->image_id"]]
+            ]);
+        }
+        else{
+            return response()->json([
+                'error' => 'Ups nesto nije okej sa slikom'
+            ]);
+        }
+
+    }
+
     private function getValidatorForImages(){
         $uploaded_images = request()->images;
         $rules = array('hasImages' => 'required|accepted' , 'count' => 'min:1');
@@ -271,7 +311,5 @@ class AdController extends Controller
         request()->flash();
         return view('ad.search', compact("ads"));
     }
-
-
 }
 

@@ -58,6 +58,8 @@ Route::get('ad/{ad}/approve', 'ModeratorController@approveAd')->middleware(['ifN
 Route::get('ad/{ad}/deny', 'ModeratorController@denyAd')->middleware(['ifNotLoggedInGoLogIn', 'checkModeratorPrivileges']);
 Route::get('ad/{ad}/delete', 'AdController@delete')->middleware('ifNotLoggedInGoLogIn');
 Route::get('search' ,'AdController@displayAds');
+Route::post('ad/{ad}/images/upload', 'AdController@ajaxImageUpload');
+//Route::post('ad/{ad/images/delete');
 
 Route::get('myads','AdController@myAds')->middleware('ifNotLoggedInGoLogIn');
 
