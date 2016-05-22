@@ -24,7 +24,7 @@ elixir(function(mix) {
 		.scripts([
 			'../bower/jquery/dist/jquery.min.js',
 			'../bower/bootstrap-sass/assets/javascripts/bootstrap.min.js'
-		], './public/js/merged/app.min.js'); //ovde stavi sve zajedno
+		], '/public/js/merged/app.min.js'); //ovde stavi sve zajedno
 });
 
 
