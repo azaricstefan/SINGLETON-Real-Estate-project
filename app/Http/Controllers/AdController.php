@@ -276,6 +276,10 @@ class AdController extends Controller
             abort(504);
         }
         if(Auth::user()->user_id == $ad->user_id || !Auth::user()->isPlebs()){
+            foreach ($ad->images as $image)
+            {
+                $image->deleteMyStorage();
+            }
             $ad->delete();
             return redirect('dashboard');
         }
