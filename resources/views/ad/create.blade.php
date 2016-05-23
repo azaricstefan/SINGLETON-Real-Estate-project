@@ -94,7 +94,7 @@
         {{Form::textarea('note')}}
         <div class="form-group">
             {{Form::label('images','Slike:',['data-toggle'=>'tooltip' ,'title' => 'Shift-Click za vise slika'])}}<sup>?</sup>
-            {!! Form::file('images[]',['id' => 'input-images', 'multiple']) !!}
+            {!! Form::file('images[]',['id' => 'input-images', 'multiple', 'accept' => 'image/x-png, image/gif, image/jpeg']) !!}
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
