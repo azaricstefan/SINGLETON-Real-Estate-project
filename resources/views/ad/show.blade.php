@@ -16,7 +16,7 @@
             |<a href="{{$ad->ad_id}}/approve">Odobri</a>| <a href="{{$ad->ad_id}}/deny">Zabrani</a>
         @endif
     @endif
-    | <a href="{{url('appointments/'.$ad->ad_id.'/all7days')}}">Zakazi termin</a>
+    | <a href="{{url('appointments/'.$ad->ad_id.'/all')}}">Zakazi termin</a>
     @if($ad->approvement_status == "Pending")
         <br/><span id="approvement_status_msg">Oglas jos nije odobren!</span><br/>
     @elseif($ad->approvement_status == "Denied")

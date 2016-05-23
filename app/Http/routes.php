@@ -70,7 +70,7 @@ Route::get('comment/{id}/delete', 'CommentController@delete')->middleware(['ifNo
 Route::get('comment/{comment}/approve', 'CommentController@approveComment')->middleware(['ifNotLoggedInGoLogIn', 'checkModeratorPrivileges']);
 
 /*Appointment routes*/
-Route::get('appointments/{ad}/all7days','AppointmentController@all7days')->middleware('ifNotLoggedInGoLogIn')->middleware('adPending');
+Route::get('appointments/{ad}/all','AppointmentController@all')->middleware('ifNotLoggedInGoLogIn')->middleware('adPending');
 Route::post('appointment/{ad}', 'AppointmentController@reserve')->middleware('ifNotLoggedInGoLogIn');
 Route::get('appointment/{appointment}/schedule', 'AppointmentController@schedule')->middleware(['ifNotLoggedInGoLogIn', 'checkModeratorPrivileges']);
 Route::get('appointments/my_appointments', 'AppointmentController@myAppointments')->middleware('ifNotLoggedInGoLogIn');
