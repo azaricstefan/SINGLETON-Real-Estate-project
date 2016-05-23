@@ -10,7 +10,6 @@
 @endsection
 
 @section('content')
-
         {{Form::open(['method' => 'post'])}}
         {{ method_field('PATCH') }}
         {{Form::label('city', 'Ime grada:')}}
@@ -110,7 +109,7 @@
         <br/>
         {{Form::submit('Posalji')}}
         {{Form::close()}}
-
+        <hr>
         <div class="form-group">
             {{Form::label('Slike')}}
             {!! Form::file('images[]',['id' => 'input-images', 'multiple', 'class'=>'file-loading']) !!}
@@ -138,11 +137,18 @@
             initialPreviewConfig:[
                     @foreach($ad->images as $image)
                 {
-                    key:{{$image->image_id}},
+                    key:{{$image->image_id}},//ignorisi gresku sve je ok kada se stranica renederuje
                 },
                 @endforeach
             ],
-            uploadExtraData: {_token: "{{csrf_token()}}"}
+            uploadExtraData: {_token: "{{csrf_token()}}"},
+            deleteExtraData: {_token: "{{csrf_token()}}"}
+        }).on("filepredelete", function(jqXHR) {
+            var abort = true;
+            if (confirm("Da li ste sigurni da zelite da obrisete sliku?")) {
+                abort = false;
+            }
+            return abort; // you can also send any data/object that you can receive on `filecustomerror` event
         });
     </script>
 @endsection

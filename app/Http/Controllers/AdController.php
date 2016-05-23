@@ -51,6 +51,31 @@ class AdController extends Controller
                 'error' => 'Ups nesto nije okej sa slikom'
             ]);
         }
+    }
+
+    public function ajaxImageDelete(Ad $ad)
+    {
+        //Ako zahtev nije ajax redirect back
+        if(!request()->ajax())return back();
+
+        $image = Image::find(request()->key);
+
+        if($image == null){ return response()->json([
+                 'error' => 'Fatal Error: Delete key nije validan!'
+             ]);
+        }
+
+        if($ad->images()->count() == 1){
+            return response()->json([
+                'error' => 'Morate imati bar 1. sliku'
+            ]);
+        }
+
+        $image->deleteMyStorage();
+        $image->delete();
+
+        return response()->json([
+        ]);
 
     }
 
