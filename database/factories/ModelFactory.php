@@ -62,7 +62,7 @@ $factory->define(RealEstate\Ad::class, function (Faker\Generator $faker) {
 
 $factory->define(RealEstate\Image::class, function (Faker\Generator $faker) {
     return [
-        'image_path' => $faker->imageUrl(250,190,null,true)
+        'image_path' => $faker->imageUrl(720,480,null,true)
     ];
 });
 
