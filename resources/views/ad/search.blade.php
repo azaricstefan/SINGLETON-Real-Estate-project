@@ -1,14 +1,11 @@
-@extends('layouts.master')
+@extends('layouts.bootstrap')
 
 @section('title')
     Oglasi
 @endsection
 
-@section('head')
+@section('headScript')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-@endsection
-
-@section('head')
 @endsection
 
 
@@ -148,7 +145,7 @@
         <div class="col-md-6 col-md-offset-3">{!! $ads->appends(request()->except("page"))->render()!!}</div>
     </div>
 
-    @section('script')
+    @section('scriptAfterLoad')
         <script>
             $(document).ready(function(){
                 $("#hider").click(function(e){

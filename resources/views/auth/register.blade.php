@@ -38,6 +38,8 @@
                     <label>Potvrda lozinke</label>
                     <input type="password" name="password_confirmation" class="form-control"><hr/>
                     <input type="submit" value="Register" class="form-control">
+
+                    <a href="{{url('')}}" class="btn btn-info" role="button">Odustani</a>
                 </div>
             </form>
         </div>
