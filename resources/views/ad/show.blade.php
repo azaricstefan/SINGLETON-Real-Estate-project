@@ -1,7 +1,11 @@
-@extends('dashboard.layout')
+@extends('layouts.bootstrap')
 
 @section('title')
     Oglas: {{$ad->ad_id}}
+@endsection
+
+@section('headScript')
+    <link href="/lightbox/css/lightbox.css" rel="stylesheet"/>
 @endsection
 
 @section('content')
@@ -12,7 +16,7 @@
             |<a href="{{$ad->ad_id}}/approve">Odobri</a>| <a href="{{$ad->ad_id}}/deny">Zabrani</a>
         @endif
     @endif
-    | <a href="{{url('appointments/'.$ad->ad_id.'/all7days')}}">Zakazi termin</a>
+    | <a href="{{url('appointments/'.$ad->ad_id.'/all')}}">Zakazi termin</a>
     @if($ad->approvement_status == "Pending")
         <br/><span id="approvement_status_msg">Oglas jos nije odobren!</span><br/>
     @elseif($ad->approvement_status == "Denied")
@@ -70,6 +74,14 @@
     {{Form::label(null, $ad->furnitureDescription->description)}}<br/>
     {{Form::label(null, 'Napomena:')}}
     {{Form::label(null, $ad->note)}}<br/>
+    {{Form::label('Slike')}}
+    <div>
+        @foreach($ad->images as $image)
+            <a href="{{$image->image_path}}" data-lightbox="galerija">
+                <img src="{{$image->image_path}}" class="img-thumbnail" alt="{{$ad->getName()}}" width="250" />
+            </a>
+        @endforeach
+    </div>
     @foreach($ad->comments as $comment)
         <fieldset>
             <legend>{{$comment->user->username}}
@@ -93,4 +105,8 @@
     </table>
     {{Form::submit('Posalji Komentar')}}
     {{Form::close()}}
+@endsection
+
+@section('scriptAfterLoad')
+    <script src="/lightbox/js/lightbox.js"></script>
 @endsection

@@ -12,7 +12,7 @@ use RealEstate\Http\Requests;
 
 class AppointmentController extends Controller
 {
-    public function all7days(Ad $ad)
+    public function all(Ad $ad)
     {
         $today = Carbon::now();
         //dd($today->toDateTimeString());

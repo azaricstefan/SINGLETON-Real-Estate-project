@@ -4,16 +4,105 @@ namespace RealEstate\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
 use RealEstate\HasAddition;
 use RealEstate\Http\Requests;
 use RealEstate\Ad;
 use Auth;
+use RealEstate\Image;
 
 class AdController extends Controller
 {
+
+    public function ajaxImageUpload(Ad $ad)
+    {
+        //Ako zahtev nije ajax redirect back
+        if(!request()->ajax())return back();
+
+        //Dohvatamo prvu(i jedinu sliku jer plugin salje jednu po jednu sliku)
+        $image = request()->images[0];
+
+        //Validacija slike
+        $rules = array('image' => 'required|image');
+        $data = array('image' => $image);
+        $validator = Validator::make($data,$rules);
+
+        //Ako je validacija prosla...
+        if($validator->passes())
+        {
+            //Pamtimo sliku
+            $destinationPath = 'storage/ad_images';
+            $filename =time().'_' .str_random(5).'_'. $image->getClientOriginalName();
+            $image->move($destinationPath, $filename);
+            $image = new Image();
+            $image->image_path = '/storage/ad_images/'.$filename;
+            $ad->images()->save($image);
+
+            //Generisemo JSON odgovor za plugin
+            $full_img_path = url($image->image_path);
+            return response()->json([
+                'initialPreview' => ["$full_img_path"],
+                'initialPreviewConfig' => [['key' => "$image->image_id"]]
+            ]);
+        }
+        else{
+            return response()->json([
+                'error' => 'Ups nesto nije okej sa slikom'
+            ]);
+        }
+    }
+
+    public function ajaxImageDelete(Ad $ad)
+    {
+        //Ako zahtev nije ajax redirect back
+        if(!request()->ajax())return back();
+
+        $image = Image::find(request()->key);
+
+        if($image == null){ return response()->json([
+                 'error' => 'Fatal Error: Delete key nije validan!'
+             ]);
+        }
+
+        if($ad->images()->count() == 1){
+            return response()->json([
+                'error' => 'Morate imati bar 1. sliku'
+            ]);
+        }
+
+        $image->deleteMyStorage();
+        $image->delete();
+
+        return response()->json([
+        ]);
+
+    }
+
+    private function getValidatorForImages(){
+        $uploaded_images = request()->images;
+        $rules = array('hasImages' => 'required|accepted' , 'count' => 'min:1');
+        $data_for_validator = array('hasImages' => request()->hasFile('images'), 'count' => count($uploaded_images));
+        $messages=['hasImages.accepted' =>'Morate izabrati sliku', 'count.min' => 'Morate izabrati bar 1. sliku'];
+        $index = 0;
+        foreach ($uploaded_images as $image)
+        {
+            $rules['image'.$index] = 'required|image';
+            $data_for_validator['image'.$index] = $image;
+            $index++;
+        }
+        $validator = Validator::make($data_for_validator, $rules ,$messages);
+        return $validator;
+    }
+
     public function create(Request $request)
     {
         $this->validateAd($request);
+        $imageValidator = $this->getValidatorForImages();
+        if($imageValidator->fails())
+        {
+            return back()->withInput()->withErrors($imageValidator);
+        }
 
         $ad = new Ad();
         $ad->city = $request->city;
@@ -38,7 +127,20 @@ class AdController extends Controller
         $ad->approvement_status = 'Pending';
         $ad->furniture_desc_id = $request->furniture_desc_id;
 
-        \DB::transaction(function() use ($request, $ad){
+        //Slike
+        $moved_images = array();
+        $images = $request->images;
+        $destinationPath = 'storage/ad_images';
+        foreach($images as $image)
+        {
+            $filename =time().'_' .str_random(5).'_'. $image->getClientOriginalName();
+            $image->move($destinationPath, $filename);
+            $image = new Image();
+            $image->image_path = '/storage/ad_images/'.$filename;
+            array_push($moved_images,$image);
+        }
+
+        \DB::transaction(function() use ($request, $ad, $moved_images){
             $ad->save();
             if (isset($request->addition_id)) {
                 foreach ($request->addition_id as $addition) {
@@ -48,7 +150,9 @@ class AdController extends Controller
                     $has_addition->save();
                 }
             }
+            $ad->images()->saveMany($moved_images);
         });
+
         return redirect('myads');
     }
 
@@ -146,7 +250,7 @@ class AdController extends Controller
      */
     private function validateAd(Request $request)
     {
-        $this->validate($request, [
+        $rules = [
             'city' => 'required|max:40',
             'municipality' => 'required|max:40',
             'address' => 'required|max:80',
@@ -157,7 +261,12 @@ class AdController extends Controller
             'num_of_bathrooms' => 'required',
             'construction_year' => 'required',
             'note' => 'max:300',
-        ]);
+        ];
+
+        $this->validate($request, $rules);
+
+
+
     }
 
     public function delete($ad)
@@ -167,6 +276,10 @@ class AdController extends Controller
             abort(504);
         }
         if(Auth::user()->user_id == $ad->user_id || !Auth::user()->isPlebs()){
+            foreach ($ad->images as $image)
+            {
+                $image->deleteMyStorage();
+            }
             $ad->delete();
             return redirect('dashboard');
         }
@@ -227,7 +340,5 @@ class AdController extends Controller
         request()->flash();
         return view('ad.search', compact("ads"));
     }
-
-
 }
 
