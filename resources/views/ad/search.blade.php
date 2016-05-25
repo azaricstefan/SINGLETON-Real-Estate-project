@@ -112,7 +112,7 @@
                 </div>
             <div class="row">
                 <div class="col-md-4">
-                    {!! Form::submit("Pretrazi", ["class" => "btn btn-default"]) !!}
+                    {!! Form::submit("Pretraži", ["class" => "btn btn-default"]) !!}
                     <a href="/search" class="btn btn-default">Resetuj</a>
                 </div>
             </div>
@@ -149,15 +149,15 @@
         <div class="col-md-6 col-md-offset-3">{!! $ads->appends(request()->except("page") )->render()!!}</div>
     </div>
 
-    @section('scriptAfterLoad')
-        <script>
-            $(document).ready(function(){
-                $("#hider").click(function(e){
-                    e.preventDefault();
-                    $("#search-box").toggle(300);
-                });
-                $("#search-box").hide();
+@endsection
+@section('scriptAfterLoad')
+    <script>
+        $(document).ready(function(){
+            $("#hider").click(function(e){
+                e.preventDefault();
+                $("#search-box").toggle(300);
             });
-        </script>
-    @endsection
+            $("#search-box").hide();
+        });
+    </script>
 @endsection
