@@ -4,7 +4,12 @@
     Register
 @endsection
 
+@section('headScript')
+    <link href="/fileinput/css/button.css" media="all" rel="stylesheet" type="text/css" />
+@endsection
+
 @section('content')
+
     <div class="row">
         <div class="col-md-3 col-md-offset-3">
             <form method="POST" action="{{url('register')}}" role="form">
@@ -37,9 +42,15 @@
                     @endif
                     <label>Potvrda lozinke</label>
                     <input type="password" name="password_confirmation" class="form-control"><hr/>
-                    <input type="submit" value="Register" class="form-control">
 
-                    <a href="{{url('')}}" class="btn btn-info" role="button">Odustani</a>
+                    <div class = "col-md-4-inline">
+                        <input type="submit" value="Registracija" class="form-control btn-default">
+                    </div>
+
+                    <div class="btn-group btn-group-justified">
+                        <a href="{{url('')}}" class="btn btn-default">Odustani</a>
+                    </div>
+
                 </div>
             </form>
         </div>
