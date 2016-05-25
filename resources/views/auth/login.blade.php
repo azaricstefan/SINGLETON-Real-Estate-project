@@ -4,6 +4,10 @@
     Log in
 @endsection
 
+@section('headScript')
+    <link href="/fileinput/css/button.css" media="all" rel="stylesheet" type="text/css" />
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-md-3 col-md-offset-3">
@@ -14,7 +18,7 @@
                     <input type="text" name="username" class="form-control"><br/>
                     <label>Pasword</label>
                     <input type="password" name="password" class="form-control"> <br/>
-                    <input type="submit" value="Login" class="form-control">
+                    <input type="submit" value="Login" class="form-control btn-default">
                 </form>
             </div>
         </div>
