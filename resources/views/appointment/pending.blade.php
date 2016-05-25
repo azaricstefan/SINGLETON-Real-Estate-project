@@ -4,6 +4,10 @@
     Novi zakazani termini
 @endsection
 
+@section('headScript')
+    <link href="/css/button.css" media="all" rel="stylesheet" type="text/css" />
+@endsection
+
 @section('dash-content')
     <h1 class="page-header">Novi zakazani termini</h1><br/>
     <div class="table-responsive">
@@ -18,7 +22,7 @@
                 <tr>
                     <td>{{Form::label(null, $pendingAppointment->ad->city.' '.$pendingAppointment->ad->address)}}</td>
                     <td>{{Form::label(null, $pendingAppointment->appointment_time)}}</td>
-                    <td><a href="{{url('appointment/'.$pendingAppointment->appointment_id.'/schedule')}}">Preuzmi termin</a></td>
+                    <td><a href="{{url('appointment/'.$pendingAppointment->appointment_id.'/schedule')}}" class = "btn btn-default-reverse">Preuzmi termin</a></td>
                 </tr>
             @endforeach
         </table>

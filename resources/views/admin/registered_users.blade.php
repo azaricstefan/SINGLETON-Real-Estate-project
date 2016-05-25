@@ -4,6 +4,11 @@
     Dodaj moderatora
 @endsection
 
+@section('headScript')
+<link href="/css/button.css" media="all" rel="stylesheet" type="text/css" />
+<link href="/css/confirm.css" media="all" rel="stylesheet" type="text/css" />
+@endsection
+
 @section('dash-content')
 
 
@@ -22,7 +27,7 @@
                 ["placeholder" => 'Izaberite kategoriju', "id" =>"select_role_type"]) !!}
             </td>
             <td>
-                {!! Form::submit("Filtriraj") !!}
+                {!! Form::submit("Filtriraj", ["class" => "btn btn-default"]) !!}
             </td>
             <td></td>
             <td></td>
@@ -50,7 +55,7 @@
                     <td>{{$user->registration_date}}</td>
                     <td>{{$user->last_login}}</td>
                     @if($user->user_type_id != 1)
-                        <td><a href="{{url('admin/delete_user',[$user->user_id])}}" class='confirmation'>Obrisi</a></td>
+                        <td><a href="{{url('admin/delete_user',[$user->user_id])}}" class='btn confirm'>Obrisi</a></td>
                     @else
                         <td></td>
                     @endif

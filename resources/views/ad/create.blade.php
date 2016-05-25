@@ -6,6 +6,7 @@
 @endsection
 
 @section('headScript')
+    <link href="/css/button.css" media="all" rel="stylesheet" type="text/css" />
     <link href="/fileinput/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
     <script src="/fileinput/js/fileinput.min.js"></script>
 @endsection
@@ -104,7 +105,7 @@
             <strong class="alert-warning">{{$errors->first('note')}}</strong>
         @endif
         <br/>
-        {{Form::submit('Pošalji')}}
+        {{Form::submit('Pošalji', ["class" => "btn btn-default"])}}
         {{Form::close()}}
 @endsection
 
