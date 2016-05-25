@@ -39,9 +39,17 @@
                 @endif
         </div>
     </nav>
-        <div class="container-fluid">
-            @yield('content')
-        </div>
+
+    <div class="container-fluid">
+        @yield('content')
+    </div>
+
+    <hr>
+    <footer style="text-align:center;">
+	    {{--TODO: ovde može da se doda link ka fb strani agencije npr...--}}
+	    <p>Copyright by SINGLETON</p>
+	    <p>Contact information: <a href="mailto:singleton@najjaci.com">singleton@najjaci.com</a>.</p>
+    </footer>
     @yield('scriptAfterLoad')
     </body>
 </html>
