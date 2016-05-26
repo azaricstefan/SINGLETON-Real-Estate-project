@@ -4,6 +4,21 @@
     Administrator
 @endsection
 
+@section('nav-bar-header')
+    @if(Auth::guest())
+        <ul class="nav navbar-nav">
+            <li><a href="{{url('/')}}">Početna strana</a></li>
+            <li><a href="{{url('search')}}">Pretraži oglase</a></li>
+        </ul>
+    @else
+        <ul class="nav navbar-nav">
+            <li><a href="{{url('/')}}">Početna strana</a></li>
+            <li class="active"><a href="{{url('dashboard/admin')}}">Dashboard</a></li>
+            <li><a href="{{url('search')}}">Pretraži oglase</a></li>
+        </ul>
+    @endif
+@endsection
+
 @section('dash-nav')
     <a href="/admin/add_moderator" class="list-group-item" id="add_moderator">Novi moderatorski nalog</a>
     <a href="/admin/registered_users" class="list-group-item" id="registered_users">Pregled korisnickih naloga</a>

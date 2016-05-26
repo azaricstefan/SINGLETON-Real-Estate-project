@@ -6,6 +6,25 @@
 
 @section('headScript')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <link href="/css/button.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/text.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/pozadina.css" media="all" rel="stylesheet" type="text/css" />
+@endsection
+
+
+@section('nav-bar')
+	@if(Auth::guest())
+		<ul class="nav navbar-nav">
+			<li><a href="{{url('/')}}">Početna strana</a></li>
+            <li class="active"><a href="{{url('search')}}">Pretraži oglase</a></li>
+		</ul>
+	@else
+		<ul class="nav navbar-nav">
+			<li><a href="{{url('/')}}">Početna strana</a></li>
+			<li><a href="{{url('dashboard')}}">Dashboard</a></li>
+            <li class="active"><a href="{{url('search')}}">Pretraži oglase</a></li>
+		</ul>
+	@endif
 @endsection
 
 
@@ -110,8 +129,8 @@
                 </div>
             <div class="row">
                 <div class="col-md-4">
-                    {!! Form::submit("Pretrazi", ["class" => "btn btn-primary"]) !!}
-                    <a href="/search" class="btn btn-default">Reset</a>
+                    {!! Form::submit("Pretraži", ["class" => "btn btn-default"]) !!}
+                    <a href="/search" class="btn btn-default">Resetuj</a>
                 </div>
             </div>
             {!! Form::close() !!}
@@ -119,7 +138,7 @@
     </div>
     <div class="row">
         <div class="col-md-2 col-md-offset-2 col-md">
-            <a id="hider" href="" class="btn btn-info">Toogle Search</a>
+            <a id="hider" href="" class="btn btn-default">Toogle Search</a>
         </div>
     </div>
     <div class="row">
@@ -128,32 +147,34 @@
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <article>
-                    <h3>{{$ad->getName()}}</h3>
-                    <img class="img-responsive" style="float:left; width:250px" src="{{$ad->images()->first()==null?'#':$ad->images()->first()->image_path}}" alt="{{$ad->getName()}}" />
-                    <div class="body">
+                    <h3><div class = "naslov">{{$ad->getName()}}</div></h3>
+                    <img class="img-responsive slika" style="float:left; width:250px" src="{{$ad->images()->first()==null?'#':$ad->images()->first()->image_path}}" alt="{{$ad->getName()}}" />
+                    <div class="body pasus">
                         {{$ad->description}}
                     </div>
+                    <a href="/ad/{{$ad->ad_id}}" class = "btn btn-default-reverse-text">Pogledaj oglas</a>
                 </article>
                 <div style="clear:both"></div>
-                <a href="/ad/{{$ad->ad_id}}">Pogledaj oglas</a>
+                <!---<a href="/ad/{{$ad->ad_id}}" class = "btn btn-default-reverse">Pogledaj oglas</a>--->
+                <hr>
             </div>
             <div class="col-md-3"></div>
         </div>
     @endforeach
     </div>
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">{!! $ads->appends(request()->except("page"))->render()!!}</div>
+        <div class="col-md-6 col-md-offset-3">{!! $ads->appends(request()->except("page") )->render()!!}</div>
     </div>
 
-    @section('scriptAfterLoad')
-        <script>
-            $(document).ready(function(){
-                $("#hider").click(function(e){
-                    e.preventDefault();
-                    $("#search-box").toggle(300);
-                });
-                $("#search-box").hide();
+@endsection
+@section('scriptAfterLoad')
+    <script>
+        $(document).ready(function(){
+            $("#hider").click(function(e){
+                e.preventDefault();
+                $("#search-box").toggle(300);
             });
-        </script>
-    @endsection
+            $("#search-box").hide();
+        });
+    </script>
 @endsection

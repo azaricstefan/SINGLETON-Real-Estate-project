@@ -21,19 +21,18 @@ class CommentController extends Controller
         $comment->user_id = \Auth::user()->user_id;
 
         $comment->save();
-        return redirect()->back();
+        return redirect("ad/$request->ad_id");//redirect->back() ne moze vise ukoliko je korisnik dosao ovde direktno sa login stranice(sada moguce zbog redirect->intended())
     }
 
     public function report(Comment $id)
     {
         $id->reported = 1;
         $id->save();
-        return redirect()->back();
+        return redirect("ad/".request()->ad_id);
     }
 
     public function delete(Comment $id)
     {
-        
         Comment::destroy($id->comment_id);
         return redirect()->back();
     }

@@ -1,0 +1,11 @@
+.confirm{
+    background-color: #ffffff;
+    color : #b20000;
+    border: 1px solid #b20000;
+    border-radius: 6px;
+}
+
+.confirm:hover{
+    background-color: #b20000;
+    color : #ffffff;
+}

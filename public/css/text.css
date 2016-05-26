@@ -1,0 +1,44 @@
+.pasus{
+    margin-left: 20px;
+    color : #000000;
+    margin-top: 15px;
+    margin-right: 30px;
+}
+
+.naslov{
+    color : #000000;
+    margin-left: 15px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.slika{
+    margin-left : 15px;
+    margin-right: 15px;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    border-radius: 4%;
+}
+
+.slika:hover{
+    -webkit-filter: grayscale(50%);
+    filter: grayscale(25%);
+}
+
+.btn-default-reverse-text{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background-color: #ffffff;
+    color : #b20000;
+    border: 1px solid #b20000;
+    border-radius: 6px;
+}
+
+.btn-default-reverse-text:hover{
+    background-color: #b20000;
+    color : #ffffff;
+}
+
+.numeracija {
+    background-color: #b20000;
+}

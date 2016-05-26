@@ -6,6 +6,7 @@
 @endsection
 
 @section('headScript')
+    <link href="/css/button.css" media="all" rel="stylesheet" type="text/css" />
     <link href="/fileinput/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
     <script src="/fileinput/js/fileinput.min.js"></script>
 @endsection
@@ -18,7 +19,7 @@
             <strong class="alert-warning">{{$errors->first('city')}}</strong>
         @endif
         <br/>
-        {{Form::label('municipality', 'Ime opstine:')}}
+        {{Form::label('municipality', 'Ime opštine:')}}
         {{Form::text('municipality', $value = old('municipality'))}}
         @if($errors->has('municipality'))
             <strong class="alert-warning">{{$errors->first('municipality')}}</strong>
@@ -46,7 +47,7 @@
         @endif
         <br/>
         {{Form::label('floor_area', 'Kvadratura:')}}
-        {{Form::text('floor_area', $value = old('floor_area'))}}
+        {{Form::number('floor_area', $value = old('floor_area'))}}
         @if($errors->has('floor_area'))
             <strong class="alert-warning">{{$errors->first('floor_area')}}</strong>
         @endif
@@ -58,24 +59,24 @@
         @endif
         <br/>
         {{Form::label('num_of_rooms', 'Broj soba:')}}
-        {{Form::input('text', 'num_of_rooms')}}
+        {{Form::number('num_of_rooms', $value = old('num_of_rooms'))}}
         @if($errors->has('num_of_rooms'))
             <strong class="alert-warning">{{$errors->first('num_of_rooms')}}</strong>
         @endif
         <br/>
         {{Form::label('text', 'Broj kupatila')}}
-        {{Form::input('text', 'num_of_bathrooms')}}
+        {{Form::number('num_of_bathrooms', $value = old('num_of_bathrooms'))}}
         @if($errors->has('num_of_bathrooms'))
             <strong class="alert-warning">{{$errors->first('num_of_bathrooms')}}</strong>
         @endif
         <br/>
         {{Form::label('construction_year',' Godina izgradnje:')}}
-        {{Form::input('text', 'construction_year')}}
+        {{Form::number('construction_year', $value = old('construction_year'))}}
         @if($errors->has('construction_year'))
             <strong class="alert-warning">{{$errors->first('construction_year')}}</strong>
         @endif
         <br/>
-        {{Form::label('documentation', 'Uknjizenost')}}
+        {{Form::label('documentation', 'Uknjiženost')}}
         {{Form::select('documentation', ['1' => 'Da' , '0' => 'Ne'])}}<br/>
         {{Form::label('heating_option_id', 'Grejanje')}}
         {{Form::select('heating_option_id', \RealEstate\HeatingOption::helperSelect())}}<br/>
@@ -88,12 +89,12 @@
         {{Form::select('parking_option_id', \RealEstate\ParkingOption::helperSelect())}}<br/>
         {{Form::label('woodwork_type_id','Drvenarija')}}
         {{Form::select('woodwork_type_id', \RealEstate\WoodworkType::helperSelect())}}<br/>
-        {{Form::label('furniture_desc_id','Namestenost:')}}
+        {{Form::label('furniture_desc_id','Nameštenost:')}}
         {{Form::select('furniture_desc_id', \RealEstate\FurnitureDescription::helperSelect())}}<br/>
         {{Form::label('note', 'Napomena')}}
         {{Form::textarea('note')}}
         <div class="form-group">
-            {{Form::label('images','Slike:',['data-toggle'=>'tooltip' ,'title' => 'Shift-Click za vise slika'])}}<sup>?</sup>
+            {{Form::label('images','Slike:',['data-toggle'=>'tooltip' ,'title' => 'Shift-Click za više slika'])}}<sup>?</sup>
             {!! Form::file('images[]',['id' => 'input-images', 'multiple', 'accept' => 'image/x-png, image/gif, image/jpeg']) !!}
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -104,7 +105,7 @@
             <strong class="alert-warning">{{$errors->first('note')}}</strong>
         @endif
         <br/>
-        {{Form::submit('Posalji')}}
+        {{Form::submit('Pošalji', ["class" => "btn btn-default"])}}
         {{Form::close()}}
 @endsection
 

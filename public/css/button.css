@@ -1,0 +1,28 @@
+.btn-default{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #b20000;
+    color : #ffffff;
+    border-radius: 6px;
+}
+
+.btn-default:hover{
+    border: 1px solid #b20000;
+    background-color: #ffffff;
+    color : #b20000;
+}
+
+.btn-default-reverse{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 12px;
+    background-color: #ffffff;
+    color : #b20000;
+    border: 1px solid #b20000;
+    border-radius: 6px;
+}
+
+.btn-default-reverse:hover{
+    background-color: #b20000;
+    color : #ffffff;
+}
