@@ -5,7 +5,7 @@
 @endsection
 
 
-@section('nav-bar-header')
+@section('nav-bar')
     @if(Auth::guest())
         <ul class="nav navbar-nav">
             <li><a href="{{url('/')}}">Početna strana</a></li>

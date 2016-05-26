@@ -8,6 +8,7 @@ Homestead.json
 .env
 _ide_helper.php
 composer.phar
+/Faze
 
 ### PhpStorm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
