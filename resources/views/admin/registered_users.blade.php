@@ -32,12 +32,10 @@
                 {!! Form::select("searchOptionRoleType", ["1" => 'Administrator' ,'2' =>"Moderator" , '3' => "Klijent"], null ,
                 ["placeholder" => 'Izaberite kategoriju', "id" =>"select_role_type"]) !!}
             </td>
-            <td>
+            <td colspan="4" style="vertical-align: bottom; position: relative; top: 9px;text-align: left;">
                 {!! Form::submit("Filtriraj", ["class" => "btn btn-default"]) !!}
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+
         {!! Form::close() !!}
         </tr>
         <tr>

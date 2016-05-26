@@ -26,7 +26,7 @@
                     {!! Form::label("criteria" , "Trazi:") !!}
                     {!! Form::text("searchString",null, ["id" => "text_like", "class" => "form-control"])!!}
                 </td>
-                <td>
+                <td colspan="4" style="vertical-align: bottom; position: relative; top: 9px;text-align: left;">
                     {!! Form::submit("Filtriraj",array('class'=>'btn btn-default')) !!}
                 </td>
 
