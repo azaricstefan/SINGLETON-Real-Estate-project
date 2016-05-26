@@ -43,7 +43,7 @@
             {{Form::select('floor_desc', \RealEstate\FloorDescription::helperSelect(), $ad->floor_desc, array('class'=>'form-control'))}}<br/>
         @endif
         {{Form::label('price', 'Cena nekretnine:')}}
-        {{Form::text('price', $value = $ad->price), ["class" => "form-control"]}}
+        {{Form::text('price', $value = $ad->price, ["class" => "form-control"])}}
         @if($errors->has('price'))
             <strong class="alert-warning">{{$errors->first('price')}}</strong>
         @endif
