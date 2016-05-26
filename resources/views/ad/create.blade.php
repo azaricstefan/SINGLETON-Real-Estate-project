@@ -13,12 +13,12 @@
 @endsection
 
 @section('dash-content')
-    <div class = "forma col-md-6 col-md-offset-3>
+    <div class = "forma col-md-6">
         {{Form::open(['url' => url('ad/create') , 'method' => 'post', 'files'=>true])}}
         {{Form::label('city', 'Ime grada:')}}
         {{Form::text('city', $value = old('city'), ["class" => "form-control"])}}
         @if($errors->has('city'))
-            <strong class="alert-warning">{{$errors->first('city')}}</strong>
+                <strong class="alert-warning">{{$errors->first('city')}}</strong>
         @endif
         <br/>
         {{Form::label('municipality', 'Ime opstine:')}}
