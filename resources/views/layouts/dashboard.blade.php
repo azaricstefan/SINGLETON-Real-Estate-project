@@ -6,7 +6,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-3">
-            <div class="list-group">
+            <div class="list-group" style="text-align: center;">
                 @yield('dash-nav')
             </div>
             @if(session()->has('flash_message'))
