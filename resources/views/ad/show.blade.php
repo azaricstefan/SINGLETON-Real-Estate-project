@@ -39,7 +39,7 @@
                 <button type="button" class="btn btn-info" onclick="location.href='{{url('myads')}}'">Nazad na moje oglase</button>
                 @if($ad->checkPermissionToEdit())
                     <button type="button" class="btn btn-primary" onclick="location.href='{{$ad->ad_id}}/edit'">Izmeni</button>
-                    <button type="button" class="btn btn-danger" onclick="location.href='{{url('ad/'.$ad->ad_id.'/delete')}}'">Obriši</button>
+                    <button type="button" class="btn btn-danger" onclick="confirmAdDelete()">Obriši</button>
 
                     {{--Opcije ako je oglas tek postavljen--}}
                     @if((Auth::user()->isAdmin() || Auth::user()->isModerator()) && $ad->approvement_status == "Pending")
@@ -307,4 +307,12 @@
 
 @section('scriptAfterLoad')
     <script src="/lightbox/js/lightbox.js"></script>
+    <script>
+        function confirmAdDelete()
+        {
+            if (confirm("Da li ste sigurni?")) {
+                location.href='{{url('ad/'.$ad->ad_id.'/delete')}}';
+            }
+        }
+    </script>
 @endsection
