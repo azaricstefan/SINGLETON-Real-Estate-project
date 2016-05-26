@@ -5,6 +5,8 @@
 @endsection
 
 @section('dash-content')
+    <h1>Forma za kreiranje moderatorskog naloga</h1>
+    <br>
     {!! Form::open(['url' => '/admin/add_moderator']) !!}
     <table class="table table-hover">
         <tr>
