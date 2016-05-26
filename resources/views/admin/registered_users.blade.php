@@ -55,7 +55,7 @@
                     <td>{{$user->registration_date}}</td>
                     <td>{{$user->last_login}}</td>
                     @if($user->user_type_id != 1)
-                        <td><a href="{{url('admin/delete_user',[$user->user_id])}}" class='confirmation'>Obrisi</a></td>
+                        <td><a href="{{url('admin/delete_user',[$user->user_id])}}" class='btn confirm'>Obrisi</a></td>
                     @else
                         <td></td>
                     @endif
