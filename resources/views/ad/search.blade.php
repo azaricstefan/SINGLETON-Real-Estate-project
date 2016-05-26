@@ -16,13 +16,13 @@
 	@if(Auth::guest())
 		<ul class="nav navbar-nav">
 			<li><a href="{{url('/')}}">Početna strana</a></li>
-			<li><a href="{{url('search')}}">Pretraži oglase</a></li>
+            <li class="active"><a href="{{url('search')}}">Pretraži oglase</a></li>
 		</ul>
 	@else
 		<ul class="nav navbar-nav">
 			<li><a href="{{url('/')}}">Početna strana</a></li>
 			<li><a href="{{url('dashboard')}}">Dashboard</a></li>
-			<li><a href="{{url('search')}}">Pretraži oglase</a></li>
+            <li class="active"><a href="{{url('search')}}">Pretraži oglase</a></li>
 		</ul>
 	@endif
 @endsection
