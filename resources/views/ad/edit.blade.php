@@ -7,6 +7,8 @@
 @section('headScript')
     <link href="/fileinput/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
     <script src="/fileinput/js/fileinput.min.js"></script>
+    <link href="/css/global.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/footer.css" media="all" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')

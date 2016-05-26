@@ -47,14 +47,15 @@ class AdminController extends Controller
             $searchOptionRoleType = request()->searchOptionRoleType;
 
             if ($criteria != "user_type_id")
-                $users = User::where($criteria, "LIKE", "%$searchString%")->with("type")->get();
+                $users = User::where($criteria, "LIKE", "%$searchString%")->with("type");
             else
-                $users = User::where($criteria,$searchOptionRoleType)->with("type")->get();
+                $users = User::where($criteria,$searchOptionRoleType)->with("type");
         }
         else{
-            $users = User::with("type")->get();
+            $users = User::with("type");
         }
 
+        $users = $users->simplePaginate(10);
         return view("admin.registered_users" , ["users" => $users]);
     }
 

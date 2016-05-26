@@ -4,6 +4,13 @@
     Dodaj moderatora
 @endsection
 
+@section('headScript')
+    <link href="/css/global.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/button.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/forma.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/footer.css" media="all" rel="stylesheet" type="text/css" />
+@endsection
+
 @section('dash-content')
     <h1>Forma za kreiranje moderatorskog naloga</h1>
     <br>
@@ -11,31 +18,33 @@
     <table class="table table-hover">
         <tr>
             <td>{!! Form::label('fullname','Puno ime i prezime:') !!}</td>
-            <td>{!! Form::text('fullname') !!}  </td>
+            <td>{!! Form::text('fullname', null, ["class" => "form-control"]) !!}  </td>
         </tr>
         <tr>
             <td>{!! Form::label('telefon','Telefon:') !!} </td>
-             <td>{!! Form::text('telefon') !!}       </td>
+             <td>{!! Form::text('telefon', null, ["class" => "form-control"]) !!}       </td>
         </tr>
         <tr>
              <td>{!! Form::label('email','E-mail:') !!}  </td>
-             <td>{!! Form::text('email') !!} </td>
+             <td>{!! Form::text('email', null, ["class" => "form-control"]) !!} </td>
         </tr>
         <tr>
              <td>{!! Form::label('username','Korisničko ime:') !!} </td>
-             <td>{!! Form::text('username') !!}</td>
+             <td>{!! Form::text('username', null, ["class" => "form-control"]) !!}</td>
         </tr>
         <tr>
              <td>{!! Form::label('password','Lozinka:') !!}     </td>
-             <td>{!! Form::password('password') !!}  </td>
+             <td>{!! Form::password('password', array('class'=>'form-control')) !!}  </td>
         </tr>
         <tr>
              <td>{!! Form::label('password_confirmation','Potvrda lozinke:') !!}   </td>
-             <td>{!! Form::password('password_confirmation') !!}</td>
+             <td>{!! Form::password('password_confirmation', array('class'=>'form-control')) !!}</td>
         </tr>
         <tr>
             <td colspan="2" align="right">{!! Form::submit("Dodaj moderatora",['class' => 'btn btn-default'])!!}    </td>
         </tr>
+
+
     </table>
 
     {!! Form::close() !!}
