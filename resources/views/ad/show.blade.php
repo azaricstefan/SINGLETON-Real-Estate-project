@@ -1,7 +1,7 @@
 @extends('layouts.bootstrap')
 
 @section('title')
-    Oglas: {{$ad->ad_id}}
+    Oglas: {{' '.$ad->city.' '.$ad->address}}
 @endsection
 
 @section('headScript')
@@ -68,6 +68,7 @@
             {{--PRIMARNA SLIKA--}}
 
             <div>
+                {{--Ako nema slika ovde PUCA, ne bi trebalo da postoji oglas bez makar 1 slike, ali meni se desilo--}}
                     <a href="{{$ad->images[0]->image_path}}" data-lightbox="galerija">
                         <img src="{{$ad->images[0]->image_path}}" class="img-thumbnail" alt="{{$ad->getName()}}" width="250" />
                     </a>
@@ -192,25 +193,25 @@
                     </div>
 
                     {{--content za komentare--}}
+                    <br/>
                     <div role="tabpanel" class="tab-pane" id="tab7">
                         @foreach($ad->comments as $comment)
-                            <fieldset>
-                                <legend>{{$comment->user->username}}
+                                {{$comment->user->username}}
                                     @if((!Auth::guest()) && (Auth::user()->user_id != $comment->user->user_id) && Auth::user()->isPlebs())
                                         | <a href="{{url('comment/'.$comment->comment_id.'/report')}}">Prijavi komentar</a>
                                     @elseif(!Auth::guest() && (Auth::user()->isAdmin() || Auth::user()->isModerator()))
                                         | <a href="{{url('comment/'.$comment->comment_id.'/delete')}}">Obrisi komentar</a>
                                     @endif
-                                </legend>
+                            <div class="well">
                                 {{$comment->body}}
-                            </fieldset>
+                            </div>
                         @endforeach
                         {{Form::open(['method' => 'GET', 'url' => url('comment/add')])}}
                         {{Form::hidden('ad_id', $ad->ad_id)}}
                         <table width="100%">
                             <tr>
                                 <td>
-                                    {{Form::textarea('body',null,['style' => 'width:100%;','rows' => '5'])}}<br/>
+                                    {{Form::textarea('body',null,['style' => 'width:100%;','rows' => '5', 'class' => 'form-control'])}}<br/>
                                 </td>
                             </tr>
                         </table>
