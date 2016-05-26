@@ -17,7 +17,7 @@ class IfNotLoggedInGoLogIn
     public function handle($request, Closure $next)
     {
         if(Auth::guest()){
-            return redirect('login');
+            return redirect()->guest('login');//Saljem ga na login zajedno sa URL-om do autorizovane stranice
         }
         return $next($request);
     }

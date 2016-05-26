@@ -94,7 +94,7 @@
             {{$comment->body}}
         </fieldset>
     @endforeach
-    {{Form::open(['method' => 'POST', 'url' => url('comment/add')])}}
+    {{Form::open(['method' => 'GET', 'url' => url('comment/add')])}}
     {{Form::hidden('ad_id', $ad->ad_id)}}
     <table width="100%">
         <tr>
