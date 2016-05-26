@@ -1,0 +1,12 @@
+.confirmation{
+    color : #b20000;
+    border: 3px solid #ffffff;
+    text-decoration: underline;
+}
+
+.confirmation:hover{
+    border-radius: 6px;
+    background-color: #b20000;
+    border: 3px solid #b20000;
+    color : #ffffff;
+}

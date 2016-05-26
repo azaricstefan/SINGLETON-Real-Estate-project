@@ -6,6 +6,7 @@
 @endsection
 
 @section('headScript')
+    <link href="/css/button.css" media="all" rel="stylesheet" type="text/css" />
     <link href="/fileinput/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
     <script src="/fileinput/js/fileinput.min.js"></script>
 @endsection
@@ -94,7 +95,8 @@
         {{Form::textarea('note')}}
         <div class="form-group">
             {{Form::label('images','Slike:',['data-toggle'=>'tooltip' ,'title' => 'Shift-Click za vise slika'])}}<sup>?</sup>
-            {!! Form::file('images[]',['id' => 'input-images', 'multiple', 'accept' => 'image/x-png, image/gif, image/jpeg']) !!}
+            {!! Form::file( 'images[]',['id' => 'input-images', 'multiple', 'accept' => 'image/x-png, image/gif, image/jpeg'] ) !!}
+
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
@@ -104,7 +106,7 @@
             <strong class="alert-warning">{{$errors->first('note')}}</strong>
         @endif
         <br/>
-        {{Form::submit('Posalji')}}
+        {{Form::submit('Posalji', ["class" => "btn btn-default"])}}
         {{Form::close()}}
 @endsection
 

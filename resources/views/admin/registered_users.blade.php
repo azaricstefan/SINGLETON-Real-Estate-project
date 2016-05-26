@@ -4,6 +4,11 @@
     Dodaj moderatora
 @endsection
 
+@section('headScript')
+<link href="/css/button.css" media="all" rel="stylesheet" type="text/css" />
+<link href="/css/confirm.css" media="all" rel="stylesheet" type="text/css" />
+@endsection
+
 @section('dash-content')
 
 
@@ -22,7 +27,7 @@
                 ["placeholder" => 'Izaberite kategoriju', "id" =>"select_role_type"]) !!}
             </td>
             <td>
-                {!! Form::submit("Filtriraj") !!}
+                {!! Form::submit("Filtriraj", ["class" => "btn btn-default"]) !!}
             </td>
             <td></td>
             <td></td>

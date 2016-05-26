@@ -5,6 +5,7 @@
 @endsection
 
 @section('headScript')
+	<link href="/css/button.css" media="all" rel="stylesheet" type="text/css" />
 	<script lang="javascript">
         document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('the_submit_button').addEventListener('click',function () {
