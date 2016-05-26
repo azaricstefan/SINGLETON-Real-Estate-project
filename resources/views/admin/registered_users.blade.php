@@ -55,7 +55,7 @@
                     <td>{{$user->registration_date}}</td>
                     <td>{{$user->last_login}}</td>
                     @if($user->user_type_id != 1)
-                        <td><a href="{{url('admin/delete_user',[$user->user_id])}}" class='btn confirm'>Obrisi</a></td>
+                        <td><a href="{{url('admin/delete_user',[$user->user_id])}}" class='btn confirm'>Obriši</a></td>
                     @else
                         <td></td>
                     @endif
@@ -72,7 +72,7 @@
             {
                 document.getElementById('select_role_type').style.display = 'none';
             }
-        }
+        };
 
         document.getElementById("criteria_select").onchange = function()
         {
@@ -86,11 +86,11 @@
                 document.getElementById('select_role_type').style.display = 'block';
                 document.getElementById('text_like').style.display = 'none';
             }
-        }
+        };
 
         var elems = document.getElementsByClassName('confirmation');
         var confirmIt = function (e) {
-            if (!confirm('Da li ste sigurni? Ova akcija ce obrisati korisnicki nalog i sve informacije vezane za njega. Akcija je nepovratna!')) e.preventDefault();
+            if (!confirm('Da li ste sigurni? Ova akcija će obrisati korisnički nalog i sve informacije vezane za njega. Akcija je nepovratna!')) e.preventDefault();
         };
         for (var i = 0, l = elems.length; i < l; i++) {
             elems[i].addEventListener('click', confirmIt, false);
