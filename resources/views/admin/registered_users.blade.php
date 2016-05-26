@@ -66,6 +66,9 @@
                 </tr>
             @endforeach
         @endif
+        <tr>
+            <td colspan="8">{!! $users->render() !!}</td>
+        </tr>
     </table>
 
     <script>
