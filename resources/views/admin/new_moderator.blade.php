@@ -20,7 +20,7 @@
              <td>{!! Form::text('email') !!} </td>
         </tr>
         <tr>
-             <td>{!! Form::label('username','Korisnicko ime:') !!} </td>
+             <td>{!! Form::label('username','Korisničko ime:') !!} </td>
              <td>{!! Form::text('username') !!}</td>
         </tr>
         <tr>
