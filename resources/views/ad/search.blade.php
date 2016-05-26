@@ -6,8 +6,8 @@
 
 @section('headScript')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <link href="/fileinput/css/button.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="/fileinput/css/text.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/button.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/text.css" media="all" rel="stylesheet" type="text/css" />
 @endsection
 
 
