@@ -11,6 +11,23 @@
     <link href="/css/pozadina.css" media="all" rel="stylesheet" type="text/css" />
 @endsection
 
+
+@section('nav-bar')
+	@if(Auth::guest())
+		<ul class="nav navbar-nav">
+			<li><a href="{{url('/')}}">Početna strana</a></li>
+			<li><a href="{{url('search')}}">Pretraži oglase</a></li>
+		</ul>
+	@else
+		<ul class="nav navbar-nav">
+			<li><a href="{{url('/')}}">Početna strana</a></li>
+			<li><a href="{{url('dashboard')}}">Dashboard</a></li>
+			<li><a href="{{url('search')}}">Pretraži oglase</a></li>
+		</ul>
+	@endif
+@endsection
+
+
 @section('content')
     <div class="row" id="search-box">
         <div class="col-md-8 col-md-offset-2">
