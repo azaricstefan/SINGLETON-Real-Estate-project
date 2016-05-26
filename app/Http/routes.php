@@ -29,6 +29,10 @@ Route::get('logout', function(){
     return redirect('/');
 });
 
+Route::get('about', function(){
+   return view('about');
+});
+
 Route::get('/dashboard', 'DashboardController@selectDashboard')->middleware("ifNotLoggedInGoLogIn");
 Route::get('/dashboard/admin','AdminDashboardController@index')->middleware(["ifNotLoggedInGoLogIn" , "dashboardSelector"]);
 Route::get('/dashboard/moderator','ModeratorDashboardController@index')->middleware(["ifNotLoggedInGoLogIn" , "dashboardSelector"]);

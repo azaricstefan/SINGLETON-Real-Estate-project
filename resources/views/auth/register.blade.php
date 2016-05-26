@@ -42,7 +42,7 @@
                     @endif
                     <label>Potvrda lozinke</label>
                     <input type="password" name="password_confirmation" class="form-control"><hr/>
-                    
+
                     <div class = "btn-group-justified">
                         <input type="submit" value="Registracija" class="form-control btn-default">
                         <input type="button" value="Odustani" href="{{url('')}}" onclick="window.location.href ='/'" class="form-control btn-default">
