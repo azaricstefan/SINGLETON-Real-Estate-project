@@ -1,5 +1,20 @@
 @extends(Auth::user()->isPlebs() ? 'dashboard.user.userdash' : (Auth::user()->isModerator() ? 'moderator.moddash' : 'admin.admindash'))
 
+@section('nav-bar-header')
+	@if(Auth::guest())
+		<ul class="nav navbar-nav">
+			<li><a href="{{url('/')}}">Početna strana</a></li>
+			<li><a href="{{url('search')}}">Pretraži oglase</a></li>
+		</ul>
+	@else
+		<ul class="nav navbar-nav">
+			<li><a href="{{url('/')}}">Početna strana</a></li>
+			<li class="active"><a href="{{url('dashboard/admin')}}">Dashboard</a></li>
+			<li><a href="{{url('search')}}">Pretraži oglase</a></li>
+		</ul>
+	@endif
+@endsection
+
 @section('title')
 	Izmena podataka na profilu
 @endsection
