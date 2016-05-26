@@ -47,7 +47,7 @@
         @endif
         <br/>
         {{Form::label('floor_area', 'Kvadratura:')}}
-        {{Form::number('floor_area', $value = old('floor_area'), ["class" => "form-control"])}}
+        {{Form::number('floor_area', $value = $ad->floor_area, ["class" => "form-control"])}}
         @if($errors->has('floor_area'))
             <strong class="alert-warning">{{$errors->first('floor_area')}}</strong>
         @endif
@@ -101,8 +101,8 @@
         {{Form::select('woodwork_type_id', \RealEstate\WoodworkType::helperSelect(), $ad->woodwork_type_id, array('class'=>'form-control'))}}<br/>
         {{Form::label('furniture_desc_id','Namestenost:')}}
         {{Form::select('furniture_desc_id', \RealEstate\FurnitureDescription::helperSelect(), $ad->furniture_desc_id, array('class'=>'form-control'))}}<br/>
-        {{Form::label('note', 'Napomena')}}
-        {{Form::textarea('note', $ad->note), array('class'=>'form-control')}}
+        {{Form::label('note', 'Napomena')}}<br/>
+        {{Form::textarea('note', $ad->note, ['class'=>'form-control'])}}
         @if($errors->has('note'))
             <strong class="alert-warning">{{$errors->first('note')}}</strong>
         @endif
@@ -113,9 +113,6 @@
         <div class="form-group">
             {{Form::label('Slike')}}
             {!! Form::file('images[]',['id' => 'input-images', 'multiple', 'class'=>'file-loading']) !!}
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
         </div>
 
 @endsection
