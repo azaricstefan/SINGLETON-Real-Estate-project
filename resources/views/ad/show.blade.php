@@ -202,7 +202,7 @@
                                     @if((!Auth::guest()) && (Auth::user()->user_id != $comment->user->user_id) && Auth::user()->isPlebs())
                                         | <a href="{{url('comment/'.$comment->comment_id.'/report')}}">Prijavi komentar</a>
                                     @elseif(!Auth::guest() && (Auth::user()->isAdmin() || Auth::user()->isModerator()))
-                                        | <a href="{{url('comment/'.$comment->comment_id.'/delete')}}">Obrisi komentar</a>
+                                        | <a href="" onclick="confirmCommentDelete({{$comment->comment_id}})">Obrisi komentar</a>
                                     @endif
                             <div class="well">
                                 {{$comment->body}}
@@ -315,6 +315,11 @@
         {
             if (confirm("Da li ste sigurni?")) {
                 location.href='{{url('ad/'.$ad->ad_id.'/delete')}}';
+            }
+        }
+        function confirmCommentDelete(id) {
+            if(confirm('Da li ste sigurni?')){
+                location.href='/comment/' + id + '/delete';
             }
         }
     </script>
