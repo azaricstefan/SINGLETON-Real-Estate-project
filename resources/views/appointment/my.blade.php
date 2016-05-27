@@ -31,7 +31,7 @@
                         @if(!Auth::user()->isPlebs())
                             <td><a href="{{url('appointment/'.$appointment->appointment_id.'/complete')}}">Termin završen</a></td>
                         @endif
-                        <td><a id="appointment_cancel" href="{{url('appointment/'.$appointment->appointment_id.'/cancel')}}">Otkazi termin</a></td>
+                        <td><a id="appointment_cancel" href="/appointment/{{$appointment->appointment_id}}/cancel" class="confirmation">Otkazi termin</a></td>
                         {{--namerno su razdvojeni ifovi zbog redosleda u tabeli--}}
                         @if(Auth::user()->isPlebs())
                             <td>
@@ -52,6 +52,10 @@
     <script>
         $(function () {
             $('#appointments_my_appointments').addClass('active');
+            $('.confirmation').click(confirmIt);
         })
+        var confirmIt = function (e) {
+            if (!confirm('Da li ste sigurni?')) e.preventDefault();
+        };
     </script>
 @endsection
