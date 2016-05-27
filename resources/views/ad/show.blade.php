@@ -41,7 +41,7 @@
             <div class="row">
                 <button type="button" class="btn btn-default" onclick="location.href='{{url('myads')}}'">Nazad na moje oglase</button>
                 @if($ad->checkPermissionToEdit())
-                    <button type="button" class="btn btn-primary" onclick="location.href='{{$ad->ad_id}}/edit'">Izmeni</button>
+                    <button type="button" class="btn btn-default" onclick="location.href='{{$ad->ad_id}}/edit'">Izmeni</button>
                     <button type="button" class="btn btn-default" onclick="confirmAdDelete()">Obriši</button>
 
                     {{--Opcije ako je oglas tek postavljen--}}

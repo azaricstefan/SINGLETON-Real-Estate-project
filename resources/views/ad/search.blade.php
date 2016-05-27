@@ -153,7 +153,7 @@
                     <div class="body pasus">
                         {{$ad->description}}
                     </div>
-                    <a href="/ad/{{$ad->ad_id}}" class = "btn btn-default-reverse-text">Pogledaj oglas</a>
+                    <a href="/ad/{{$ad->ad_id}}" class = "btn btn-default-reverse">Pogledaj oglas</a>
                 </article>
                 <div style="clear:both"></div>
                 <!---<a href="/ad/{{$ad->ad_id}}" class = "btn btn-default-reverse">Pogledaj oglas</a>--->

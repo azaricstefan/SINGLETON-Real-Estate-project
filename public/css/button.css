@@ -10,6 +10,16 @@
     border: 1px solid #b20000;
     background-color: #ffffff;
     color : #b20000;
+    -moz-box-shadow: 0 0 10px #b20000;
+    -webkit-box-shadow: 0 0 10px #b20000;
+    box-shadow: 0 0 10px #b20000;
+}
+
+.btn-default:focus{
+    -moz-box-shadow: 0 0 2px #b20000;
+    -webkit-box-shadow: 0 0 2px #b20000;
+    box-shadow: 0 0 2px #b20000;
+    border : 0.5px solid #b20000;
 }
 
 .btn-default-reverse{
@@ -25,4 +35,14 @@
 .btn-default-reverse:hover{
     background-color: #b20000;
     color : #ffffff;
+    -moz-box-shadow: 0 0 10px #b20000;
+    -webkit-box-shadow: 0 0 10px #b20000;
+    box-shadow: 0 0 10px #b20000;
+}
+
+.btn-default-reverse:focus{
+    -moz-box-shadow: 0 0 2px #b20000;
+    -webkit-box-shadow: 0 0 2px #b20000;
+    box-shadow: 0 0 2px #b20000;
+    border : 0.5px solid #b20000;
 }
