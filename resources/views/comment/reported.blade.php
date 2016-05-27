@@ -19,7 +19,7 @@
                 Oglas: <a href="/ad/{{$comment->ad->ad_id}}">{{$comment->ad->getName()}}</a><br />
                 <a href="/comment/{{$comment->comment_id}}/approve">Komentar je prikladan</a> |
                 {{--<a onclick="confirmDelete()">Obrisi komentar</a>--}}
-                <button onclick="confirmDelete()" value="obrisi">Obrisi</button>
+                <a href="" onclick="confirmDelete({{$comment->comment_id}})" value="obrisi">Obrisi</a>
             </div>
         @endforeach
     @else
@@ -32,9 +32,9 @@
         $(function(){
             $('#reported_comments').addClass('active');
         });
-        function confirmDelete() {
+        function confirmDelete(id) {
             if(confirm('Da li ste sigurni?')){
-                location.href='{{url('/comment/'.$comment->comment_id.'/delete')}}';
+                location.href='/comment/' + id + '/delete';
             }
         }
     </script>
