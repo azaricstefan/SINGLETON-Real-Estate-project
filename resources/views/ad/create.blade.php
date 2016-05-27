@@ -15,9 +15,10 @@
 @endsection
 
 @section('dash-content')
+    {{Form::open(['url' => url('ad/create') , 'method' => 'post', 'files'=>true])}}
     <div class="row">
         <div class = "forma col-sm-3">
-            {{Form::open(['url' => url('ad/create') , 'method' => 'post', 'files'=>true])}}
+
             {{Form::label('city', 'Ime grada:')}}
             {{Form::text('city', $value = old('city'), ["class" => "form-control"])}}
             @if($errors->has('city'))
@@ -124,12 +125,13 @@
                 <strong class="alert-warning">{{$errors->first('hasImages')}}</strong><br/>
             @endif
             {{Form::submit('Pošalji', ["class" => "btn btn-default"])}}
-            {{Form::close()}}
+
         </div>
         <div class="col-sm-3">
             {{--Mesto za reklamu sa desne strane--}}
         </div>
     </div>
+    {{Form::close()}}
 @endsection
 
 @section('scriptAfterLoad')
