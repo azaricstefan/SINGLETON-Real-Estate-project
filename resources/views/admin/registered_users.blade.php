@@ -17,8 +17,6 @@
 
     <h1>Pregled korisničkih naloga</h1> <br>
 
-    {{--TODO: PAGINATION URADITI!--}}
-
     <table class="table table-hover">
 
         <tr>
@@ -70,6 +68,9 @@
                 </tr>
             @endforeach
         @endif
+        <tr>
+            <td colspan="8">{!! $users->render() !!}</td>
+        </tr>
     </table>
 
     <script>
