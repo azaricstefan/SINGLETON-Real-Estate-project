@@ -108,7 +108,9 @@
             {{Form::label('images','Slike:',['data-toggle'=>'tooltip' ,'title' => 'Shift-Click za više slika'])}}<sup>?</sup>
             {!! Form::file('images[]',['id' => 'input-images', 'multiple', 'accept' => 'image/x-png, image/gif, image/jpeg']) !!}
         </div>
-
+        @if($errors->has('hasImages'))
+            <strong class="alert-warning">{{$errors->first('hasImages')}}</strong><br/>
+        @endif
         {{Form::submit('Pošalji', ["class" => "btn btn-default"])}}
         {{Form::close()}}
     </div>
