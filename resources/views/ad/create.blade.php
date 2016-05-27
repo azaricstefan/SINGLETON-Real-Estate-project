@@ -23,7 +23,7 @@
                 <strong class="alert-warning">{{$errors->first('city')}}</strong>
         @endif
         <br/>
-        {{Form::label('municipality', 'Ime opstine:')}}
+        {{Form::label('municipality', 'Ime opštine:')}}
         {{Form::text('municipality', $value = old('municipality'), ["class" => "form-control"])}}
         @if($errors->has('municipality'))
             <strong class="alert-warning">{{$errors->first('municipality')}}</strong>
@@ -80,7 +80,7 @@
             <strong class="alert-warning">{{$errors->first('construction_year')}}</strong>
         @endif
         <br/>
-        {{Form::label('documentation', 'Uknjizenost')}}
+        {{Form::label('documentation', 'Uknjiženost')}}
         {{Form::select('documentation', ['1' => 'Da' , '0' => 'Ne'], old('documentation'), array('class'=>'form-control'))}}<br/>
         {{Form::label('heating_option_id', 'Grejanje')}}
         {{Form::select('heating_option_id', \RealEstate\HeatingOption::helperSelect(), old('heating_option_id'), array('class'=>'form-control'))}}<br/>
@@ -96,7 +96,7 @@
         {{Form::select('parking_option_id', \RealEstate\ParkingOption::helperSelect(), old('parking_option_id'), array('class'=>'form-control'))}}<br/>
         {{Form::label('woodwork_type_id','Drvenarija')}}
         {{Form::select('woodwork_type_id', \RealEstate\WoodworkType::helperSelect(), old('woodwork_type_id'), array('class'=>'form-control'))}}<br/>
-        {{Form::label('furniture_desc_id','Namestenost:')}}
+        {{Form::label('furniture_desc_id','Nameštenost:')}}
         {{Form::select('furniture_desc_id', \RealEstate\FurnitureDescription::helperSelect(), old('furniture_desc_id'), array('class'=>'form-control'))}}<br/>
         {{Form::label('note', 'Napomena')}}
         {{Form::textarea('note', $value = old('note'), array('class'=>'form-control'))}}

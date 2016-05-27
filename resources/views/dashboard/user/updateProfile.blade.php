@@ -13,7 +13,7 @@
             document.getElementById('the_submit_button').addEventListener('click',function () {
                 submit()
             })
-        })
+        });
 		function submit() {
             document.getElementById('my_form').submit();
         }
