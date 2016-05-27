@@ -52,7 +52,7 @@ class AppointmentController extends Controller
             $checkScheduled->agent_id = \Auth::user()->user_id;
             $checkScheduled->status = 'Scheduled';
             $checkScheduled->save();
-            flash('Termin dodat u moje termine');
+            flash('Termin '.$checkScheduled->ad->getName().' '.$checkScheduled->appointment_time. ' dodat u moje termine');
             return back();
         }
         return 'termin je vec preuzet';
