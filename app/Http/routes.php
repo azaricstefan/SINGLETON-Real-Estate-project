@@ -29,6 +29,10 @@ Route::get('logout', function(){
     return redirect('/');
 });
 
+Route::get('about', function(){
+   return view('about');
+});
+
 Route::get('/dashboard', 'DashboardController@selectDashboard')->middleware("ifNotLoggedInGoLogIn");
 Route::get('/dashboard/admin','AdminDashboardController@index')->middleware(["ifNotLoggedInGoLogIn" , "dashboardSelector"]);
 Route::get('/dashboard/moderator','ModeratorDashboardController@index')->middleware(["ifNotLoggedInGoLogIn" , "dashboardSelector"]);
@@ -64,7 +68,7 @@ Route::post('ad/{ad}/images/delete' , 'AdController@ajaxImageDelete')->middlewar
 Route::get('myads','AdController@myAds')->middleware('ifNotLoggedInGoLogIn');
 
 /*Comment routes*/
-Route::post('comment/add', 'CommentController@add')->middleware('ifNotLoggedInGoLogIn');
+Route::get('comment/add', 'CommentController@add')->middleware('ifNotLoggedInGoLogIn');
 Route::get('comment/{id}/report', 'CommentController@report');
 Route::get('comment/{id}/delete', 'CommentController@delete')->middleware(['ifNotLoggedInGoLogIn', 'checkModeratorPrivileges']);
 Route::get('comment/{comment}/approve', 'CommentController@approveComment')->middleware(['ifNotLoggedInGoLogIn', 'checkModeratorPrivileges']);

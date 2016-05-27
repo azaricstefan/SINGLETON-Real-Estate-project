@@ -4,8 +4,20 @@
     Moderator
 @endsection
 
+
 @section('nav-bar-header')
-        <a class="navbar-brand" href="{{url('dashboard/moderator')}}">Dashboard</a>
+    @if(Auth::guest())
+        <ul class="nav navbar-nav">
+            <li><a href="{{url('/')}}">Početna strana</a></li>
+            <li><a href="{{url('search')}}">Pretraži oglase</a></li>
+        </ul>
+    @else
+        <ul class="nav navbar-nav">
+            <li><a href="{{url('/')}}">Početna strana</a></li>
+            <li class="active"><a href="{{url('dashboard/moderator')}}">Dashboard</a></li>
+            <li><a href="{{url('search')}}">Pretraži oglase</a></li>
+        </ul>
+    @endif
 @endsection
 
 @section('dash-nav')

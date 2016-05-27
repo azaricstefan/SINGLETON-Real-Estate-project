@@ -21,7 +21,7 @@ class AuthController extends Controller
         ])){
             Auth::user()->last_login = Carbon::now()->toDateTimeString();
             Auth::user()->save();
-            return redirect()->intended('/');
+            return redirect()->intended('/');//Ovo sada redi zbog onog redirect->guest().
         }
         
         return redirect('login');

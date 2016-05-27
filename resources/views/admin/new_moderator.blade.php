@@ -5,6 +5,8 @@
 @endsection
 
 @section('dash-content')
+    <h1>Forma za kreiranje moderatorskog naloga</h1>
+    <br>
     {!! Form::open(['url' => '/admin/add_moderator']) !!}
     <table class="table table-hover">
         <tr>
@@ -20,7 +22,7 @@
              <td>{!! Form::text('email') !!} </td>
         </tr>
         <tr>
-             <td>{!! Form::label('username','Korisnicko ime:') !!} </td>
+             <td>{!! Form::label('username','Korisničko ime:') !!} </td>
              <td>{!! Form::text('username') !!}</td>
         </tr>
         <tr>

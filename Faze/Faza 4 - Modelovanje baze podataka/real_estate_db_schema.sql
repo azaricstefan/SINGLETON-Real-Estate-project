@@ -32,7 +32,7 @@ CREATE TABLE ad
 	furniture_desc_id	 INTEGER NOT NULL,
 	note                 NVARCHAR(300) NULL,
 	approvement_status   ENUM('Pending','Approved','Denied') NOT NULL DEFAULT 'Pending',
-	post_date            DATETIME NOT NULL DEFAULT NOW(),
+	post_date            TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	CONSTRAINT PKad PRIMARY KEY (ad_id)
 );
 
@@ -55,7 +55,7 @@ CREATE TABLE appointment
 	appointment_id       INTEGER NOT NULL AUTO_INCREMENT,
 	user_id              INTEGER NOT NULL,
 	agent_id             INTEGER NULL,
-	appointment_time     DATETIME NOT NULL,
+	appointment_time     TIMESTAMP NOT NULL,
 	status               ENUM('Pending','Scheduled','Canceled','Completed') NOT NULL,
 	user_note            NVARCHAR(300) NULL,
 	ad_id                INTEGER NOT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE comment
 	user_id              INTEGER NOT NULL,
 	ad_id                INTEGER NOT NULL,
 	comment_id           INTEGER NOT NULL AUTO_INCREMENT,
-	post_date            DATETIME NOT NULL DEFAULT NOW(),
+	post_date            TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	reported             BOOLEAN NOT NULL DEFAULT FALSE,
 	body				 NVARCHAR(300) NOT NULL,
 	CONSTRAINT PKcomment PRIMARY KEY (comment_id)
@@ -135,8 +135,8 @@ CREATE TABLE user
 	telefon              VARCHAR(20) NULL,
 	user_type_id         INTEGER NOT NULL DEFAULT 3,
 	remember_token 		 VARCHAR(255),
-	registration_date    DATETIME DEFAULT NOW(),
-	last_login			 DATETIME NULL,
+	registration_date    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	last_login			 TIMESTAMP NULL,
 	CONSTRAINT PKuser PRIMARY KEY (user_id)
 );
 
