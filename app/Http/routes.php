@@ -11,12 +11,7 @@
 |
 */
 
-Route::get('/', function(){
-    //if(Auth::guest())
-        return view('index');
-   // if(Auth::user()->isModerator())
-     //   return redirect('dashboard');
-});
+Route::get('/', 'HomeController@index');
 
 Route::get('login', [ 'middleware' => 'ifLoggedInGoHome', 'uses' => 'AuthController@openLogin']);
 Route::get('register',[ 'middleware' => 'ifLoggedInGoHome', 'uses' =>  'AuthController@openRegister']);
