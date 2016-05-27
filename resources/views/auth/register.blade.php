@@ -10,6 +10,16 @@
     <link href="/css/button.css" media="all" rel="stylesheet" type="text/css" />
 @endsection
 
+@section('nav-bar')
+    <ul class="nav navbar-nav">
+        <li><a href="{{url('/')}}">Početna strana</a></li>
+        <li><a href="{{url('search')}}">Pretraži oglase</a></li>
+        <li><a href="{{url('ad/create')}}">Dodaj oglas</a></li>
+        <li><a href="{{url('about')}}">Informacija o nama</a></li>
+        {{--TODO: DODATI STRANICU SA INFORMACIJAMA O AGENCIJI--}}
+    </ul>
+@endsection
+
 @section('content')
 
     <div class="row">
