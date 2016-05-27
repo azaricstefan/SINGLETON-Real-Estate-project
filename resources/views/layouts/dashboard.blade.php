@@ -5,8 +5,6 @@
     <link href="/css/footer.css" media="all" rel="stylesheet" type="text/css" />
 @endsection
 
-@yield('nav-bar-header')
-
 @section('content')
     <div class="row">
         <div class="col-md-3">
