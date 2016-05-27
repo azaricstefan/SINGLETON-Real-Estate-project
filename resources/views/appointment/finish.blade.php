@@ -4,6 +4,11 @@
     Termin {{$appointment->appointment_time}} zavrsen
 @endsection
 
+@section('headScript')
+    <link href="/css/global.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/footer.css" media="all" rel="stylesheet" type="text/css" />
+@endsection
+
 @section('nav-bar-header')
         <a class="navbar-brand" href="{{url('appointments/my_appointments')}}">Moji termini</a>
 @endsection

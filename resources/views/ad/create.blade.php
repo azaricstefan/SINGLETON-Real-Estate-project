@@ -6,6 +6,7 @@
 @endsection
 
 @section('headScript')
+    <link href="/css/footer.css" media="all" rel="stylesheet" type="text/css" />
     <link href="/css/button.css" media="all" rel="stylesheet" type="text/css" />
     <link href="/css/forma.css" media="all" rel="stylesheet" type="text/css" />
     <link href="/css/global.css" media="all" rel="stylesheet" type="text/css" />
@@ -99,18 +100,15 @@
         {{Form::select('furniture_desc_id', \RealEstate\FurnitureDescription::helperSelect(), old('furniture_desc_id'), array('class'=>'form-control'))}}<br/>
         {{Form::label('note', 'Napomena')}}
         {{Form::textarea('note', $value = old('note'), array('class'=>'form-control'))}}
-        <div class="form-group">
-            {{Form::label('images','Slike:',['data-toggle'=>'tooltip' ,'title' => 'Shift-Click za više slika'])}}<sup>?</sup>
-            {!! Form::file('images[]',['id' => 'input-images', 'multiple', 'accept' => 'image/x-png, image/gif, image/jpeg']) !!}
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-            <strong class="alert-warning"></strong>
-        </div>
         @if($errors->has('note'))
             <strong class="alert-warning">{{$errors->first('note')}}</strong>
         @endif
         <br/>
+        <div class="form-group">
+            {{Form::label('images','Slike:',['data-toggle'=>'tooltip' ,'title' => 'Shift-Click za više slika'])}}<sup>?</sup>
+            {!! Form::file('images[]',['id' => 'input-images', 'multiple', 'accept' => 'image/x-png, image/gif, image/jpeg']) !!}
+        </div>
+
         {{Form::submit('Pošalji', ["class" => "btn btn-default"])}}
         {{Form::close()}}
     </div>

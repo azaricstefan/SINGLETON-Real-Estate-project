@@ -5,6 +5,8 @@ namespace RealEstate\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
 use RealEstate\HasAddition;
 use RealEstate\Http\Requests;
@@ -185,6 +187,10 @@ class AdController extends Controller
 
     public function show($id)
     {
+        if(URL::previous()!= URL::current())
+        {
+            request()->session()->put("adShowPrevUrl",URL::previous());
+        }
         $ad = Ad::find($id);
         if ($ad == null){
             abort(504);
@@ -281,7 +287,15 @@ class AdController extends Controller
                 $image->deleteMyStorage();
             }
             $ad->delete();
-            return redirect('dashboard');
+
+            if(request()->session()->has("adShowPrevUrl"))
+            {
+                return redirect(request()->session()->get("adShowPrevUrl"));
+            }
+            else
+            {
+                return redirect('dashboard');
+            }
         }
         return abort(401);
     }

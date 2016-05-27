@@ -1,11 +1,14 @@
 @extends('layouts.bootstrap')
 
 @section('title')
-    Oglas: {{$ad->ad_id}}
+    Oglas: {{' '.$ad->city.' '.$ad->address}}
 @endsection
 
 @section('headScript')
     <link href="/lightbox/css/lightbox.css" rel="stylesheet"/>
+    <link href="/css/global.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/footer.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/button.css" media="all" rel="stylesheet" type="text/css" />
 @endsection
 
 
@@ -36,18 +39,18 @@
         <div class="col-sm-8">
             {{--Opcije za oglas--}}
             <div class="row">
-                <button type="button" class="btn btn-info" onclick="location.href='{{url('myads')}}'">Nazad na moje oglase</button>
+                <button type="button" class="btn btn-default" onclick="location.href='{{url('myads')}}'">Nazad na moje oglase</button>
                 @if($ad->checkPermissionToEdit())
-                    <button type="button" class="btn btn-primary" onclick="location.href='{{$ad->ad_id}}/edit'">Izmeni</button>
-                    <button type="button" class="btn btn-danger" onclick="location.href='{{url('ad/'.$ad->ad_id.'/delete')}}'">Obriši</button>
+                    <button type="button" class="btn btn-default" onclick="location.href='{{$ad->ad_id}}/edit'">Izmeni</button>
+                    <button type="button" class="btn btn-default" onclick="confirmAdDelete()">Obriši</button>
 
                     {{--Opcije ako je oglas tek postavljen--}}
                     @if((Auth::user()->isAdmin() || Auth::user()->isModerator()) && $ad->approvement_status == "Pending")
-                        <button type="button" class="btn btn-default" onclick="location.href='{{$ad->ad_id}}/approve'">Odobri</button>
+                        <button type="button" class="btn btn-primary" onclick="location.href='{{$ad->ad_id}}/approve'">Odobri</button>
                         <button type="button" class="btn btn-default" onclick="location.href='{{$ad->ad_id}}/deny'">Zabrani</button>
                     @endif
                 @endif
-                <button type="button" class="btn btn-success" onclick="location.href='{{url('appointments/'.$ad->ad_id.'/all')}}'">Zakaži termin</button>
+                <button type="button" class="btn btn-default" onclick="location.href='{{url('appointments/'.$ad->ad_id.'/all')}}'">Zakaži termin</button>
                 @if($ad->approvement_status == "Pending")
                     <br/><span id="approvement_status_msg">Oglas još nije odobren!</span><br/>
                 @elseif($ad->approvement_status == "Denied")
@@ -64,10 +67,10 @@
             {{Form::label(null, 'Oglas je postavljen: ')}}
             {{Form::label(null, $ad->post_date)}}
             </i><br/>
-
             {{--PRIMARNA SLIKA--}}
 
             <div>
+                {{--Ako nema slika ovde PUCA, ne bi trebalo da postoji oglas bez makar 1 slike, ali meni se desilo--}}
                     <a href="{{$ad->images[0]->image_path}}" data-lightbox="galerija">
                         <img src="{{$ad->images[0]->image_path}}" class="img-thumbnail" alt="{{$ad->getName()}}" width="250" />
                     </a>
@@ -192,25 +195,25 @@
                     </div>
 
                     {{--content za komentare--}}
+                    <br/>
                     <div role="tabpanel" class="tab-pane" id="tab7">
                         @foreach($ad->comments as $comment)
-                            <fieldset>
-                                <legend>{{$comment->user->username}}
+                                {{$comment->user->username}}
                                     @if((!Auth::guest()) && (Auth::user()->user_id != $comment->user->user_id) && Auth::user()->isPlebs())
                                         | <a href="{{url('comment/'.$comment->comment_id.'/report')}}">Prijavi komentar</a>
                                     @elseif(!Auth::guest() && (Auth::user()->isAdmin() || Auth::user()->isModerator()))
                                         | <a href="{{url('comment/'.$comment->comment_id.'/delete')}}">Obrisi komentar</a>
                                     @endif
-                                </legend>
+                            <div class="well">
                                 {{$comment->body}}
-                            </fieldset>
+                            </div>
                         @endforeach
                         {{Form::open(['method' => 'GET', 'url' => url('comment/add')])}}
                         {{Form::hidden('ad_id', $ad->ad_id)}}
                         <table width="100%">
                             <tr>
                                 <td>
-                                    {{Form::textarea('body',null,['style' => 'width:100%;','rows' => '5'])}}<br/>
+                                    {{Form::textarea('body',null,['style' => 'width:100%;','rows' => '5', 'class' => 'form-control'])}}<br/>
                                 </td>
                             </tr>
                         </table>
@@ -307,4 +310,12 @@
 
 @section('scriptAfterLoad')
     <script src="/lightbox/js/lightbox.js"></script>
+    <script>
+        function confirmAdDelete()
+        {
+            if (confirm("Da li ste sigurni?")) {
+                location.href='{{url('ad/'.$ad->ad_id.'/delete')}}';
+            }
+        }
+    </script>
 @endsection

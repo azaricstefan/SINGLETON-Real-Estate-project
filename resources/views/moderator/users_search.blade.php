@@ -4,21 +4,30 @@
     Pretrazi korisnike
 @endsection
 
+@section('headScript')
+    <link href="/css/forma.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/button.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/confirm.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/global.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/footer.css" media="all" rel="stylesheet" type="text/css" />
+@endsection
+
 @section('dash-content')
     <div class="table-responsive">
         {!! Form::open(["method" => 'GET']) !!}
         <table class="table">
             <tr>
-                <td colspan="2">
+                <td colspan="1">
                     {!! Form::label("criteria" , "Filter:") !!}
                     {!! Form::select("criteria", ["username" => "Korisničko ime", "fullname" => "Puno ime", "email" => "E-Mail", "telefon" => "Telefon"],null, [
-                    "placeholder" => 'Bez filtera', "id" =>"criteria_select"]) !!}
+                    "placeholder" => 'Bez filtera', "id" =>"criteria_select", "class" => "form-control"] )!!}
                 </td>
-                <td colspan>
-                    {!! Form::text("searchString",null, ["id" => "text_like"])!!}
+                <td colspan="1">
+                    {!! Form::label("criteria" , "Trazi:") !!}
+                    {!! Form::text("searchString",null, ["id" => "text_like", "class" => "form-control"])!!}
                 </td>
-                <td>
-                    {!! Form::submit("Filtriraj") !!}
+                <td colspan="4" style="vertical-align: bottom; position: relative; top: 9px;text-align: left;">
+                    {!! Form::submit("Filtriraj",array('class'=>'btn btn-default')) !!}
                 </td>
 
             </tr>
@@ -32,10 +41,12 @@
                 @if(count($users) > 0)
                     @foreach($users as $user)
                         <tr>
+                            <div class="nesto">
                             <td><a href="{{url('users',[$user->user_id])}}">{{$user->username}}</a></td>
                             <td>{{$user->fullname}}</td>
                             <td>{{$user->email}}</td>
                             <td>{{$user->telefon}}</td>
+                            </div>
                         </tr>
                     @endforeach
                 @endif

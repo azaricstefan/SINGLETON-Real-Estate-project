@@ -4,7 +4,12 @@
     Administrator
 @endsection
 
-@section('nav-bar')
+@section('headScript')
+    <link href="/css/global.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/footer.css" media="all" rel="stylesheet" type="text/css" />
+@endsection
+
+@section('nav-bar-header')
     @if(Auth::guest())
         <ul class="nav navbar-nav">
             <li><a href="{{url('/')}}">Početna strana</a></li>

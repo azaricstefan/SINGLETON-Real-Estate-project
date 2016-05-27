@@ -6,6 +6,8 @@
 
 @section('headScript')
     <link href="/css/button.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/global.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/footer.css" media="all" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('dash-content')
@@ -20,8 +22,8 @@
             </tr>
             @foreach($pendingAppointments as $pendingAppointment)
                 <tr>
-                    <td>{{Form::label(null, $pendingAppointment->ad->city.' '.$pendingAppointment->ad->address)}}</td>
-                    <td>{{Form::label(null, $pendingAppointment->appointment_time)}}</td>
+                    <td>{{Form::label(null, $pendingAppointment->ad->city)}}<br/> {{Form::label(null, $pendingAppointment->ad->address)}}</td>
+                    <td style="vertical-align: middle">{{Form::label(null, $pendingAppointment->appointment_time)}}</td>
                     <td><a href="{{url('appointment/'.$pendingAppointment->appointment_id.'/schedule')}}" class = "btn btn-default-reverse">Preuzmi termin</a></td>
                 </tr>
             @endforeach

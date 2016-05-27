@@ -5,16 +5,17 @@
 @endsection
 
 @section('headScript')
-<link href="/css/button.css" media="all" rel="stylesheet" type="text/css" />
-<link href="/css/confirm.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/forma.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/button.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/confirm.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/global.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/footer.css" media="all" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('dash-content')
 
 
     <h1>Pregled korisničkih naloga</h1> <br>
-
-    {{--TODO: PAGINATION URADITI!--}}
 
     <table class="table table-hover">
 
@@ -23,19 +24,18 @@
             <td colspan="2">
                 {!! Form::label("criteria" , "Filter:") !!}
                 {!! Form::select("criteria", ["username" => "Korisničko ime", "fullname" => "Puno ime", "user_type_id" => "Kategorija"],null, [
-                "placeholder" => 'Bez filtera', "id" =>"criteria_select"]) !!}
+                "placeholder" => 'Bez filtera', "id" =>"criteria_select", "class" => "form-control"]) !!}
             </td>
             <td colspan="2">
-                {!! Form::text("searchString",null, ["id" => "text_like"])!!}
+                {!! Form::label("criteria" , "Trazi:") !!}
+                {!! Form::text("searchString", null , ["id" => "text_like", "class" => "form-control"])!!}
                 {!! Form::select("searchOptionRoleType", ["1" => 'Administrator' ,'2' =>"Moderator" , '3' => "Klijent"], null ,
                 ["placeholder" => 'Izaberite kategoriju', "id" =>"select_role_type"]) !!}
             </td>
-            <td>
+            <td colspan="4" style="vertical-align: bottom; position: relative; top: 9px;text-align: left;">
                 {!! Form::submit("Filtriraj", ["class" => "btn btn-default"]) !!}
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+
         {!! Form::close() !!}
         </tr>
         <tr>
@@ -50,7 +50,7 @@
         </tr>
         @if(count($users) > 0)
             @foreach($users as $user)
-                <tr align="center">
+                <tr align="left">
                     <td>{{$user->user_id}}</td>
                     <td>{{$user->username}}</td>
                     <td>{{$user->fullname}}</td>
@@ -59,13 +59,16 @@
                     <td>{{$user->registration_date}}</td>
                     <td>{{$user->last_login}}</td>
                     @if($user->user_type_id != 1)
-                        <td><a href="{{url('admin/delete_user',[$user->user_id])}}" class='btn confirm'>Obriši</a></td>
+                        <td><a href="{{url('admin/delete_user',[$user->user_id])}}" class='btn btn-default-reverse'>Obriši</a></td>
                     @else
                         <td></td>
                     @endif
                 </tr>
             @endforeach
         @endif
+        <tr>
+            <td colspan="8">{!! $users->render() !!}</td>
+        </tr>
     </table>
 
     <script>

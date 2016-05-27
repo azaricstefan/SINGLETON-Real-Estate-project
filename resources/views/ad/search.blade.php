@@ -9,8 +9,9 @@
     <link href="/css/button.css" media="all" rel="stylesheet" type="text/css" />
     <link href="/css/text.css" media="all" rel="stylesheet" type="text/css" />
     <link href="/css/pozadina.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/global.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/footer.css" media="all" rel="stylesheet" type="text/css" />
 @endsection
-
 
 @section('nav-bar')
 	@if(Auth::guest())
@@ -152,7 +153,7 @@
                     <div class="body pasus">
                         {{$ad->description}}
                     </div>
-                    <a href="/ad/{{$ad->ad_id}}" class = "btn btn-default-reverse-text">Pogledaj oglas</a>
+                    <a href="/ad/{{$ad->ad_id}}" class = "btn btn-default-reverse">Pogledaj oglas</a>
                 </article>
                 <div style="clear:both"></div>
                 <!---<a href="/ad/{{$ad->ad_id}}" class = "btn btn-default-reverse">Pogledaj oglas</a>--->
