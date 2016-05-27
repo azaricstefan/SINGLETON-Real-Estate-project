@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+
+@section('headScript')
+    <link href="/css/footer.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/global.css" media="all" rel="stylesheet" type="text/css" />
+@endsection
+
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -48,7 +54,7 @@
     </div>
 
     <hr>
-    <footer style="text-align:center;">
+    <footer style="text-align:center;" class = "paragraf">
 	    {{--TODO: ovde može da se doda link ka fb strani agencije npr...--}}
 	    <p>Copyright by SINGLETON</p>
 	    <p>Contact information: <a href="mailto:singleton@najjaci.com">singleton@najjaci.com</a>.</p>

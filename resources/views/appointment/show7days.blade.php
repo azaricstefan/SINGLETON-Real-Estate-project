@@ -4,6 +4,11 @@
     Termini u narednih 7 dana
 @endsection
 
+@section('headScript')
+    <link href="/css/global.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/footer.css" media="all" rel="stylesheet" type="text/css" />
+@endsection
+
 @section('content')
     <h1 align="center">Termini u narednih 7 dana za oglas {{$ad->city.' '.$ad->address}}</h1><br/>
     <a href="{{url('/')}}">Na pocetnu</a>

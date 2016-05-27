@@ -6,6 +6,9 @@
 
 @section('headScript')
     <link href="/lightbox/css/lightbox.css" rel="stylesheet"/>
+    <link href="/css/global.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/footer.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/button.css" media="all" rel="stylesheet" type="text/css" />
 @endsection
 
 
@@ -32,18 +35,18 @@
 
     {{--Opcije za oglas--}}
     <div class="row">
-        <button type="button" class="btn btn-info" onclick="location.href='{{url('myads')}}'">Nazad na moje oglase</button>
+        <button type="button" class="btn btn-default" onclick="location.href='{{url('myads')}}'">Nazad na moje oglase</button>
         @if($ad->checkPermissionToEdit())
-            <button type="button" class="btn btn-primary" onclick="location.href='{{$ad->ad_id}}/edit'">Izmeni</button>
-            <button type="button" class="btn btn-danger" onclick="location.href='{{url('ad/'.$ad->ad_id.'/delete')}}'">Obriši</button>
+            <button type="button" class="btn btn-default" onclick="location.href='{{$ad->ad_id}}/edit'">Izmeni</button>
+            <button type="button" class="btn btn-default" onclick="location.href='{{url('ad/'.$ad->ad_id.'/delete')}}'">Obriši</button>
 
             {{--Opcije ako je oglas tek postavljen--}}
             @if((Auth::user()->isAdmin() || Auth::user()->isModerator()) && $ad->approvement_status == "Pending")
-                <button type="button" class="btn btn-default" onclick="location.href='{{$ad->ad_id}}/approve'">Odobri</button>
+                <button type="button" class="btn btn-primary" onclick="location.href='{{$ad->ad_id}}/approve'">Odobri</button>
                 <button type="button" class="btn btn-default" onclick="location.href='{{$ad->ad_id}}/deny'">Zabrani</button>
             @endif
         @endif
-        <button type="button" class="btn btn-success" onclick="location.href='{{url('appointments/'.$ad->ad_id.'/all')}}'">Zakaži termin</button>
+        <button type="button" class="btn btn-default" onclick="location.href='{{url('appointments/'.$ad->ad_id.'/all')}}'">Zakaži termin</button>
         @if($ad->approvement_status == "Pending")
             <br/><span id="approvement_status_msg">Oglas još nije odobren!</span><br/>
         @elseif($ad->approvement_status == "Denied")

@@ -9,8 +9,9 @@
     <link href="/css/button.css" media="all" rel="stylesheet" type="text/css" />
     <link href="/css/text.css" media="all" rel="stylesheet" type="text/css" />
     <link href="/css/pozadina.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/global.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/footer.css" media="all" rel="stylesheet" type="text/css" />
 @endsection
-
 
 @section('nav-bar')
 	@if(Auth::guest())
