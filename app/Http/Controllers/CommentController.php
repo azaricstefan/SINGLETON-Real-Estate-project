@@ -34,6 +34,7 @@ class CommentController extends Controller
     public function delete(Comment $id)
     {
         Comment::destroy($id->comment_id);
+        flash('Komentar na '.$id->ad->getName().' korisnika '.$id->user->username.' obrisan!');
         return redirect()->back();
     }
 
