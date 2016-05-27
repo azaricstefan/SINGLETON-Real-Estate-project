@@ -28,7 +28,7 @@ class CommentController extends Controller
     {
         $id->reported = 1;
         $id->save();
-        return redirect("ad/".request()->ad_id);
+        return redirect("ad/".$id->ad_id);
     }
 
     public function delete(Comment $id)
