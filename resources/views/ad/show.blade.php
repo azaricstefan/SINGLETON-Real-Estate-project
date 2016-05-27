@@ -46,7 +46,7 @@
 
                     {{--Opcije ako je oglas tek postavljen--}}
                     @if((Auth::user()->isAdmin() || Auth::user()->isModerator()) && $ad->approvement_status == "Pending")
-                        <button type="button" class="btn btn-primary" onclick="location.href='{{$ad->ad_id}}/approve'">Odobri</button>
+                        <button type="button" class="btn btn-default" onclick="location.href='{{$ad->ad_id}}/approve'">Odobri</button>
                         <button type="button" class="btn btn-default" onclick="location.href='{{$ad->ad_id}}/deny'">Zabrani</button>
                     @endif
                 @endif
@@ -217,7 +217,7 @@
                                 </td>
                             </tr>
                         </table>
-                        {{Form::submit('Pošalji Komentar')}}
+                        {{Form::submit('Pošalji Komentar',['class' => 'btn btn-default'])}}
                         {{Form::close()}}
                     </div>
                 </div>
