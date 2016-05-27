@@ -4,24 +4,19 @@
     Dashboard {{Auth::user()->username}}
 @endsection
 
-@section('nav-bar-header')
-    @if(Auth::guest())
-        <ul class="nav navbar-nav">
-                <li><a href="{{url('/')}}">Početna strana</a></li>
-                <li><a href="{{url('search')}}">Pretraži oglase</a></li>
-        </ul>
-    @else
+@section('headScript')
+    <link href="/css/global.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/footer.css" media="all" rel="stylesheet" type="text/css" />
+@endsection
+
+
+@section('nav-bar')
         <ul class="nav navbar-nav">
                 <li><a href="{{url('/')}}">Početna strana</a></li>
                 <li class="active"><a href="{{url('dashboard/admin')}}">Dashboard</a></li>
                 <li><a href="{{url('search')}}">Pretraži oglase</a></li>
+                <li><a href="{{url('about')}}">Informacija o nama</a></li>
         </ul>
-    @endif
-@endsection
-
-@section('headScript')
-<link href="/css/global.css" media="all" rel="stylesheet" type="text/css" />
-<link href="/css/footer.css" media="all" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('dash-nav')
