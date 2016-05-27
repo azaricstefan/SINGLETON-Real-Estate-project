@@ -47,7 +47,7 @@ return [
     'max'                  => [
         'numeric' => 'Polje :attribute mora biti manje od :max.',
         'file'    => 'Polje :attribute mora biti manje od :max kilobajta.',
-        'string'  => 'Polje :attribute mora sadržati manje od :max karaktera.',
+        'string'  => 'Polje mora sadržati manje od :max karaktera.',
         'array'   => 'Polje :attribute ne smije da image više od :max stavki.',
     ],
     'mimes'                => 'Polje :attribute mora biti fajl tipa: :values.',
@@ -61,7 +61,7 @@ return [
     'numeric'              => 'Polje :attribute mora biti broj.',
     'present'              => 'The :attribute field must be present.',
     'regex'                => 'Format polja :attribute nije validan.',
-    'required'             => 'Polje :attribute je obavezno.',
+    'required'             => 'Polje je obavezno.',
     'required_if'          => 'Polje :attribute je potrebno kada polje :other sadrži :value.',
     'required_unless'      => 'The :attribute field is required unless :other is in :values.',
     'required_with'        => 'Polje :attribute je potrebno kada polje :values je prisutan.',
