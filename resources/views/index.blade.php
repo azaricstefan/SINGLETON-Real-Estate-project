@@ -24,5 +24,14 @@
 
 @section('content')
     {{--TODO: DEFINISATI NEKU POCETNU STRANU--}}
-    <p style="text-align: center">Ovo je početna strana. Ovde ide SLIDER sa oglasima i jos neke stvari.</p>
+    @if($ads->count() != 0)
+        @foreach($ads as $ad)
+            <a href="/ads/{{$ad->ad_id}}"><img src="{{$ad->images()->first()->image_path}}" alt=""></a>
+            <h3>{{$ad->getName()}}</h3>
+            <p>{{$ad->description}}</p>
+        @endforeach
+    @else
+        <img src="logo.jpg"/>
+        <p>Nema oglasa</p>
+    @endif
 @endsection
