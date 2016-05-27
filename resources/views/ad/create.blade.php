@@ -8,6 +8,7 @@
 @section('headScript')
     <link href="/css/button.css" media="all" rel="stylesheet" type="text/css" />
     <link href="/css/forma.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/global.css" media="all" rel="stylesheet" type="text/css" />
     <link href="/fileinput/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
     <script src="/fileinput/js/fileinput.min.js"></script>
 @endsection
