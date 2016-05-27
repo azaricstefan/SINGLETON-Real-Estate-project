@@ -5,8 +5,11 @@
 @endsection
 
 @section('headScript')
-<link href="/css/button.css" media="all" rel="stylesheet" type="text/css" />
-<link href="/css/confirm.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/forma.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/button.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/confirm.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/global.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/css/footer.css" media="all" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('dash-content')
@@ -23,10 +26,11 @@
             <td colspan="2">
                 {!! Form::label("criteria" , "Filter:") !!}
                 {!! Form::select("criteria", ["username" => "Korisničko ime", "fullname" => "Puno ime", "user_type_id" => "Kategorija"],null, [
-                "placeholder" => 'Bez filtera', "id" =>"criteria_select"]) !!}
+                "placeholder" => 'Bez filtera', "id" =>"criteria_select", "class" => "form-control"]) !!}
             </td>
             <td colspan="2">
-                {!! Form::text("searchString",null, ["id" => "text_like"])!!}
+                {!! Form::label("criteria" , "Trazi:") !!}
+                {!! Form::text("searchString", null , ["id" => "text_like", "class" => "form-control"])!!}
                 {!! Form::select("searchOptionRoleType", ["1" => 'Administrator' ,'2' =>"Moderator" , '3' => "Klijent"], null ,
                 ["placeholder" => 'Izaberite kategoriju', "id" =>"select_role_type"]) !!}
             </td>
@@ -50,7 +54,7 @@
         </tr>
         @if(count($users) > 0)
             @foreach($users as $user)
-                <tr align="center">
+                <tr align="left">
                     <td>{{$user->user_id}}</td>
                     <td>{{$user->username}}</td>
                     <td>{{$user->fullname}}</td>

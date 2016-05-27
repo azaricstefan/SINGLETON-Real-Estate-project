@@ -1,0 +1,13 @@
+.paragraf{
+    color : #d3d3d3;
+    font-size: 75%;
+    font-style: oblique;
+}
+
+a{
+    color : #b20000;
+}
+
+a:hover{
+    color : #b20000;
+}
