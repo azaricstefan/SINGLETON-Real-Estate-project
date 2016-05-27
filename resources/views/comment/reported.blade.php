@@ -15,10 +15,11 @@
         @foreach($reported as $comment)
             <div class="well">
                 Komentar:<br/>{{$comment->body}} <br/>
-                Postavio: <a href="#">{{$comment->user->username}}</a> <br />
+                Postavio: <a href="/users/{{$comment->user_id}}">{{$comment->user->username}}</a> <br />
                 Oglas: <a href="/ad/{{$comment->ad->ad_id}}">{{$comment->ad->getName()}}</a><br />
                 <a href="/comment/{{$comment->comment_id}}/approve">Komentar je prikladan</a> |
-                <a href="/comment/{{$comment->comment_id}}/delete">Obrisi komentar</a>
+                {{--<a onclick="confirmDelete()">Obrisi komentar</a>--}}
+                <button onclick="confirmDelete()" value="obrisi">Obrisi</button>
             </div>
         @endforeach
     @else
@@ -31,5 +32,10 @@
         $(function(){
             $('#reported_comments').addClass('active');
         });
+        function confirmDelete() {
+            if(confirm('Da li ste sigurni?')){
+                location.href='{{url('/comment/'.$comment->comment_id.'/delete')}}';
+            }
+        }
     </script>
 @endsection
