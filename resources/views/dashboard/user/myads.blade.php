@@ -21,7 +21,7 @@
                     <td>
                     <a href="ad/{{$ad->ad_id}}">Pogledaj</a> |
                     <a href="ad/{{$ad->ad_id}}/edit">Izmeni</a> |
-                    <a href="#">Obrisi</a>
+                    <a href="ad/{{$ad->ad_id}}/delete" id="delete-url">Obrisi</a>
                     </td>
                 </tr>
             @endforeach
@@ -34,6 +34,11 @@
     <script>
         $(function () {
             $('#my_ads').addClass('active');
+            $('#delete-url').on("click", function(e){
+               if(!confirm("Da li ste sigurni da želite da obrišete oglas?")){
+                    e.preventDefault();
+               }
+            });
         })
     </script>
 @endsection

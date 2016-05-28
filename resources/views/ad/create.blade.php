@@ -18,7 +18,6 @@
     {{Form::open(['url' => url('ad/create') , 'method' => 'post', 'files'=>true])}}
     <div class="row">
         <div class = "forma col-sm-3">
-
             {{Form::label('city', 'Ime grada:')}}
             {{Form::text('city', $value = old('city'), ["class" => "form-control"])}}
             @if($errors->has('city'))
@@ -125,7 +124,6 @@
                 <strong class="alert-warning">{{$errors->first('hasImages')}}</strong><br/>
             @endif
             {{Form::submit('Pošalji', ["class" => "btn btn-default"])}}
-
         </div>
         <div class="col-sm-3">
             {{--Mesto za reklamu sa desne strane--}}
