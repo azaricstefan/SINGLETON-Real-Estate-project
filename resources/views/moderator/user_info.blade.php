@@ -1,7 +1,7 @@
 @extends('layouts.bootstrap')
 
 @section('title')
-    Pretrazi korisnike
+    Pretraži korisnike
 @endsection
 
 @section('headScript')

@@ -47,7 +47,7 @@
 
                     {{--Opcije ako je oglas tek postavljen--}}
                     @if((Auth::user()->isAdmin() || Auth::user()->isModerator()) && $ad->approvement_status == "Pending")
-                        <button type="button" class="btn btn-primary" onclick="location.href='{{$ad->ad_id}}/approve'">Odobri</button>
+                        <button type="button" class="btn btn-default" onclick="location.href='{{$ad->ad_id}}/approve'">Odobri</button>
                         <button type="button" class="btn btn-default" onclick="location.href='{{$ad->ad_id}}/deny'">Zabrani</button>
                     @endif
                 @endif
@@ -203,7 +203,7 @@
                                     @if((!Auth::guest()) && (Auth::user()->user_id != $comment->user->user_id) && Auth::user()->isPlebs())
                                         | <a href="{{url('comment/'.$comment->comment_id.'/report')}}">Prijavi komentar</a>
                                     @elseif(!Auth::guest() && (Auth::user()->isAdmin() || Auth::user()->isModerator()))
-                                        | <a href="{{url('comment/'.$comment->comment_id.'/delete')}}">Obrisi komentar</a>
+                                        | <a href="" onclick="confirmCommentDelete({{$comment->comment_id}})">Obrisi komentar</a>
                                     @endif
                             <div class="well">
                                 {{$comment->body}}
@@ -218,7 +218,7 @@
                                 </td>
                             </tr>
                         </table>
-                        {{Form::submit('Pošalji Komentar', ["class" => "btn btn-default"])}}
+                        {{Form::submit('Pošalji Komentar',['class' => 'btn btn-default'])}}
                         {{Form::close()}}
                     </div>
                 </div>
@@ -316,6 +316,11 @@
         {
             if (confirm("Da li ste sigurni?")) {
                 location.href='{{url('ad/'.$ad->ad_id.'/delete')}}';
+            }
+        }
+        function confirmCommentDelete(id) {
+            if(confirm('Da li ste sigurni?')){
+                location.href='/comment/' + id + '/delete';
             }
         }
     </script>

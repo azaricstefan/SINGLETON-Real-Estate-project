@@ -68,7 +68,7 @@ class AdminController extends Controller
         }
 
         $user->delete();
-
+        flash('Korisnik '.$user->username.' obrisan!');
         return back();
     }
 }

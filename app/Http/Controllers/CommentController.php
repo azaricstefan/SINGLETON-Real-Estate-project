@@ -28,12 +28,13 @@ class CommentController extends Controller
     {
         $id->reported = 1;
         $id->save();
-        return redirect("ad/".request()->ad_id);
+        return redirect("ad/".$id->ad_id);
     }
 
     public function delete(Comment $id)
     {
         Comment::destroy($id->comment_id);
+        flash('Komentar na '.$id->ad->getName().' korisnika '.$id->user->username.' obrisan!');
         return redirect()->back();
     }
 

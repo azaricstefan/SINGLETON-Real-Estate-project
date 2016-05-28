@@ -59,7 +59,7 @@
                     <td>{{$user->registration_date}}</td>
                     <td>{{$user->last_login}}</td>
                     @if($user->user_type_id != 1)
-                        <td><a href="{{url('admin/delete_user',[$user->user_id])}}" class='btn btn-default-reverse'>Obriši</a></td>
+                        <td><a href="/admin/delete_user/{{$user->user_id}}" class='btn btn-default-reverse confirmation'>Obriši</a></td>
                     @else
                         <td></td>
                     @endif
@@ -70,45 +70,36 @@
             <td colspan="8">{!! $users->render() !!}</td>
         </tr>
     </table>
-
-    <script>
-        window.onload = function()
-        {
-            var s = document.getElementById("criteria_select");
-            if(s.options[s.selectedIndex].value != "user_type_id")
-            {
-                document.getElementById('select_role_type').style.display = 'none';
-            }
-        };
-
-        document.getElementById("criteria_select").onchange = function()
-        {
-            var s = document.getElementById("criteria_select");
-            if(s.options[s.selectedIndex].value != "user_type_id")
-            {
-                document.getElementById('select_role_type').style.display = 'none';
-                document.getElementById('text_like').style.display = 'block';
-            }
-            else {
-                document.getElementById('select_role_type').style.display = 'block';
-                document.getElementById('text_like').style.display = 'none';
-            }
-        };
-
-        var elems = document.getElementsByClassName('confirmation');
-        var confirmIt = function (e) {
-            if (!confirm('Da li ste sigurni? Ova akcija će obrisati korisnički nalog i sve informacije vezane za njega. Akcija je nepovratna!')) e.preventDefault();
-        };
-        for (var i = 0, l = elems.length; i < l; i++) {
-            elems[i].addEventListener('click', confirmIt, false);
-        }
-    </script>
 @endsection
 
 @section('scriptAfterLoad')
     <script>
         $(function () {
             $('#registered_users').addClass('active');
-        })
+            var s = document.getElementById("criteria_select");
+            if(s.options[s.selectedIndex].value != "user_type_id")
+            {
+                document.getElementById('select_role_type').style.display = 'none';
+            }
+
+            document.getElementById("criteria_select").onchange = function()
+            {
+                var s = document.getElementById("criteria_select");
+                if(s.options[s.selectedIndex].value != "user_type_id")
+                {
+                    document.getElementById('select_role_type').style.display = 'none';
+                    document.getElementById('text_like').style.display = 'block';
+                }
+                else {
+                    document.getElementById('select_role_type').style.display = 'block';
+                    document.getElementById('text_like').style.display = 'none';
+                }
+            };
+            $('.confirmation').click(confirmIt);
+        });
+
+        var confirmIt = function (e) {
+            if (!confirm('Da li ste sigurni? Ova akcija će obrisati korisnički nalog i sve informacije vezane za njega. Akcija je nepovratna!')) e.preventDefault();
+        };
     </script>
 @endsection
