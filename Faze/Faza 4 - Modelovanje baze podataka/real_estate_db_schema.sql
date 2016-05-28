@@ -140,6 +140,16 @@ CREATE TABLE user
 	CONSTRAINT PKuser PRIMARY KEY (user_id)
 );
 
+CREATE TABLE `password_resets` 
+(
+  `password_resets_id` INT NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(254) NOT NULL,
+  `token` VARCHAR(255) NOT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`password_resets_id`)
+);
+
+
 CREATE TABLE user_type
 (
 	user_type_id         INTEGER NOT NULL,
