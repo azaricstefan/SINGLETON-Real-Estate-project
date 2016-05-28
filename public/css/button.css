@@ -46,3 +46,21 @@
     box-shadow: 0 0 2px #b20000;
     border : 0.5px solid #b20000;
 }
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    width: 70%;
+    margin: auto;
+}
+
+.left{
+    -webkit-box-shadow: 0 0 5px 2px #000000;
+    -moz-box-shadow: 0 0 5px 2px #000000;
+    box-shadow: 0 0 5px 2px #000000;
+}
+
+.right{
+    -webkit-box-shadow: 0 0 5px 2px #000000;
+    -moz-box-shadow: 0 0 5px 2px #000000;
+    box-shadow: 0 0 5px 2px #000000;
+}
