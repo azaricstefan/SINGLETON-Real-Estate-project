@@ -94,27 +94,3 @@ Route::get('password/reset/{token}&email={email}', 'PasswordController@emailRese
 Route::post('password/email/reset', 'PasswordController@resetViaEmail');
 Route::get('password/email', 'PasswordController@sendEmailForm');
 Route::post('password/email', 'PasswordController@sendEmail');
-
-Route::get('mail', function(){
-    Mail::send('emails.welcome', [], function ($message) {
-        $message->from('vinjak.unuce@gmail.com', ' ');
-
-        $message->to('evox94@gmail.com', 'Prebrzi')->subject('Napravi nekretninu');
-        return 'poslato';
-    });
-});
-
-Route::get('encrypt/{nesto}', function($nesto){
-    $cript = Crypt::encrypt($nesto);
-    return ;
-    return 'localhost:8000/decrypt/'.$cript;
-});
-
-Route::get('decrypt/{nesto}', function($nesto){
-    $cript = Crypt::decrypt($nesto);
-    return $cript;
-});
-
-Route::get('test/{prvi}&{drugi}', function($prvi, $drugi){
-    return $prvi.' + '.$drugi;
-});
