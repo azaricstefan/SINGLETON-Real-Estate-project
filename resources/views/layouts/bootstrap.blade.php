@@ -1,10 +1,5 @@
 <!DOCTYPE html>
 
-@section('headScript')
-    <link href="/css/footer.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="/css/global.css" media="all" rel="stylesheet" type="text/css" />
-@endsection
-
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -26,6 +21,10 @@
         <title>@yield('title')</title>
 
         @yield('headScript')
+        <link href="/css/global.css" media="all" rel="stylesheet" type="text/css" />
+        <link href="/css/footer.css" media="all" rel="stylesheet" type="text/css" />
+        <link href="/css/button.css" media="all" rel="stylesheet" type="text/css" />
+        <link href="/css/forma.css" media="all" rel="stylesheet" type="text/css" />
     </head>
     <body>
     <nav class="navbar navbar-default">
