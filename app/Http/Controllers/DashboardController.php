@@ -18,6 +18,9 @@ class DashboardController extends Controller
 
     public function selectDashboard()
     {
+        if(session()->has('flash_message')){
+            flash(session('flash_message'));
+        }
         if(Auth::user()->isAdmin()){
             return redirect()->action('AdminDashboardController@index');
         }
