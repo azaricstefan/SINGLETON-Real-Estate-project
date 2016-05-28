@@ -9,6 +9,7 @@ use RealEstate\Http\Requests;
 use RealEstate\Ad;
 use RealEstate\Http\Controllers\Controller;
 
+use RealEstate\PasswordResets;
 use RealEstate\User;
 use Hash;
 class AuthController extends Controller
@@ -36,14 +37,21 @@ class AuthController extends Controller
             'telefon' => 'max:12|digits_between:0,12',
         ]);
 
-        User::create([
-            'username' => $request->username,
-            'fullname' => $request->fullname,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'telefon' => $request->telefon,
-            
-        ]);
+        \DB::transaction(function() use ($request){
+            User::create([
+                'username' => $request->username,
+                'fullname' => $request->fullname,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'telefon' => $request->telefon,
+
+            ]);
+
+            $rt = new PasswordResets();
+            $rt->email = $request->email;
+            $rt->token = PasswordResets::makeToken(Hash::make($request->password));
+            $rt->save();
+        });
         
         return redirect('/');
     }

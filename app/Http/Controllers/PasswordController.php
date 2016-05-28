@@ -5,6 +5,9 @@ namespace RealEstate\Http\Controllers;
 use Illuminate\Http\Request;
 
 use RealEstate\Http\Requests;
+use RealEstate\PasswordResets;
+use RealEstate\User;
+use Mail;
 
 class PasswordController extends Controller
 {
@@ -12,23 +15,7 @@ class PasswordController extends Controller
     {
         return view('dashboard.password.reset');
     }
-
-    private function getValidatorForImages(){
-        $uploaded_images = request()->images;
-        $rules = array('hasImages' => 'required|accepted' , 'count' => 'min:1');
-        $data_for_validator = array('hasImages' => request()->hasFile('images'), 'count' => count($uploaded_images));
-        $messages=['hasImages.accepted' =>'Morate izabrati sliku', 'count.min' => 'Morate izabrati bar 1. sliku'];
-        $index = 0;
-        foreach ($uploaded_images as $image)
-        {
-            $rules['image'.$index] = 'required|image';
-            $data_for_validator['image'.$index] = $image;
-            $index++;
-        }
-        $validator = Validator::make($data_for_validator, $rules ,$messages);
-        return $validator;
-    }
-
+    
     public function reset(Request $request)
     {
         $this->validate($request,[
@@ -39,10 +26,67 @@ class PasswordController extends Controller
             return back()->withInput()->withErrors(['old_password' => 'old_password']);
         }
 
-        \Auth::user()->password = \Hash::make($request->password);
-        \Auth::user()->save();
+        \DB::transaction(function() use ($request){
+            \Auth::user()->password = \Hash::make($request->password);
+            \Auth::user()->save();
+
+            $rt = PasswordResets::where('email', \Auth::user()->email)->first();
+            $rt->token = PasswordResets::makeToken(\Auth::user()->password);
+            $rt->save();
+        });
+
 
         flash('Lozinka uspešno promenjena');
         return redirect('dashboard');
+    }
+
+    public function emailResetForm($token, $email)
+    {
+        if (PasswordResets::confirmToken($token, $email))
+            return view('emails.reset');
+        abort(504);
+    }
+
+    public function resetViaEmail(Request $request)
+    {
+        if (PasswordResets::confirmToken($request->password_token, $request->email)) {
+            \DB::transaction(function () use ($request) {
+                $this->validate($request, ['password' => 'required|confirmed|min:6']);
+                $user = User::where('email', $request->email)->first();
+                $user->password = \Hash::make($request->password);
+                $user->save();
+
+                $rt = PasswordResets::where('email', $request->email)->first();
+                $rt->token = PasswordResets::makeToken($user->password);
+                $rt->save();
+            });
+            return redirect('/');//neka redirekciaj posle 5 sekundi da se namesti
+        }
+        return 'ups';
+    }
+
+    public function sendEmailForm()
+    {
+        return view('auth.password.email');
+    }
+
+    public function sendEmail(Request $request)
+    {
+        $user = User::where('email', $request->email)->first();
+        if ($user != null) {
+            $username = $user->username;
+            $email = $user->email;
+            $rt = PasswordResets::where('email', $email)->first();
+            $token = $rt->token;
+            Mail::send('emails.password_link' ,compact('email', 'username', 'token'), function ($message) use ($email, $username) {
+
+                $message->from('singleton@najjaci.com', 'Agencija poy ');
+
+                $message->to($email, $username)->subject('Promena lozinke');
+                return 'poslato';
+            });
+            return redirect('/');//opet je pozeljan neki info sa redirekcijom
+        }
+        return 'nema takog odje';
     }
 }

@@ -31,6 +31,7 @@
                     <label>Pasword</label>
                     <input type="password" name="password" class="form-control"> <br/>
                     <input type="submit" value="Login" class="form-control btn-default">
+                    <a href="/password/email">Zaboravio pass?</a>
                 </form>
             </div>
         </div>

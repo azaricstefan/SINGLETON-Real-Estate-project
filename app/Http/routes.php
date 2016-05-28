@@ -84,6 +84,37 @@ Route::get('users', 'ModeratorController@displayUsers')->middleware(["ifNotLogge
 Route::get('users/{user}', 'ModeratorController@displayUserInfo')->middleware(["ifNotLoggedInGoLogIn", "checkModeratorPrivileges"]);
 Route::get('appointments/pending', 'ModeratorController@displayPendingAppointments');
 
+
 /*Password routes*/
 Route::get('password/reset', 'PasswordController@showReset')->middleware('ifNotLoggedInGoLogIn');
 Route::post('password/reset', 'PasswordController@reset')->middleware('ifNotLoggedInGoLogIn');
+
+/*Password reset routes*/
+Route::get('password/reset/{token}&email={email}', 'PasswordController@emailResetForm');
+Route::post('password/email/reset', 'PasswordController@resetViaEmail');
+Route::get('password/email', 'PasswordController@sendEmailForm');
+Route::post('password/email', 'PasswordController@sendEmail');
+
+Route::get('mail', function(){
+    Mail::send('emails.welcome', [], function ($message) {
+        $message->from('vinjak.unuce@gmail.com', ' ');
+
+        $message->to('evox94@gmail.com', 'Prebrzi')->subject('Napravi nekretninu');
+        return 'poslato';
+    });
+});
+
+Route::get('encrypt/{nesto}', function($nesto){
+    $cript = Crypt::encrypt($nesto);
+    return ;
+    return 'localhost:8000/decrypt/'.$cript;
+});
+
+Route::get('decrypt/{nesto}', function($nesto){
+    $cript = Crypt::decrypt($nesto);
+    return $cript;
+});
+
+Route::get('test/{prvi}&{drugi}', function($prvi, $drugi){
+    return $prvi.' + '.$drugi;
+});
