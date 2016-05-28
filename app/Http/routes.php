@@ -84,8 +84,6 @@ Route::get('users', 'ModeratorController@displayUsers')->middleware(["ifNotLogge
 Route::get('users/{user}', 'ModeratorController@displayUserInfo')->middleware(["ifNotLoggedInGoLogIn", "checkModeratorPrivileges"]);
 Route::get('appointments/pending', 'ModeratorController@displayPendingAppointments');
 
-
-Route::get('boot', function(){
-   return view('bootstrap'); 
-});
- 
+/*Password routes*/
+Route::get('password/reset', 'PasswordController@showReset')->middleware('ifNotLoggedInGoLogIn');
+Route::post('password/reset', 'PasswordController@reset')->middleware('ifNotLoggedInGoLogIn');

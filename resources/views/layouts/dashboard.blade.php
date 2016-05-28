@@ -12,7 +12,7 @@
                 @yield('dash-nav')
             </div>
             @if(session()->has('flash_message'))
-                <div class="alert alert-success">
+                <div class="alert alert-success" style="text-align: center">
                     {{session('flash_message')}}
                 </div>
             @endif
