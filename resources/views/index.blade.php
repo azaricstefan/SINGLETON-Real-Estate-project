@@ -52,7 +52,7 @@
 
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                        <img src="{{$ads[0]->images()->first()->image_path}}}"/>
+                        <img src="{{$ads[0]->images()->first()->image_path}}" />
                         <div class="carousel-caption">
                             <h3>{{$ads[0]->getName()}}</h3>
                             <p>{{$ads[0]->description}}</p>
