@@ -6,6 +6,21 @@
     border-radius: 6px;
 }
 
+.btn-file{
+     background-color: #b20000;
+     color : #ffffff;
+     border-radius: 6px;
+ }
+
+.btn-file:hover{
+    border: 1px solid #b20000;
+    background-color: #ffffff;
+    color : #b20000;
+    -moz-box-shadow: 0 0 10px #b20000;
+    -webkit-box-shadow: 0 0 10px #b20000;
+    box-shadow: 0 0 10px #b20000;
+}
+
 .btn-default:hover{
     border: 1px solid #b20000;
     background-color: #ffffff;

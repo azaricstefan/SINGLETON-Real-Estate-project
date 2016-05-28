@@ -52,10 +52,10 @@
 
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                        <img src="logo.jpg"/>
+                        <img src="{{$ads[0]->images()->first()->image_path}}}"/>
                         <div class="carousel-caption">
-                            <h3>Dobro dosli</h3>
-                            <p>ovde dodju osnovne informacije o nasem sajtu</p>
+                            <h3>{{$ads[0]->getName()}}</h3>
+                            <p>{{$ads[0]->description}}</p>
                         </div>
                     </div>
                     @foreach($ads as $ad)
