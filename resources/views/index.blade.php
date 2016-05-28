@@ -52,9 +52,9 @@
 
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                        <img src="{{$ads[0]->images()->first()->image_path}}" />
+                        <a href="{{'/ad/'.$ads[0]->ad_id}}" ><img src="{{$ads[0]->images()->first()->image_path}}" /></a>
                         <div class="carousel-caption">
-                            <h3>{{$ads[0]->getName()}}</h3>
+                            <h3><a href="{{'/ad/'.$ads[0]->ad_id}}" style="color: inherit;">{{$ads[0]->getName()}}</a></h3>
                             <p>{{$ads[0]->description}}</p>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                         <div class="item">
                             <a href="/ad/{{$ad->ad_id}}"><img src="{{$ad->images()->first()->image_path}}" alt="{{$ad->getName()}}"></a>
                             <div class="carousel-caption">
-                                <h3>{{$ad->getName()}}</h3>
+                                <h3><a href="{{'ad/'.$ad->ad_id}}" style="color: inherit">{{$ad->getName()}}</a></h3>
                                 <p>{{$ad->description}}</p>
                             </div>
                         </div>
