@@ -26,9 +26,16 @@
 @section('content')
     {{--TODO: DEFINISATI NEKU POCETNU STRANU--}}
     <div align="center">
-        <img src="/us/ja.png" alt="Mihailo" class="img-rounded" width="300px">
-        <img src="/us/nenad.jpg" alt="Nenad" class="img-rounded" width="300px">
-        <img src="/us/smiljan.jpg" alt="Smiljan" class="img-rounded" width="300px">
-        <img src="/us/stefan.jpg" alt="Stefan" class="img-rounded" width="300px">
+        <table>
+            <tr>
+                <td rowspan="2"><img src="/us/ja.png" alt="Mihailo" class="img-rounded" width="300px"></td>
+                <td rowspan="2"><img src="/us/nenad.jpg" alt="Nenad" class="img-rounded" width="300px"></td>
+                <td><img src="/us/smiljan.gif" alt="Smiljan" class="img-rounded" height="150" width="300px"></td>
+                <td rowspan="2"><img src="/us/stefan.jpg" alt="Stefan" class="img-rounded" width="300px"></td>
+            </tr>
+            <tr>
+                <td><img src="/us/smiljan.jpg" alt="Smiljan" class="img-rounded" height="150" width="300px"></td>
+            </tr>
+        </table>
     </div>
 @endsection
