@@ -1,0 +1,1 @@
+U toku implementacije smo shvatili da nije dobra praksa da admin ili moderator moze da uredjuje komentare. Ako komentar nije prikladan bolje je da on bude obrisan, kasnije korisnik koji je napisao komentar moze dodati nov.
