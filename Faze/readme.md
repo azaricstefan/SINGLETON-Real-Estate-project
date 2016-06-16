@@ -23,3 +23,6 @@ Zaduženja tima SINGLETON (po fazama)
 * Formalna inspekcija
 * Modelovanje baze podataka (glavni)  
 * Implementacija veb aplikacije (back end)
+
+**Faza 6 zadaci**
+https://github.com/xlstefan/SINGLETON-Real-Estate-project/blob/master/Faze/Faza%206%20-%20Modelovanje%20veb%20aplikacije/zadaci.png
