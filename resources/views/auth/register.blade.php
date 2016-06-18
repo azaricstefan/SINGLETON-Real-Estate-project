@@ -28,38 +28,36 @@
                 {{csrf_field()}}
                 <div class="form-group">
                     <label>Ime i prezime</label>
-                    <input type="text" name="fullname" value="{{old('fullname')}}" class="form-control"><br/>
                     @if($errors->has('fullname'))
-                        <strong>{{$errors->first('fullname')}}</strong>
+                        <strong class="custom-strong-error">{{$errors->first('fullname')}}</strong>
                     @endif
+                    <input type="text" name="fullname" value="{{old('fullname')}}" class="form-control"><br/>
                     <label>Telefon</label>
-                    <input type="text" name="telefon" value="{{old('telefon')}}" class="form-control"><br/>
                     @if($errors->has('telefon'))
-                        <strong>{{$errors->first('telefon')}}</strong>
+                        <strong class="custom-strong-error">{{$errors->first('telefon')}}</strong>
                     @endif
+                    <input type="text" name="telefon" value="{{old('telefon')}}" class="form-control"><br/>
                     <label>E-pošta</label>
-                    <input type="email" name="email" value="{{old('email')}}" class="form-control"><br/>
                     @if($errors->has('email'))
-                        <strong>{{$errors->first('email')}}</strong>
+                        <strong class="custom-strong-error">{{$errors->first('email')}}</strong>
                     @endif
-                    <label>Korisničko ime</label>
-                    <input type="text" name="username" value="{{old('username')}}" class="form-control"><br/>
+                    <input type="email" name="email" value="{{old('email')}}" class="form-control"><br/>
+                    <label data-toggle="tooltip" title="Maksimalno 20 karaktera!">Korisničko ime</label><sub class="reg-label-sup" data-toggle="tooltip" title="Maksimalno 20 karaktera!">?</sub>
                     @if($errors->has('username'))
-                        <strong>{{$errors->first('username')}}</strong>
+                        <strong class="custom-strong-error">{{$errors->first('username')}}</strong>
                     @endif
-                    <label>Lozinka</label>
-                    <input type="password" name="password" class="form-control"><br/>
+                    <input type="text" name="username" value="{{old('username')}}" class="form-control"><br/>
+                    <label data-toggle="tooltip" title="Minimalno 6 karaktera!">Lozinka</label><sub class="reg-label-sup" data-toggle="tooltip" title="Minimalno 6 karaktera!">?</sub>
                     @if($errors->has('password'))
-                        <strong>{{$errors->first('password')}}</strong>
+                        <strong class="custom-strong-error">{{$errors->first('password')}}</strong>
                     @endif
+                    <input type="password" name="password" class="form-control"><br/>
                     <label>Potvrda lozinke</label>
                     <input type="password" name="password_confirmation" class="form-control"><hr/>
-
                     <div class = "btn-group-justified">
                         <input type="submit" value="Registracija" class="form-control btn-default">
                         <input type="button" value="Odustani" href="{{url('')}}" onclick="window.location.href ='/'" class="form-control btn-default">
                     </div>
-
                 </div>
             </form>
         </div>

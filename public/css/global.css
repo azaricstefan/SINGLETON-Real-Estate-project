@@ -7,3 +7,20 @@
     color: #ffffff;
     background: #b20000;
 }
+
+.custom-strong-error{
+    font-weight: normal;
+    margin-left: 5px;
+    color: red;
+    font-style: italic;
+}
+
+.reg-label-sup{
+    position: relative;
+    bottom: 7px;
+}
+
+.reg-label-sup:hover{
+    text-decoration: underline;
+    cursor: default;
+}

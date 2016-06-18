@@ -31,10 +31,10 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $this->validate($request,[
+            'fullname' => 'required',
             'username' => 'required|max:20|unique:user',
-            'email' => 'required|max:30|unique:user|email',
+            'email' => 'required|max:50|unique:user|email',
             'password' => 'required|confirmed|min:6',
-            'telefon' => 'max:12|digits_between:0,12',
         ]);
 
         \DB::transaction(function() use ($request){
