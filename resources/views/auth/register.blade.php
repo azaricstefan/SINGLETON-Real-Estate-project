@@ -16,7 +16,6 @@
         <li><a href="{{url('search')}}">Pretraži oglase</a></li>
         <li><a href="{{url('ad/create')}}">Dodaj oglas</a></li>
         <li><a href="{{url('about')}}">Informacija o nama</a></li>
-        {{--TODO: DODATI STRANICU SA INFORMACIJAMA O AGENCIJI--}}
     </ul>
 @endsection
 
