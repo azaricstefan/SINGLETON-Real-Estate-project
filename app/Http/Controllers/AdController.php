@@ -307,6 +307,7 @@ class AdController extends Controller
         $searchString = "(".$searchString.")";
         return $searchString;
     }
+
     public function displayAds()
     {
         $ads = Ad::query();
