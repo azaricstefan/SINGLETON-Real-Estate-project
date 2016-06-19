@@ -40,7 +40,7 @@ Route::get('ad/create', function(){
 Route::post('ad/create', 'AdController@create');
 
 /*User update profile*/
-Route::get('user/updateProfile', 'UserDashboardController@updateProfile')->middleware('ifNotLoggedInGoLogIn');
+Route::get('user/updateProfile', 'UserDashboardController@updateProfileForm')->middleware('ifNotLoggedInGoLogIn');
 Route::post('user/updateProfile', 'UserDashboardController@updateProfile')->middleware('ifNotLoggedInGoLogIn');
 
 /*Admin routes*/
