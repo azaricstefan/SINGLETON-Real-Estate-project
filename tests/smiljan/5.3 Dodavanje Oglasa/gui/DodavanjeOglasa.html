@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8000/" />
+<title>DodavanjeOglasa</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">DodavanjeOglasa</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=span.glyphicon.glyphicon-log-in</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=username</td>
+	<td>korisnik</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=password</td>
+	<td>korisnik123</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.form-control.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Dodaj oglas</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=city</td>
+	<td>Beograd</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=municipality</td>
+	<td>Savski Venac</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=address</td>
+	<td>Kralja Milutina 53</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=price</td>
+	<td>3000</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=floor_area</td>
+	<td>200</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=num_of_rooms</td>
+	<td>23</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=num_of_rooms</td>
+	<td>10</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=num_of_bathrooms</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=construction_year</td>
+	<td>2000</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=input-images</td>
+	<td>D:\deve\SINGLETON-Real-Estate-project\tests\smiljan\5.3 Dodavanje Oglasa\slika.jpg</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//label[2]</td>
+	<td>Beograd</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=delete-url</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Da li ste sigurni da želite da obrišete oglas?</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Odjava</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

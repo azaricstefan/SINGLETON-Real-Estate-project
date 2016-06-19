@@ -123,7 +123,7 @@
             @if($errors->has('hasImages'))
                 <strong class="alert-warning">{{$errors->first('hasImages')}}</strong><br/>
             @endif
-            {{Form::submit('Pošalji', ["class" => "btn btn-default"])}}
+            {{Form::submit('Posalji', ["class" => "btn btn-default"])}}
         </div>
         <div class="col-sm-3">
             {{--Mesto za reklamu sa desne strane--}}

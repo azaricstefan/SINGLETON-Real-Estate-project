@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+.failed {color: red; background-color: #ffcccc;}
+.passed {color: green; background-color: #ccffcc;}
+.done {color: #404040; background-color: #ccffcc;}
+.comment {color: #404040; background-color: #d0d0d0;}
+body, table { font-family: Verdana, Arial, sans-serif; font-size: 12pt; }
+table { border-collapse: collapse; border: 1px solid #ccc; }
+th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
+#suiteSummaryTable thead { font-size: 14pt; font-weight: 800; }
+.test_case thead { font-size: 14pt; font-weight: 400; }
+</style>
+</head>
+<body>
+<table id="suiteSummaryTable" class="selenium">
+<thead><tr class="passed"><td>Test Suite: DodavanjeOglasaSuit.html</td></tr></thead>
+<tbody>
+<tr><td>Test cases: 2 total / <span class="passed">2</span> passed / <span class="failed">0</span> failed</td></tr>
+<tr><td>Commands: 36 total / <span class="passed">36</span> passed / <span class="failed">0</span> failed / <span class="skipped">0</span> skipped</td></tr>
+</tbody></table><br>
+<table id="suiteTable" class="selenium">
+<thead><tr><td>Index of test cases</td></tr></thead>
+<tbody>
+<tr class="passed"><td><a href="#test0">ObaveznaPolja</a></td></tr>
+<tr class="passed"><td><a href="#test1">DodavanjeOglasa</a></td></tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test0"></a><table class="test_case"><thead><tr><td colspan="4">Test case: ObaveznaPolja</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Prijava</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=username</td>
+	<td>korisnik</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=password</td>
+	<td>korisnik123</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.form-control.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=img.navbar-brand.img-rounded</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Dodaj oglas</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertText</td>
+	<td>css=strong.alert-warning</td>
+	<td>Polje je obavezno.</td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertText</td>
+	<td>//strong[2]</td>
+	<td>Polje je obavezno.</td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertText</td>
+	<td>//strong[3]</td>
+	<td>Polje je obavezno.</td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertText</td>
+	<td>//div[2]/strong</td>
+	<td>Polje je obavezno.</td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertText</td>
+	<td>//div[2]/strong[2]</td>
+	<td>Polje je obavezno.</td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertText</td>
+	<td>//div[2]/strong[3]</td>
+	<td>Polje je obavezno.</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Odjava</td>
+	<td></td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test1"></a><table class="test_case"><thead><tr><td colspan="4">Test case: DodavanjeOglasa</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=span.glyphicon.glyphicon-log-in</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=username</td>
+	<td>korisnik</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=password</td>
+	<td>korisnik123</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.form-control.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Dodaj oglas</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=city</td>
+	<td>Beograd</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=municipality</td>
+	<td>Savski Venac</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=address</td>
+	<td>Kralja Milutina 53</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=price</td>
+	<td>3000</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=floor_area</td>
+	<td>200</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=num_of_rooms</td>
+	<td>23</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=num_of_rooms</td>
+	<td>10</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>name=num_of_bathrooms</td>
+	<td>5</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=construction_year</td>
+	<td>2000</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=input-images</td>
+	<td>D:\deve\SINGLETON-Real-Estate-project\tests\smiljan\5.3 Dodavanje Oglasa\slika.jpg</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertText</td>
+	<td>//label[2]</td>
+	<td>Beograd</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=delete-url</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertConfirmation</td>
+	<td>Da li ste sigurni da želite da obrišete oglas?</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Odjava</td>
+	<td></td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+</body></html>
