@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+.failed {color: red; background-color: #ffcccc;}
+.passed {color: green; background-color: #ccffcc;}
+.done {color: #404040; background-color: #ccffcc;}
+.comment {color: #404040; background-color: #d0d0d0;}
+body, table { font-family: Verdana, Arial, sans-serif; font-size: 12pt; }
+table { border-collapse: collapse; border: 1px solid #ccc; }
+th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
+#suiteSummaryTable thead { font-size: 14pt; font-weight: 800; }
+.test_case thead { font-size: 14pt; font-weight: 400; }
+</style>
+</head>
+<body>
+<table id="suiteSummaryTable" class="selenium">
+<thead><tr class="passed"><td>Test Suite</td></tr></thead>
+<tbody>
+<tr><td>Test cases: 9 total / <span class="passed">9</span> passed / <span class="failed">0</span> failed</td></tr>
+<tr><td>Commands: 58 total / <span class="passed">58</span> passed / <span class="failed">0</span> failed / <span class="skipped">0</span> skipped</td></tr>
+</tbody></table><br>
+<table id="suiteTable" class="selenium">
+<thead><tr><td>Index of test cases</td></tr></thead>
+<tbody>
+<tr class="passed"><td><a href="#test0">test_username_change</a></td></tr>
+<tr class="passed"><td><a href="#test1">test_fullname_update</a></td></tr>
+<tr class="passed"><td><a href="#test2">test_phone_update</a></td></tr>
+<tr class="passed"><td><a href="#test3">test_email_update</a></td></tr>
+<tr class="passed"><td><a href="#test4">test_user_cancels_action</a></td></tr>
+<tr class="passed"><td><a href="#test5">test_user_leaves_empty_field</a></td></tr>
+<tr class="passed"><td><a href="#test6">test_not_email</a></td></tr>
+<tr class="passed"><td><a href="#test7">test_email_exists</a></td></tr>
+<tr class="passed"><td><a href="#test8">test_username_exists</a></td></tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test0"></a><table class="test_case"><thead><tr><td colspan="4">Test case: test_username_change</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Dashboard</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>id=update_profile</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=username</td>
+	<td>pera123</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>id=the_submit_button</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertTitle</td>
+	<td>Dashboard pera123</td>
+	<td></td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test1"></a><table class="test_case"><thead><tr><td colspan="4">Test case: test_fullname_update</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Dashboard</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>id=update_profile</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=fullname</td>
+	<td>Pera123</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>id=the_submit_button</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="comment">
+	<td colspan="4">Jedini nacin provere je ponovno otvaranje stranice za promenu profila</td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>id=update_profile</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertValue</td>
+	<td>id=fullname</td>
+	<td>Pera123</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test2"></a><table class="test_case"><thead><tr><td colspan="4">Test case: test_phone_update</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Dashboard</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=img.navbar-brand.img-rounded</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Dashboard</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>id=update_profile</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=telefon</td>
+	<td>0691234567</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>id=the_submit_button</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="comment">
+	<td colspan="4">Jedini nacin provere je ponovno otvaranje stranice za promenu profila</td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>id=update_profile</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertValue</td>
+	<td>id=telefon</td>
+	<td>0691234567</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test3"></a><table class="test_case"><thead><tr><td colspan="4">Test case: test_email_update</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Dashboard</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>id=update_profile</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=email</td>
+	<td>pm130681d@student.etf.rs</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>id=the_submit_button</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="comment">
+	<td colspan="4">Jedini nacin provere je ponovno otvaranje stranice za promenu profila</td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>id=update_profile</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertValue</td>
+	<td>id=email</td>
+	<td>pm130681d@student.etf.rs</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test4"></a><table class="test_case"><thead><tr><td colspan="4">Test case: test_user_cancels_action</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Dashboard</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>id=update_profile</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Odustani</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertTitle</td>
+	<td>Dashboard pera123</td>
+	<td></td>
+	<td>Actual value 'Dashboard pera123' did not match 'Dashboard korisnik'</td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test5"></a><table class="test_case"><thead><tr><td colspan="4">Test case: test_user_leaves_empty_field</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Dashboard</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>id=update_profile</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=username</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>id=the_submit_button</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertText</td>
+	<td>css=strong.alert-warning</td>
+	<td>Polje je obavezno.</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test6"></a><table class="test_case"><thead><tr><td colspan="4">Test case: test_not_email</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Dashboard</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>id=update_profile</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=email</td>
+	<td>pm130681d</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>id=the_submit_button</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertText</td>
+	<td>css=strong.alert-warning</td>
+	<td>Format polja email nije validan.</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test7"></a><table class="test_case"><thead><tr><td colspan="4">Test case: test_email_exists</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Dashboard</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>id=update_profile</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=email</td>
+	<td>mod@retail.com</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>id=the_submit_button</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertText</td>
+	<td>css=div.alert.alert-success</td>
+	<td>Email vec postoji</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test8"></a><table class="test_case"><thead><tr><td colspan="4">Test case: test_username_exists</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Dashboard</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>id=update_profile</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=username</td>
+	<td>moderator</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>id=the_submit_button</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertText</td>
+	<td>css=div.alert.alert-success</td>
+	<td>Korisnicko ime vec postoji</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+</body></html>
