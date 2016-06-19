@@ -44,6 +44,6 @@ class Dodavanje_moderatora_test extends TestCase
 
         $brmoderator = \RealEstate\User::where("username", $moderator->username)->get()->count();
         $this->assertEquals($brmoderator,1);
-        $this->see("Polje username već postoji.");
+        $this->see("Polje username već postoji."); 
     }
 }
