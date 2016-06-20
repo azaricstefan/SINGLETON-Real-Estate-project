@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8000/appointments/my_appointments" />
+<title>otkazivanje termina</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">otkazivanje termina</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/appointments/my_appointments</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=appointment_cancel</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Da li ste sigurni?</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Odjava</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Prijava</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=username</td>
+	<td>korisnik</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=password</td>
+	<td>korisnik123</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=username</td>
+	<td>admin</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=password</td>
+	<td>admin123</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.form-control.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Dashboard</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=new_ads</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Početna strana</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Dodaj oglas</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=city</td>
+	<td>ddsadas</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=municipality</td>
+	<td>dsadsad</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=address</td>
+	<td>dsadasdasda</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=price</td>
+	<td>421412</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=floor_area</td>
+	<td>431</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=note</td>
+	<td>4324</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=description</td>
+	<td>432dsf</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=Kablovska</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=input-images</td>
+	<td>D:\Stefan Azaric\Desktop\simfoni ioc.jpg</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=new_ads</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=input-images</td>
+	<td>D:\Stefan Azaric\Desktop\simfoni ioc.jpg</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=construction_year</td>
+	<td>3</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=num_of_bathrooms</td>
+	<td>3</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=num_of_rooms</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-default</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=new_ads</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>otkazan</td>
+	<td>otkazan</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
