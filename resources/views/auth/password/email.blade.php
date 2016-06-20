@@ -9,9 +9,9 @@
                 </div>
                 <div class="col-sm-2">
                     {{csrf_field()}}
-                    <label class="form-control">Email: </label>
-                    <input type="email" placeholder="Vas email" name="email" class="form-control"><br/>
-                    <input type="submit" value="Posalji mejl" class="btn btn-default">
+                    <label for="email">Email: </label>
+                    <input type="email" placeholder="Vaš email" name="email" class="form-control"><br/>
+                    <input type="submit" value="Pošalji" class="btn btn-default">
                 </div>
                 <div class="col-sm-5">
                     {{--Za reklamu sa desne strane--}}
