@@ -31,8 +31,16 @@ class PasswordController extends Controller
             \Auth::user()->save();
 
             $rt = PasswordResets::where('email', \Auth::user()->email)->first();
-            $rt->token = PasswordResets::makeToken(\Auth::user()->password);
-            $rt->save();
+            if ($rt == null){
+                $rt = new PasswordResets();
+                $rt->token = PasswordResets::makeToken(\Auth::user()->password);
+                $rt->email = \Auth::user()->email;
+                $rt->save();
+            }
+            else {
+                $rt->token = PasswordResets::makeToken(\Auth::user()->password);
+                $rt->save();
+            }
         });
 
 
@@ -76,6 +84,13 @@ class PasswordController extends Controller
         if ($user != null) {
             $username = $user->username;
             $email = $user->email;
+            $rt = PasswordResets::where('email', $email)->first();
+            if ($rt == null){
+                $rt = new PasswordResets();
+                $rt->token = PasswordResets::makeToken($user->password);
+                $rt->email = $email;
+                $rt->save();
+            }
             $rt = PasswordResets::where('email', $email)->first();
             $token = $rt->token;
             Mail::send('emails.password_link' ,compact('email', 'username', 'token'), function ($message) use ($email, $username) {
