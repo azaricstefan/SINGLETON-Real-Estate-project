@@ -61,8 +61,33 @@ $factory->define(RealEstate\Ad::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(RealEstate\Image::class, function (Faker\Generator $faker) {
+    $imgPaths=[
+        0 => 'http://imgur.com/YqS3iUo.jpg',
+        1 => 'http://imgur.com/mglFdC1.jpg',
+        2 => 'http://imgur.com/Xeg4mx7.jpg',
+        3 => 'http://imgur.com/lVQZYA9.jpg',
+        4 => 'http://imgur.com/37a9rC5.jpg',
+        5 => 'http://imgur.com/NezT4sz.jpg',
+        6 => 'http://imgur.com/MCg3Xaz.jpg',
+        7 => 'http://imgur.com/YvH2NEx.jpg',
+        8 => 'http://imgur.com/984WZ9O.jpg',
+        9 => 'http://imgur.com/efR38YK.jpg',
+        10 => 'http://imgur.com/vE9uiXz.jpg',
+        11 => 'http://imgur.com/6370bjD.jpg',
+        12 => 'http://imgur.com/3ajNOtP.jpg',
+        13 => 'http://imgur.com/vcfHLWG.jpg',
+        14 => 'http://imgur.com/2z3cERv.jpg',
+        15 => 'http://imgur.com/mW1X0ni.jpg',
+        16 => 'http://imgur.com/wq9TiUN.jpg',
+        17 => 'http://imgur.com/22bwBeP.jpg',
+        18 => 'http://imgur.com/7zfYDyx.jpg',
+        19 => 'http://imgur.com/MCZLAce.jpg',
+        20 => 'http://imgur.com/EEVlUWV.jpg'
+
+    ];
+
     return [
-        'image_path' => $faker->imageUrl(720,480,null,true)
+        'image_path' => $imgPaths[array_rand($imgPaths)]
     ];
 });
 
