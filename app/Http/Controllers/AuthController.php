@@ -24,7 +24,7 @@ class AuthController extends Controller
             Auth::user()->save();
             return redirect()->intended('/');//Ovo sada redi zbog onog redirect->guest().
         }
-        
+        flash("Pogresni podaci");
         return redirect('login');
     }
 

@@ -30,6 +30,11 @@
                     <input type="text" name="username" class="form-control"><br/>
                     <label>Pasword</label>
                     <input type="password" name="password" class="form-control"> <br/>
+                    @if(session()->has('flash_message'))
+                        <div class="alert alert-danger" style="text-align: center">
+                            {{session('flash_message')}}
+                        </div><br/>
+                    @endif
                     <input type="submit" value="Login" class="form-control btn-default">
                     <a href="/password/email">Zaboravio pass?</a>
                 </form>
