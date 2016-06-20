@@ -47,7 +47,6 @@
                     <li data-target="#myCarousel2" data-slide-to="2"></li>
                     <li data-target="#myCarousel2" data-slide-to="3"></li>
                     <li data-target="#myCarousel2" data-slide-to="4"></li>
-                    <li data-target="#myCarousel2" data-slide-to="5"></li>
                 </ol>
 
                 <div class="carousel-inner" role="listbox">
@@ -58,15 +57,15 @@
                             <p>{{$ads[0]->description}}</p>
                         </div>
                     </div>
-                    @foreach($ads as $ad)
+                    @for($i=1; $i<count($ads); $i++)
                         <div class="item">
-                            <a href="/ad/{{$ad->ad_id}}"><img src="{{$ad->images()->first()->image_path}}" alt="{{$ad->getName()}}"></a>
+                            <a href="/ad/{{$ads[$i]->ad_id}}"><img src="{{$ads[$i]->images()->first()->image_path}}" alt="{{$ads[$i]->getName()}}"></a>
                             <div class="carousel-caption">
-                                <h3><a href="{{'ad/'.$ad->ad_id}}" style="color: inherit">{{$ad->getName()}}</a></h3>
-                                <p>{{$ad->description}}</p>
+                                <h3><a href="{{'ad/'.$ads[$i]->ad_id}}" style="color: inherit">{{$ads[$i]->getName()}}</a></h3>
+                                <p>{{$ads[$i]->description}}</p>
                             </div>
                         </div>
-                    @endforeach
+                    @endfor
                 </div>
 
                 <a class="left carousel-control strelica" href="#myCarousel2" role="button" data-slide="prev">
