@@ -41,6 +41,8 @@
                                     {{Form::radio('appointment_time',\Carbon\Carbon::today()->addDay($i+1)->addHour($j+8)->minute(0)->second(0),
                                         false,['class' => 'optradio'])}}
                                     </td>
+                                @else
+                                    <td></td>
                                 @endif
                             @else
                                 <td style="text-align: center;vertical-align: middle" class="danger">Termin rezervisan</td>
