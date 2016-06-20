@@ -85,7 +85,6 @@ class AppointmentController extends Controller
     private function moderatorAppointments()
     {
         $appointments = $this->getModeratorAppointments();
-        $appointments = $appointments->sortBy('appointment_time');
         return view('appointment.my', compact('appointments'));
     }
 
