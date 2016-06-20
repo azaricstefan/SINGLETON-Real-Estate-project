@@ -26,9 +26,9 @@
             <div class="form-group">
                 <form method="POST" action="{{url('login')}}">
                     {{csrf_field()}}
-                    <label >Username</label>
+                    <label for="username">Korisničko ime:</label>
                     <input type="text" name="username" class="form-control"><br/>
-                    <label>Pasword</label>
+                    <label for="password">Šifra:</label>
                     <input type="password" name="password" class="form-control"> <br/>
                     @if(session()->has('flash_message'))
                         <div class="alert alert-danger" style="text-align: center">
